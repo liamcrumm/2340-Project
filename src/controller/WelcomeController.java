@@ -36,7 +36,7 @@ public class WelcomeController {
     }
 
     /**
-     * Button handler for add course
+     * Button handler for register
      * Currently not implemented
      */
     @FXML

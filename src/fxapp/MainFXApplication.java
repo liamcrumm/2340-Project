@@ -92,7 +92,7 @@ public class MainFXApplication extends Application {
      *
      * @param mainScreen  the main stage to show this view in
      */
-    private void showWelcome(Stage mainScreen) {
+    public void showWelcome(Stage mainScreen) {
         try {
             // Load course overview.
             FXMLLoader loader = new FXMLLoader(); // each controller needs it own loader
