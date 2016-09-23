@@ -1,5 +1,6 @@
 package fxapp;
 
+import controller.AccountController;
 import controller.MainScreenController;
 import controller.WelcomeController;
 import controller.LoginController;
@@ -155,18 +156,18 @@ public class MainFXApplication extends Application {
         }
     }
 
-    public void showMainScreen() {
+    public void showAccountScreen() {
         try {
             // Load main screen.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../view/MainScreen.fxml"));
-            BorderPane MainScreen = loader.load();
+            loader.setLocation(MainFXApplication.class.getResource("../view/AccountScreen.fxml"));
+            BorderPane AccountScreen = loader.load();
 
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(MainScreen);
+            rootLayout.setCenter(AccountScreen);
 
             // Give the controller access to the main app.
-            MainScreenController controller = loader.getController();
+            AccountController controller = loader.getController();
             controller.setMainApp(this);
 
         } catch (IOException e) {

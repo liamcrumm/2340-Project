@@ -95,7 +95,7 @@ public class LoginController {
             boolean successful = false;
             if(usernames.containsKey(username)) {
                 if(usernames.get(username).equals(password)) {
-                    mainApplication.showMainScreen();
+                    mainApplication.showAccountScreen();
                     successful = true;
                 } else {
                     alert.showAndWait();
