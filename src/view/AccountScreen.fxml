@@ -14,25 +14,25 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
             <Label prefHeight="17.0" text="Welcome!" />
-            <Button mnemonicParsing="false" text="Account Settings" />
-            <Button mnemonicParsing="false" text="Log Out" />
+            <Button mnemonicParsing="false" onAction="#accountSettingsPressed" text="Account Settings" />
+            <Button mnemonicParsing="false" onAction="#logoutPressed" text="Log Out" />
         </buttons>
       </ButtonBar>
    </top>
    <left>
       <VBox prefHeight="360.0" prefWidth="174.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="165.0" text="View Water Sources">
+            <Button mnemonicParsing="false" onAction="#viewWaterPressed" prefHeight="27.0" prefWidth="165.0" text="View Water Sources">
                <VBox.margin>
                   <Insets left="5.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="165.0" text="Report Water Source">
+            <Button mnemonicParsing="false" onAction="#reportWaterPressed" prefHeight="27.0" prefWidth="165.0" text="Report Water Source">
                <VBox.margin>
                   <Insets left="5.0" top="20.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Your Submitted Reports">
+            <Button mnemonicParsing="false" onAction="#submittedReportsPressed" text="Your Submitted Reports">
                <VBox.margin>
                   <Insets left="5.0" top="20.0" />
                </VBox.margin>

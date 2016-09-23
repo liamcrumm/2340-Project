@@ -33,7 +33,7 @@ public class AccountController {
     }
 
     /**
-     * Button handler for log out butotn
+     * Button handler for log out button
      */
     @FXML
     public void logoutPressed() {
@@ -46,6 +46,8 @@ public class AccountController {
 
         alert.showAndWait();
 
+
+
     }
 
     /**
@@ -53,7 +55,59 @@ public class AccountController {
      */
     @FXML
     public void accountSettingsPressed() {
+        // Show the error message if bad data
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(mainApplication.getMainScreen());
+        alert.setTitle("Unimplemented");
+        alert.setHeaderText("Unimplemented Feature");
+        alert.setContentText("Sorry, Account Settings is not yet implemented!");
 
+        alert.showAndWait();
+    }
+
+    /**
+     * Button handler for view water sources button
+     */
+    @FXML
+    public void viewWaterPressed() {
+        // Show the error message if bad data
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(mainApplication.getMainScreen());
+        alert.setTitle("Unimplemented");
+        alert.setHeaderText("Unimplemented Feature");
+        alert.setContentText("Sorry, View Water Sources is not yet implemented!");
+
+        alert.showAndWait();
+    }
+
+    /**
+     * Button handler for account settings button
+     */
+    @FXML
+    public void reportWaterPressed() {
+        // Show the error message if bad data
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(mainApplication.getMainScreen());
+        alert.setTitle("Unimplemented");
+        alert.setHeaderText("Unimplemented Feature");
+        alert.setContentText("Sorry, Report Water Source is not yet implemented!");
+
+        alert.showAndWait();
+    }
+
+    /**
+     * Button handler for account settings button
+     */
+    @FXML
+    public void submittedReportsPressed() {
+        // Show the error message if bad data
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(mainApplication.getMainScreen());
+        alert.setTitle("Unimplemented");
+        alert.setHeaderText("Unimplemented Feature");
+        alert.setContentText("Sorry, Your Submitted Reports is not yet implemented!");
+
+        alert.showAndWait();
     }
 }
 
