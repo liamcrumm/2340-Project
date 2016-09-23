@@ -1,10 +1,13 @@
 package controller;
 
+import fxapp.MainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+
+import java.util.HashMap;
 
 /**
  * Created by Kimberly Burke on 9/19/2016.
@@ -28,11 +31,31 @@ public class LoginController {
     /** flag to signal whether dialog was closed normally */
     private boolean _okClicked = false;
 
+    /** variable to store usernames/passwords of users **/
+    public HashMap<String,String> usernames = new HashMap<>();
+
+    /** a link back to the main application class */
+    @FXML
+    private MainFXApplication mainApplication;
+
     /**
      * called automatically after load
      */
     @FXML
     private void initialize() {
+        //Initial hardcoded username/password to be changed in future milestones
+        usernames.put("user","pass");
+    }
+
+    /**
+     * Setup the main application link so we can call methods there
+     *
+     * @param mainFXApplication  a reference (link) to our main class
+     */
+    @FXML
+    public void setMainApp(MainFXApplication mainFXApplication) {
+
+        mainApplication = mainFXApplication;
 
     }
 
@@ -61,9 +84,31 @@ public class LoginController {
     private void handleLoginPressed() {
         //First validate the data to insure it is at least reasonable
         if (isInputValid()) {
-            //signal success and close this dialog window.
+            //checks to make sure username and password are valid
+            String username = usernameField.getCharacters().toString();
+            String password = passwordField.getCharacters().toString();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(_dialogStage);
+            alert.setTitle("Login Failed!");
+            alert.setHeaderText("Incorrect Login Credentials");
+            alert.setContentText("The username/password you entered was incorrect.");
+            boolean successful = false;
+            if(usernames.containsKey(username)) {
+                if(usernames.get(username).equals(password)) {
+                    mainApplication.showMainScreen();
+                    successful = true;
+                } else {
+                    alert.showAndWait();
+                }
+            } else {
+                alert.showAndWait();
+            }
+
+
             _okClicked = true;
-            _dialogStage.close();
+            if(successful) {
+                _dialogStage.close();
+            }
         }
     }
 
@@ -80,6 +125,7 @@ public class LoginController {
      *
      * @return true if the input is valid
      */
+
     private boolean isInputValid() {
         String errorMessage = "";
 

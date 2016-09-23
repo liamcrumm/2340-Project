@@ -59,9 +59,14 @@ public class WelcomeController {
     public void loginPressed() {
 
         boolean okClicked = mainApplication.showLoginScreen();
-        if (okClicked) {
-            // refer to M3 on how to implement; creates an alert that login was
-            // unsuccessful.
+        if (!okClicked) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(mainApplication.getMainScreen());
+            alert.setTitle("Login Failed!");
+            alert.setHeaderText("Login was unsuccessful");
+            alert.setContentText("The login dialogue could not load.");
+
+            alert.showAndWait();
         }
     }
 }
