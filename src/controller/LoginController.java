@@ -4,7 +4,7 @@ import fxapp.MainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
@@ -23,7 +23,7 @@ public class LoginController {
     private TextField usernameField;
 
     @FXML
-    private TextField passwordField;
+    private PasswordField passwordField;
 
     /** the window for this dialog */
     private Stage _dialogStage;

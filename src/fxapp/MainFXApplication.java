@@ -156,6 +156,13 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Setup our main account screen that is shown when user is logged in.
+     * This is displayed in the startup window
+     *
+     * precondition - the main stage is already initialized and showing (initRootLayout has been called)
+     * postcondition - the account view is initialized and displayed
+     */
     public void showAccountScreen() {
         try {
             // Load main screen.
@@ -165,6 +172,34 @@ public class MainFXApplication extends Application {
 
             // Set person overview into the center of root layout.
             rootLayout.setCenter(AccountScreen);
+
+            // Give the controller access to the main app.
+            AccountController controller = loader.getController();
+            controller.setMainApp(this);
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MainScreen!");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Setup the edit profile screen that is shown when user selects "Edit Profile".
+     * This is displayed in the startup window
+     *
+     * precondition - the main stage is already initialized and showing (initRootLayout has been called)
+     * postcondition - the edit profile view is initialized and displayed
+     */
+    public void showEditProfileScreen() {
+        try {
+            // Load main screen.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/EditProfileScreen.fxml"));
+            BorderPane EditProfileScreen = loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(EditProfileScreen);
 
             // Give the controller access to the main app.
             AccountController controller = loader.getController();
