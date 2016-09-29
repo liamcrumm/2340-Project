@@ -1,6 +1,7 @@
 package controller;
 
 import fxapp.MainFXApplication;
+import model.Profile;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -62,6 +63,15 @@ public class EditProfileController {
     @FXML
     public void handleSavePressed() {
         // TODO
+
+        String name = nameField.getText();
+        String title  = titleField.getText();
+        String email = emailField.getText();
+        String phone = phoneField.getText();
+        String address = addressField.getText();
+        String bio = bioField.getText();
+
+        Profile profile = new Profile(name, title, email, phone, address,bio);
 
         Stage main = mainApplication.getMainScreen();
         // TODO Change mainApplication to return to previous screen.
