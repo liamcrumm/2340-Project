@@ -73,7 +73,7 @@ public class EditProfileController {
 
         Profile profile = new Profile(name, title, email, phone, address,bio);
 
-        Stage main = mainApplication.getMainScreen();
+        //mainApplication.showAccountScreen(); change to profile screen
         // TODO Change mainApplication to return to previous screen.
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Edit Profile Successful");
@@ -88,7 +88,7 @@ public class EditProfileController {
      */
     @FXML
     public void handleCancelPressed() {
-        Stage main = mainApplication.getMainScreen();
+        //mainApplication.showAccountScreen(); Change to profile screen
         // TODO Change mainApplication to return to previous screen.
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Cancelling Edit Profile");
