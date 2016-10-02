@@ -109,5 +109,13 @@ public class AccountController {
 
         alert.showAndWait();
     }
+
+    /**
+     * Button handler for view profile button
+     */
+    @FXML
+    public void viewProfilePressed() {
+        mainApplication.showViewProfileScreen();
+    }
 }
 

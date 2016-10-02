@@ -1,7 +1,9 @@
 package fxapp;
 
 import controller.AccountController;
+import controller.EditProfileController;
 import controller.MainScreenController;
+import controller.ViewProfileController;
 import controller.WelcomeController;
 import controller.LoginController;
 
@@ -185,6 +187,34 @@ public class MainFXApplication extends Application {
     }
 
     /**
+     * Setup the profile screen that is shown when user selects "View Profile"
+     * This is displayed in the startup window
+     *
+     * precondition - the main stage is already initialized and showing (initRootLayout has been called)
+     * postcondition - the account view is initialized and displayed
+     */
+    public void showViewProfileScreen() {
+        try {
+            // Load main screen.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/ViewProfileScreen.fxml"));
+            AnchorPane ViewProfileScreen = loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(ViewProfileScreen);
+
+            // Give the controller access to the main app.
+            ViewProfileController controller = loader.getController();
+            controller.setMainApp(this);
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for Profile!");
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Setup the edit profile screen that is shown when user selects "Edit Profile".
      * This is displayed in the startup window
      *
@@ -202,7 +232,7 @@ public class MainFXApplication extends Application {
             rootLayout.setCenter(EditProfileScreen);
 
             // Give the controller access to the main app.
-            AccountController controller = loader.getController();
+            EditProfileController controller = loader.getController();
             controller.setMainApp(this);
 
         } catch (IOException e) {

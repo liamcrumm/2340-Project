@@ -71,7 +71,7 @@ public class EditProfileController {
         String address = addressField.getText();
         String bio = bioField.getText();
 
-        Profile profile = new Profile(name, title, email, phone, address,bio);
+        Profile profile = new Profile(name, title, email, phone, address, bio);
 
         //mainApplication.showAccountScreen(); change to profile screen
         // TODO Change mainApplication to return to previous screen.
