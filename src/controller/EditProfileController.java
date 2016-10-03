@@ -36,10 +36,9 @@ public class EditProfileController {
     private TextArea bioField;
 
     /** a link back to the main application class */
-    @FXML
     private MainFXApplication mainApplication;
 
-    AccountsManager accounts = new AccountsManager();
+    AccountsManager accounts = LoginController.accounts;
     User user = accounts.getUser();
 
     /**
@@ -97,31 +96,8 @@ public class EditProfileController {
         String bio = bioField.getText();
 
 
-        if(user.getProfile() == null) {
-            Profile profile = new Profile(name, title, email, phone, address, bio);
-            user.setProfile(profile);
-        } else {
-            Profile userProf = user.getProfile();
-            if(userProf.getName() == null) {
-                userProf.setName(name);
-            }
-            if(userProf.getTitle() == null) {
-                userProf.setTitle(title);
-            }
-            if(userProf.getEmail() == null) {
-                userProf.setEmail(email);
-            }
-            if(userProf.getPhone() == null) {
-                userProf.setPhone(phone);
-            }
-            if(userProf.getAddress() == null) {
-                userProf.setAddress(address);
-            }
-            if(userProf.getBio() == null) {
-                userProf.setBio(bio);
-            }
-        }
-
+        Profile profile = new Profile(name, title, email, phone, address, bio);
+        user.setProfile(profile);
         mainApplication.showViewProfileScreen();
         // TODO Change mainApplication to return to previous screen.
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

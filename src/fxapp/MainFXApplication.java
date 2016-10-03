@@ -149,6 +149,7 @@ public class MainFXApplication extends Application {
             return controller.isOkClicked();
 
         } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ShowLoginScreen!");
             e.printStackTrace();
             return false;
         }
@@ -188,6 +189,7 @@ public class MainFXApplication extends Application {
             return controller.isOkClicked();
 
         } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ShowRegistrationScreen!");
             e.printStackTrace();
             return false;
         }
@@ -218,7 +220,7 @@ public class MainFXApplication extends Application {
 
         } catch (IOException e) {
             //error on load, so log it
-            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MainScreen!");
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for showAccountScreen!");
             e.printStackTrace();
         }
     }
@@ -274,7 +276,7 @@ public class MainFXApplication extends Application {
 
         } catch (IOException e) {
             //error on load, so log it
-            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MainScreen!");
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for EditProfileScreen!");
             e.printStackTrace();
         }
     }
