@@ -88,7 +88,6 @@ public class EditProfileController {
      */
     @FXML
     public void handleSavePressed() {
-        // TODO
 
         String name = nameField.getText();
         String title  = titleField.getText();
