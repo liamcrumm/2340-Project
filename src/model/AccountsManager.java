@@ -3,9 +3,6 @@ package model;
 
 import java.util.ArrayList;
 
-/**
- * Created by Sakhi on 10/2/16.
- */
 public class AccountsManager {
 
     private ArrayList<User> users;
@@ -16,7 +13,7 @@ public class AccountsManager {
      * Instantiates the AccountsManager class
      */
     public AccountsManager() {
-        users = new ArrayList<User>();
+        users = new ArrayList<>();
     }
 
     /**
@@ -34,10 +31,10 @@ public class AccountsManager {
     public User getUser() {
         for(User u: users) {
             if(u.getUsername().equals(currentUsername)) {
-                currentUser = u;
+                return u;
             }
         }
-        return currentUser;
+        return null;
     }
 
     /**

@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import model.AccountsManager;
 import model.User;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -37,6 +38,9 @@ public class LoginController {
     /** a link back to the main application class */
     @FXML
     private MainFXApplication mainApplication;
+
+    /*since it's necessary to keep 1 instance of accounts*/
+    static AccountsManager accounts = new AccountsManager();
 
     /**
      * called automatically after load
@@ -91,9 +95,8 @@ public class LoginController {
             alert.setHeaderText("Incorrect Login Credentials");
             alert.setContentText("The username/password you entered was incorrect.");
             boolean successful = false;
-            AccountsManager c = new AccountsManager();
-            c.setCurrentUser(username);
-            User current = c.getUser();
+            accounts.setCurrentUser(username);
+            User current = accounts.getUser();
             if(current != null) {
                 if(current.getPassword().equals(password)) {
                     mainApplication.showAccountScreen();

@@ -1,6 +1,4 @@
-package controller;/**
- * Created by Catherine on 10/1/2016.
- */
+package controller;
 
 import fxapp.MainFXApplication;
 import javafx.application.Application;
@@ -78,21 +76,86 @@ public class RegistrationController extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) {}
 
-    }
     @FXML
+    /**
+     * Handles registration after verification
+     */
     public void handleSubmitPressed() {
-        AccountsManager c = new AccountsManager();
-        c.getUserList().add(new User(usernameField.getText(),passwordField.getText(),new Profile(nameField.getText(),"","","","","")));
-        _dialogStage.close();
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(mainApplication.getMainScreen());
-        _okClicked = true;
+        AccountsManager man = LoginController.accounts;
+        if(isInputValid()) {
+            if(uniqueUsername(man,usernameField.getText())) {
+                man.getUserList().add(new User(usernameField.getText(), passwordField.getText(), new Profile(nameField.getText(), "", "", "", "", "")));
+                _dialogStage.close();
+                _okClicked = true;
+            }
+        }
     }
     @FXML
+    /*
+     * If user selects cancel, go back
+     */
     public void handleCancelPressed() {
         _dialogStage.close();
         _okClicked = true;
+    }
+
+    /**
+     * Returns true if the username/password input is valid
+     *
+     * @return  true if the username and password fields are valid
+     */
+    private boolean isInputValid() {
+        String errorMessage = "";
+
+        //for now just check they actually typed something
+        if (usernameField.getText() == null || usernameField.getText().length() == 0) {
+            errorMessage += "No valid username entered!\n";
+        }
+        if (passwordField.getText() == null || passwordField.getText().length() == 0) {
+            errorMessage += "No valid password entered!\n";
+        }
+
+
+        //no error message means success / good input
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            // Show the error message if bad data
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(_dialogStage);
+            alert.setTitle("Invalid Fields");
+            alert.setHeaderText("Please correct invalid fields");
+            alert.setContentText(errorMessage);
+
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+    /**
+     * Returns true if the username selected is unique,otherwise show error
+     *
+     * @return  true if username selected is unique
+     */
+    private boolean uniqueUsername(AccountsManager m, String username) {
+        m.setCurrentUser(username);
+        if(m.getUser() == null) {
+            //user being null means the username isn't taken
+            return true;
+        } else {
+            //show error message so that user can choose different username
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(_dialogStage);
+            alert.setTitle("Invalid Username");
+            alert.setHeaderText("Username already taken");
+            alert.setContentText("That username is already taken, please choose another");
+
+            alert.showAndWait();
+            return false;
+        }
+
     }
 }
