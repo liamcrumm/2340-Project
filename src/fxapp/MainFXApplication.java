@@ -1,11 +1,6 @@
 package fxapp;
 
-import controller.AccountController;
-import controller.EditProfileController;
-import controller.MainScreenController;
-import controller.ViewProfileController;
-import controller.WelcomeController;
-import controller.LoginController;
+import controller.*;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -157,6 +152,47 @@ public class MainFXApplication extends Application {
             return false;
         }
     }
+
+    /**
+     * Opens a dialog for user to enter credentials. If the user
+     * clicks OK, will check if credentials are valid.
+     *
+     * @return true if the user clicked submit, false otherwise.
+     * */
+
+    public boolean showRegistrationScreen() {
+        // feel free to add User model to this
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/RegistrationController.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("User Registration");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(mainScreen);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            RegistrationController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setMainApp(this);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 
     /**
      * Setup our main account screen that is shown when user is logged in.

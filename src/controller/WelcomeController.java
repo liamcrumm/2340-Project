@@ -41,6 +41,7 @@ public class WelcomeController {
      */
     @FXML
     public void registerPressed() {
+        boolean submitClicked = mainApplication.showRegistrationScreen();
         // Show the error message if bad data
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(mainApplication.getMainScreen());

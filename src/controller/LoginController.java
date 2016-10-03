@@ -33,7 +33,7 @@ public class LoginController {
     private boolean _okClicked = false;
 
     /** variable to store usernames/passwords of users **/
-    public HashMap<String,String> usernames = new HashMap<>();
+    public static HashMap<String,String> usernames = new HashMap<>();
 
     /** a link back to the main application class */
     @FXML

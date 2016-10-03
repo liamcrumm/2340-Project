@@ -6,14 +6,15 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="462.0" text="Registration" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationScreen">
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="462.0" text="Registration" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="170.0" prefWidth="330.0">
          <children>
-            <TextField fx:id="nameField" layoutX="156.0" layoutY="39.0" promptText="Enter Name" />
+            <TextField fx:id="nameField" layoutX="156.0" layoutY="54.0" promptText="Enter Name" />
             <TextField fx:id="usernameField" layoutX="156.0" layoutY="95.0" promptText="Enter Username" />
-            <PasswordField fx:id="passwordField" layoutX="156.0" layoutY="154.0" promptText="Enter Password" />
-            <Button layoutX="369.0" layoutY="193.0" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit" />
+            <PasswordField fx:id="passwordField" layoutX="156.0" layoutY="135.0" promptText="Enter Password" />
+            <Button layoutX="156.0" layoutY="194.0" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit" />
+             <Button layoutX="253.0" layoutY="194.0" mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel" />
          </children></AnchorPane>
   </content>
 </TitledPane>
