@@ -99,7 +99,6 @@ public class EditProfileController {
         Profile profile = new Profile(name, title, email, phone, address, bio);
         user.setProfile(profile);
         mainApplication.showViewProfileScreen();
-        // TODO Change mainApplication to return to previous screen.
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Edit Profile Successful");
         alert.setHeaderText("Saving Changes");
