@@ -39,7 +39,7 @@ public class EditProfileController {
     @FXML
     private MainFXApplication mainApplication;
 
-    AccountsManager accounts = new AccountsManager();
+    AccountsManager accounts = LoginController.accounts;
     User user = accounts.getUser();
 
     /**
@@ -123,7 +123,6 @@ public class EditProfileController {
         }
 
         mainApplication.showViewProfileScreen();
-        // TODO Change mainApplication to return to previous screen.
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Edit Profile Successful");
         alert.setHeaderText("Saving Changes");

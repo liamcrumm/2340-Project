@@ -42,7 +42,7 @@ public class ViewProfileController {
      */
     @FXML
     private void initialize() {
-        AccountsManager account = new AccountsManager();
+        AccountsManager account = LoginController.accounts;
         User user = account.getUser();
         if(user.getProfile() != null) {
             Profile prof = user.getProfile();
