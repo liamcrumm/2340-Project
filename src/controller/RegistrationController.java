@@ -4,9 +4,19 @@ package controller;/**
 
 import fxapp.MainFXApplication;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.AccountsManager;
+import model.Profile;
+import model.User;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class RegistrationController extends Application {
 
@@ -19,6 +29,9 @@ public class RegistrationController extends Application {
     @FXML
     private TextField passwordField;
 
+    @FXML
+    private ComboBox accountType;
+
     /** a link back to the main application class */
     @FXML
     private MainFXApplication mainApplication;
@@ -28,6 +41,16 @@ public class RegistrationController extends Application {
 
     /** flag to signal whether dialog was closed normally */
     private boolean _okClicked = false;
+
+    @FXML
+    private void initialize() {
+        ObservableList<String> types = FXCollections.observableArrayList();
+        types.add("User");
+        types.add("Worker");
+        types.add("Admin");
+        types.add("Manager");
+        accountType.setItems(types);
+    }
 
     @FXML
     public void setMainApp(MainFXApplication mainFXApplication) {
@@ -46,9 +69,9 @@ public class RegistrationController extends Application {
     }
 
     /**
-     * Returns true if the user clicked OK, false otherwise.
+     * Returns true if the user clicked a button, false otherwise.
      *
-     * @return  true if the user clicked the OK button
+     * @return  true if the user clicks a button
      */
     public boolean isOkClicked() {
         return _okClicked;
@@ -60,10 +83,16 @@ public class RegistrationController extends Application {
     }
     @FXML
     public void handleSubmitPressed() {
-        LoginController.usernames.put(usernameField.getText(),passwordField.getText());
+        AccountsManager c = new AccountsManager();
+        c.getUserList().add(new User(usernameField.getText(),passwordField.getText(),new Profile(nameField.getText(),"","","","","")));
+        _dialogStage.close();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initOwner(mainApplication.getMainScreen());
+        _okClicked = true;
     }
     @FXML
     public void handleCancelPressed() {
         _dialogStage.close();
+        _okClicked = true;
     }
 }

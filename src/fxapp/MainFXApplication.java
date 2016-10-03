@@ -5,6 +5,7 @@ import controller.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -157,7 +158,7 @@ public class MainFXApplication extends Application {
      * Opens a dialog for user to enter credentials. If the user
      * clicks OK, will check if credentials are valid.
      *
-     * @return true if the user clicked submit, false otherwise.
+     * @return true if the user clicked submit or cancel, false otherwise.
      * */
 
     public boolean showRegistrationScreen() {
@@ -165,7 +166,7 @@ public class MainFXApplication extends Application {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../view/RegistrationController.fxml"));
+            loader.setLocation(MainFXApplication.class.getResource("../view/RegistrationScreen.fxml"));
             AnchorPane page = loader.load();
 
             // Create the dialog Stage.

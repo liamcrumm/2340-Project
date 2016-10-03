@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import model.AccountsManager;
+import model.User;
 
 import java.util.HashMap;
 
@@ -32,8 +33,6 @@ public class LoginController {
     /** flag to signal whether dialog was closed normally */
     private boolean _okClicked = false;
 
-    /** variable to store usernames/passwords of users **/
-    public static HashMap<String,String> usernames = new HashMap<>();
 
     /** a link back to the main application class */
     @FXML
@@ -44,8 +43,6 @@ public class LoginController {
      */
     @FXML
     private void initialize() {
-        //Initial hardcoded username/password to be changed in future milestones
-        usernames.put("user","pass");
     }
 
     /**
@@ -94,8 +91,11 @@ public class LoginController {
             alert.setHeaderText("Incorrect Login Credentials");
             alert.setContentText("The username/password you entered was incorrect.");
             boolean successful = false;
-            if(usernames.containsKey(username)) {
-                if(usernames.get(username).equals(password)) {
+            AccountsManager c = new AccountsManager();
+            c.setCurrentUser(username);
+            User current = c.getUser();
+            if(current != null) {
+                if(current.getPassword().equals(password)) {
                     mainApplication.showAccountScreen();
                     successful = true;
                     AccountsManager accounts = new AccountsManager();
@@ -120,6 +120,7 @@ public class LoginController {
      */
     @FXML
     private void handleCancelPressed() {
+        _okClicked = true;
         _dialogStage.close();
     }
 

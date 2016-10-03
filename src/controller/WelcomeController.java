@@ -43,13 +43,15 @@ public class WelcomeController {
     public void registerPressed() {
         boolean submitClicked = mainApplication.showRegistrationScreen();
         // Show the error message if bad data
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(mainApplication.getMainScreen());
-        alert.setTitle("Unimplemented");
-        alert.setHeaderText("Unimplemented Feature");
-        alert.setContentText("Sorry, Registering is not yet implemented!");
+        if (!submitClicked) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(mainApplication.getMainScreen());
+            alert.setTitle("Registration Failed!");
+            alert.setHeaderText("Registration was unsuccessful");
+            alert.setContentText("The registration dialogue could not load.");
 
-        alert.showAndWait();
+            alert.showAndWait();
+        }
 
     }
 
