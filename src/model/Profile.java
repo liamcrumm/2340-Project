@@ -8,12 +8,12 @@ import javafx.beans.property.StringProperty;
  */
 public class Profile {
 
-    private final StringProperty _name = new SimpleStringProperty();
-    private final StringProperty _title = new SimpleStringProperty();
-    private final StringProperty _email = new SimpleStringProperty();
-    private final StringProperty _phone = new SimpleStringProperty();
-    private final StringProperty _address = new SimpleStringProperty();
-    private final StringProperty _bio = new SimpleStringProperty();
+    private  StringProperty _name = new SimpleStringProperty();
+    private  StringProperty _title = new SimpleStringProperty();
+    private  StringProperty _email = new SimpleStringProperty();
+    private  StringProperty _phone = new SimpleStringProperty();
+    private  StringProperty _address = new SimpleStringProperty();
+    private  StringProperty _bio = new SimpleStringProperty();
 
     /**
      * Constructor for this class. Instantiates a profile object.
@@ -43,5 +43,53 @@ public class Profile {
         _phone.set("Enter phone number");
         _address.set("Enter address");
         _bio.set("Enter biography");
+    }
+
+    public StringProperty getName() {
+        return _name;
+    }
+
+    public void setName(StringProperty name) {
+        _name = name;
+    }
+
+    public StringProperty getTitle() {
+        return _title;
+    }
+
+    public void setTitle(StringProperty title) {
+        _title = title;
+    }
+
+    public StringProperty getEmail() {
+        return _email;
+    }
+
+    public void setEmail(StringProperty email) {
+        _email = email;
+    }
+
+    public StringProperty getPhone() {
+        return _phone;
+    }
+
+    public void setPhone(StringProperty phone) {
+        _phone = phone;
+    }
+
+    public StringProperty getAddress() {
+        return _address;
+    }
+
+    public void setAddress(StringProperty address) {
+        _address = address;
+    }
+
+    public StringProperty getBio() {
+        return _bio;
+    }
+
+    public void setBio(StringProperty bio) {
+        _bio = bio;
     }
 }
