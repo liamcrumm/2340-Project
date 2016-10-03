@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <TitledPane animated="false" prefHeight="16.0" prefWidth="600.0" text="Edit Profile" BorderPane.alignment="CENTER">
@@ -101,8 +100,8 @@
    <bottom>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-          <Button mnemonicParsing="false" onAction="#handleSavePressed" text="Save" translateX="-20.0" />
-            <Button mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel" translateX="-10.0" />
+          <Button mnemonicParsing="false" text="Save" translateX="-20.0" />
+            <Button mnemonicParsing="false" text="Cancel" translateX="-10.0" />
         </buttons>
       </ButtonBar>
    </bottom>

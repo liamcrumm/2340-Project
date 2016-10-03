@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import model.AccountsManager;
 
 import java.util.HashMap;
 
@@ -97,6 +98,8 @@ public class LoginController {
                 if(usernames.get(username).equals(password)) {
                     mainApplication.showAccountScreen();
                     successful = true;
+                    AccountsManager accounts = new AccountsManager();
+                    accounts.setCurrentUser(username);
                 } else {
                     alert.showAndWait();
                 }

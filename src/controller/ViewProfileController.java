@@ -4,7 +4,9 @@ import fxapp.MainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import model.AccountsManager;
 import model.Profile;
+import model.User;
 
 /**
  * Created by Andrew Hu on 10/2/2016.
@@ -40,14 +42,29 @@ public class ViewProfileController {
      */
     @FXML
     private void initialize() {
-        String name = nameField.getText();
-        String title  = titleField.getText();
-        String email = emailField.getText();
-        String phone = phoneField.getText();
-        String address = addressField.getText();
-        String bio = bioField.getText();
-
-        Profile profile = new Profile(name, title, email, phone, address, bio);
+        AccountsManager account = new AccountsManager();
+        User user = account.getUser();
+        if(user.getProfile() != null) {
+            Profile prof = user.getProfile();
+            if(prof.getName() != null) {
+                nameField.setText(prof.getName());
+            }
+            if(prof.getTitle() != null) {
+                titleField.setText(prof.getTitle());
+            }
+            if(prof.getEmail() != null) {
+                emailField.setText(prof.getEmail());
+            }
+            if(prof.getPhone() != null) {
+                phoneField.setText(prof.getPhone());
+            }
+            if(prof.getAddress() != null) {
+                addressField.setText(prof.getAddress());
+            }
+            if(prof.getBio() != null) {
+                bioField.setText(prof.getBio());
+            }
+        }
     }
 
     /**

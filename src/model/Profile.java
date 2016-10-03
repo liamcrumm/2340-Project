@@ -1,19 +1,17 @@
 package model;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 /**
  * Created by Sakhi on 9/29/16.
  */
 public class Profile {
 
-    private  StringProperty _name = new SimpleStringProperty();
-    private  StringProperty _title = new SimpleStringProperty();
-    private  StringProperty _email = new SimpleStringProperty();
-    private  StringProperty _phone = new SimpleStringProperty();
-    private  StringProperty _address = new SimpleStringProperty();
-    private  StringProperty _bio = new SimpleStringProperty();
+    private  String _name;
+    private  String _title;
+    private  String _email;
+    private  String _phone;
+    private  String _address;
+    private  String _bio;
 
     /**
      * Constructor for this class. Instantiates a profile object.
@@ -25,71 +23,60 @@ public class Profile {
      * @param bio      The biography of the user
      */
     public Profile(String name, String title, String email, String phone, String address, String bio) {
-        _name.set(name);
-        _title.set(title);
-        _email.set(email);
-        _phone.set(phone);
-        _address.set(address);
-        _bio.set(bio);
+        _name = name;
+        _title = title;
+        _email = email;
+        _phone = phone;
+        _address = address;
+        _bio = bio;
     }
 
-    /**
-     * Used for the GUI when the user edits his or her profile.
-     */
-    public Profile() {
-        _name.set("Enter name");
-        _title.set("Enter title");
-        _email.set("Enter email");
-        _phone.set("Enter phone number");
-        _address.set("Enter address");
-        _bio.set("Enter biography");
-    }
 
-    public StringProperty getName() {
+    public String getName() {
         return _name;
     }
 
-    public void setName(StringProperty name) {
+    public void setName(String name) {
         _name = name;
     }
 
-    public StringProperty getTitle() {
+    public String getTitle() {
         return _title;
     }
 
-    public void setTitle(StringProperty title) {
+    public void setTitle(String title) {
         _title = title;
     }
 
-    public StringProperty getEmail() {
+    public String getEmail() {
         return _email;
     }
 
-    public void setEmail(StringProperty email) {
+    public void setEmail(String email) {
         _email = email;
     }
 
-    public StringProperty getPhone() {
+    public String getPhone() {
         return _phone;
     }
 
-    public void setPhone(StringProperty phone) {
+    public void setPhone(String phone) {
         _phone = phone;
     }
 
-    public StringProperty getAddress() {
+    public String getAddress() {
         return _address;
     }
 
-    public void setAddress(StringProperty address) {
+    public void setAddress(String address) {
         _address = address;
     }
 
-    public StringProperty getBio() {
+    public String getBio() {
         return _bio;
     }
 
-    public void setBio(StringProperty bio) {
+    public void setBio(String bio) {
         _bio = bio;
     }
 }

@@ -1,12 +1,13 @@
 package controller;
 
 import fxapp.MainFXApplication;
+import model.AccountsManager;
 import model.Profile;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
+import model.User;
 
 /**
  * Created by Kimberly Burke on 9/29/2016.
@@ -38,6 +39,9 @@ public class EditProfileController {
     @FXML
     private MainFXApplication mainApplication;
 
+    AccountsManager accounts = new AccountsManager();
+    User user = accounts.getUser();
+
     /**
      * Initializes the controller class. This method is automatically called
      * after the constructor and
@@ -45,6 +49,28 @@ public class EditProfileController {
      */
     @FXML
     private void initialize() {
+        Profile prof = user.getProfile();
+        if(prof != null) {
+            if(prof.getName() != null) {
+                nameField.setText(prof.getName());
+            }
+            if(prof.getTitle() != null) {
+                titleField.setText(prof.getTitle());
+            }
+            if(prof.getEmail() != null) {
+                emailField.setText(prof.getEmail());
+            }
+            if(prof.getPhone() != null) {
+                phoneField.setText(prof.getPhone());
+            }
+            if(prof.getAddress() != null) {
+                addressField.setText(prof.getAddress());
+            }
+            if(prof.getBio() != null) {
+                bioField.setText(prof.getBio());
+            }
+
+        }
 
     }
 
@@ -71,9 +97,33 @@ public class EditProfileController {
         String address = addressField.getText();
         String bio = bioField.getText();
 
-        Profile profile = new Profile(name, title, email, phone, address, bio);
 
-        //mainApplication.showAccountScreen(); change to profile screen
+        if(user.getProfile() == null) {
+            Profile profile = new Profile(name, title, email, phone, address, bio);
+            user.setProfile(profile);
+        } else {
+            Profile userProf = user.getProfile();
+            if(userProf.getName() == null) {
+                userProf.setName(name);
+            }
+            if(userProf.getTitle() == null) {
+                userProf.setTitle(title);
+            }
+            if(userProf.getEmail() == null) {
+                userProf.setEmail(email);
+            }
+            if(userProf.getPhone() == null) {
+                userProf.setPhone(phone);
+            }
+            if(userProf.getAddress() == null) {
+                userProf.setAddress(address);
+            }
+            if(userProf.getBio() == null) {
+                userProf.setBio(bio);
+            }
+        }
+
+        mainApplication.showViewProfileScreen();
         // TODO Change mainApplication to return to previous screen.
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Edit Profile Successful");
@@ -88,8 +138,8 @@ public class EditProfileController {
      */
     @FXML
     public void handleCancelPressed() {
-        //mainApplication.showAccountScreen(); Change to profile screen
-        // TODO Change mainApplication to return to previous screen.
+        mainApplication.showViewProfileScreen();
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Cancelling Edit Profile");
         alert.setHeaderText("Cancelling Profile Changes");
