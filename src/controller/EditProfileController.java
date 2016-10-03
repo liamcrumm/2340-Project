@@ -102,24 +102,12 @@ public class EditProfileController {
             user.setProfile(profile);
         } else {
             Profile userProf = user.getProfile();
-            if(userProf.getName() == null) {
-                userProf.setName(name);
-            }
-            if(userProf.getTitle() == null) {
-                userProf.setTitle(title);
-            }
-            if(userProf.getEmail() == null) {
-                userProf.setEmail(email);
-            }
-            if(userProf.getPhone() == null) {
-                userProf.setPhone(phone);
-            }
-            if(userProf.getAddress() == null) {
-                userProf.setAddress(address);
-            }
-            if(userProf.getBio() == null) {
-                userProf.setBio(bio);
-            }
+            userProf.setName(name);
+            userProf.setTitle(title);
+            userProf.setEmail(email);
+            userProf.setPhone(phone);
+            userProf.setAddress(address);
+            userProf.setBio(bio);
         }
 
         mainApplication.showViewProfileScreen();

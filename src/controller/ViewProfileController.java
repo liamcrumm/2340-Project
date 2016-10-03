@@ -46,24 +46,12 @@ public class ViewProfileController {
         User user = account.getUser();
         if(user.getProfile() != null) {
             Profile prof = user.getProfile();
-            if(prof.getName() != null) {
-                nameField.setText(prof.getName());
-            }
-            if(prof.getTitle() != null) {
-                titleField.setText(prof.getTitle());
-            }
-            if(prof.getEmail() != null) {
-                emailField.setText(prof.getEmail());
-            }
-            if(prof.getPhone() != null) {
-                phoneField.setText(prof.getPhone());
-            }
-            if(prof.getAddress() != null) {
-                addressField.setText(prof.getAddress());
-            }
-            if(prof.getBio() != null) {
-                bioField.setText(prof.getBio());
-            }
+            nameField.setText(prof.getName());
+            titleField.setText(prof.getTitle());
+            emailField.setText(prof.getEmail());
+            phoneField.setText(prof.getPhone());
+            addressField.setText(prof.getAddress());
+            bioField.setText(prof.getBio());
         }
     }
 

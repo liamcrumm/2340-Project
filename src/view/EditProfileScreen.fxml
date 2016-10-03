@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditProfileController">
    <top>
       <TitledPane animated="false" prefHeight="16.0" prefWidth="600.0" text="Edit Profile" BorderPane.alignment="CENTER">
         <content>
@@ -35,7 +35,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="emailField" text="Email">
+                  <Label text="Email">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -100,8 +100,8 @@
    <bottom>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-          <Button mnemonicParsing="false" text="Save" translateX="-20.0" />
-            <Button mnemonicParsing="false" text="Cancel" translateX="-10.0" />
+          <Button mnemonicParsing="false" onAction="#handleSavePressed" text="Save" translateX="-20.0" />
+            <Button mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel" translateX="-10.0" />
         </buttons>
       </ButtonBar>
    </bottom>
