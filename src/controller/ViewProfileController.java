@@ -18,23 +18,12 @@ public class ViewProfileController {
     private MainFXApplication mainApplication;
 
     /** FXML Widgets*/
-    @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField titleField;
-
-    @FXML
-    private TextField emailField;
-
-    @FXML
-    private TextField phoneField;
-
-    @FXML
-    private TextField addressField;
-
-    @FXML
-    private TextArea bioField;
+    @FXML private TextField nameField;
+    @FXML private TextField titleField;
+    @FXML private TextField emailField;
+    @FXML private TextField phoneField;
+    @FXML private TextField addressField;
+    @FXML private TextArea bioField;
 
     /**
      * Initializes controller class. This method is automatically called

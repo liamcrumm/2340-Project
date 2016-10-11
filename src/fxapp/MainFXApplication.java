@@ -309,5 +309,31 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Setup the list view of reports screen that is shown when user selects "Your Submitted Reports"
+     * This can be accessed from the account menu
+     *
+     */
+    public void showViewReportScreen() {
+        try {
+            // Load main screen.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/ViewReportScreen.fxml"));
+            AnchorPane ViewReportScreen = loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(ViewReportScreen);
+
+            // Give the controller access to the main app.
+            ViewReportController controller = loader.getController();
+            controller.setMainApp(this);
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ViewReportScreen!");
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {launch(args);}
 }

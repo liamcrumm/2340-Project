@@ -1,6 +1,5 @@
 package model;
 
-
 /**
  * Created by Sakhi on 9/29/16.
  */

@@ -92,16 +92,7 @@ public class AccountController {
      * Button handler for account settings button
      */
     @FXML
-    public void submittedReportsPressed() {
-        // Show the error message if bad data
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(mainApplication.getMainScreen());
-        alert.setTitle("Unimplemented");
-        alert.setHeaderText("Unimplemented Feature");
-        alert.setContentText("Sorry, Your Submitted Reports is not yet implemented!");
-
-        alert.showAndWait();
-    }
+    public void submittedReportsPressed() { mainApplication.showViewReportScreen(); }
 
     /**
      * Button handler for view profile button

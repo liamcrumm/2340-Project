@@ -4,20 +4,19 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewReportController">
    <children>
-      <TableView prefHeight="345.0" prefWidth="600.0">
+      <TableView fx:id="reportTable" prefHeight="345.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="nameField" prefWidth="125.0" text="Name" />
-          <TableColumn fx:id="dateField" prefWidth="75.0" text="Date" />
-            <TableColumn fx:id="hourField" prefWidth="75.0" text="Time" />
-            <TableColumn fx:id="locationField" prefWidth="100.0" text="Location" />
-            <TableColumn fx:id="typeField" prefWidth="100.0" text="Type" />
-            <TableColumn fx:id="conditionField" prefWidth="125.0" text="Condition" />
+          <TableColumn fx:id="nameCol" prefWidth="125.0" text="Name" />
+          <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="timeCol" prefWidth="75.0" text="Time" />
+            <TableColumn fx:id="locationCol" prefWidth="100.0" text="Location" />
+            <TableColumn fx:id="typeCol" prefWidth="100.0" text="Type" />
+            <TableColumn fx:id="conditionCol" prefWidth="125.0" text="Condition" />
         </columns>
       </TableView>
-      <Button layoutX="48.0" layoutY="359.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="48.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
       <Button layoutX="435.0" layoutY="359.0" mnemonicParsing="false" text="Delete Selected Report" />
    </children>
 </AnchorPane>
