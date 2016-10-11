@@ -27,7 +27,7 @@
             <RadioButton fx:id="lakeButton" layoutX="333.0" layoutY="148.0" mnemonicParsing="false" text="Lake" />
             <RadioButton fx:id="wasteButton" layoutX="335.0" layoutY="236.0" mnemonicParsing="false" text="Waste" />
             <RadioButton fx:id="treatClearButton" layoutX="335.0" layoutY="253.0" mnemonicParsing="false" text="Treatable-Clear" />
-            <RadioButton fx:id="treatMuddlyButton" layoutX="335.0" layoutY="270.0" mnemonicParsing="false" text="Treatable-Muddy" />
+            <RadioButton fx:id="treatMuddyButton" layoutX="335.0" layoutY="270.0" mnemonicParsing="false" text="Treatable-Muddy" />
             <RadioButton fx:id="potableButton" layoutX="335.0" layoutY="288.0" mnemonicParsing="false" text="Potable" />
          </children></AnchorPane>
   </content>
