@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewProfileController">
    <children>
-      <TitledPane animated="false" prefHeight="400.0" prefWidth="600.0" text="View Profile">
+      <TitledPane animated="false" collapsible="false" prefHeight="400.0" prefWidth="600.0" text="View Profile">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
