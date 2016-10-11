@@ -281,5 +281,33 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Setup the submit water reprot screen that is shown when user selects "Submit Report".
+     * This is displayed in the startup window
+     *
+     * precondition - the main stage is already initialized and showing (initRootLayout has been called)
+     * postcondition - the submit report view is initialized and displayed
+     */
+    public void showSubmitReportScreen() {
+        try {
+            // Load main screen.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/SubmitReportScreen.fxml"));
+            TitledPane SubmitReportScreen = loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(SubmitReportScreen);
+
+            // Give the controller access to the main app.
+            SubmitReportScreenController controller = loader.getController();
+            controller.setMainApp(this);
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for SubmitReportScreen!");
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {launch(args);}
 }

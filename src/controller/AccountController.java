@@ -85,14 +85,7 @@ public class AccountController {
      */
     @FXML
     public void reportWaterPressed() {
-        // Show the error message if bad data
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(mainApplication.getMainScreen());
-        alert.setTitle("Unimplemented");
-        alert.setHeaderText("Unimplemented Feature");
-        alert.setContentText("Sorry, Report Water Source is not yet implemented!");
-
-        alert.showAndWait();
+        mainApplication.showSubmitReportScreen();
     }
 
     /**
