@@ -3,6 +3,9 @@ package controller;
 import fxapp.MainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import model.AccountsManager;
+import model.Report;
+import model.User;
 
 import java.time.LocalDate;
 
@@ -120,6 +123,22 @@ public class SubmitReportScreenController {
 
         RadioButton selectedCondition = (RadioButton) conditionGroup.getSelectedToggle();
         String condition = selectedCondition.getText();
+
+        Report report = new Report(name, date, time, location, type, condition);
+
+        AccountsManager accounts = LoginController.accounts;
+        accounts.addReport(report);
+        User current = accounts.getUser();
+        current.addReport(report);
+
+        mainApplication.showAccountScreen();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Submitting Water Report");
+        alert.setHeaderText("Submitting Your Water Report");
+        alert.setContentText("Your report has been suscessfully submitted.");
+
+        alert.showAndWait();
 
     }
 

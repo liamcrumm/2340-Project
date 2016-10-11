@@ -8,12 +8,15 @@ public class AccountsManager {
     private ArrayList<User> users;
     private String currentUsername;
     private User currentUser;
+    private ArrayList<Report> reports;
 
     /**
      * Instantiates the AccountsManager class
      */
     public AccountsManager() {
+
         users = new ArrayList<>();
+        reports = new ArrayList<>();
     }
 
     /**
@@ -51,6 +54,28 @@ public class AccountsManager {
      */
     public String getCurrentUsername() {
         return currentUsername;
+    }
+
+    /**
+     * returns the list of reports that are in the system.
+     * @return The list of reprots in the system
+     */
+    public ArrayList<Report> getReportsList() { return reports; }
+
+    /**
+     * Adds a report to the system.
+     * @param r The report to be added to the system.
+     */
+    public void addReport(Report r) {
+        reports.add(r);
+    }
+
+    /**
+     * Removes a report from the system.
+     * @param r The report that needs to be removed from the system.
+     */
+    public void removeReport(Report r) {
+        reports.remove(r);
     }
 
 

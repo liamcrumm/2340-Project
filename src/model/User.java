@@ -1,6 +1,8 @@
 package model;
 
 
+import java.util.ArrayList;
+
 /**
  * Created by Sakhi on 10/3/16.
  */
@@ -9,6 +11,7 @@ public class User {
     private String _username;
     private String _password;
     private Profile _profile;
+    private ArrayList<Report> userReports;
 
     /**
      * Instantiates an instance of User
@@ -69,4 +72,30 @@ public class User {
     public void setProfile(Profile prof) {
         _profile = prof;
     }
+
+    /**
+     * Adds a report created by the user to the list of reports that the user has submited.
+     * @param r The report that the user submitted.
+     */
+    public void addReport(Report r) {
+        if(userReports == null) {
+            userReports = new ArrayList<>();
+        }
+        userReports.add(r);
+    }
+
+    /**
+     * Returns the list of reports that the user has submitted.
+     * @return The list of reprots that the user has submitted.
+     */
+    public ArrayList<Report> getUserReports() { return userReports; }
+
+    /**
+     * Removes a report from the list of reports.
+     * @param r The report to be removed.
+     */
+    public void deleteReport(Report r) {
+        userReports.remove(r);
+    }
 }
+
