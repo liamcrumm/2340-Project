@@ -13,6 +13,7 @@ public class Report {
     private String _location;
     private String _type;
     private String _condition;
+    private int _reportNumber;
 
     /**
      * Constructor for a this class. Instantiates a Report object.
@@ -103,4 +104,16 @@ public class Report {
      * @param condition New Condition of water
      */
     public void setCondition(String condition) { _condition = condition; }
+
+    /**
+     * Getter for the report number
+     * @return The report number
+     */
+    public int getReportNumber() { return _reportNumber; }
+
+    /**
+     * Setter for the report number
+     * @param num The number of the report
+     */
+    public void setNumber(int num) { _reportNumber = num; }
 }

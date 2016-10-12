@@ -128,6 +128,8 @@ public class SubmitReportScreenController {
 
         AccountsManager accounts = LoginController.accounts;
         accounts.addReport(report);
+        int repNum = accounts.getReportsList().size();
+        report.setNumber(repNum);
         User current = accounts.getUser();
         current.addReport(report);
 
