@@ -3,7 +3,6 @@ package controller;
 import fxapp.MainFXApplication;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -29,6 +28,8 @@ public class ViewReportController {
     @FXML private TableColumn<Report, String> typeCol;
     @FXML private TableColumn<Report, String> conditionCol;
 
+    ArrayList<Report> userReports;
+
     /**
      * Initializes controller class. This method is automatically called
      * after the constructor and fxml file have been loaded.
@@ -43,7 +44,7 @@ public class ViewReportController {
         conditionCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Condition"));
         AccountsManager account = LoginController.accounts;
         User user = account.getUser();
-        ArrayList<Report> userReports = user.getUserReports();
+        userReports = user.getUserReports();
         if(userReports != null) {
             reportTable.getItems().setAll(userReports);
         }
@@ -62,7 +63,17 @@ public class ViewReportController {
      */
     @FXML
     public void handleDeleteSelectedReport() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm Delete Report");
+        alert.setHeaderText("Are you sure you want to delete the selected report?");
 
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                Report selectedReport = reportTable.getSelectionModel().getSelectedItem();
+                userReports.remove(selectedReport);
+                initialize();
+            }
+        });
     }
 
     /**

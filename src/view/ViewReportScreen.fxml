@@ -8,15 +8,15 @@
    <children>
       <TableView fx:id="reportTable" prefHeight="345.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="nameCol" prefWidth="125.0" text="Name" />
-          <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date" />
-            <TableColumn fx:id="timeCol" prefWidth="75.0" text="Time" />
-            <TableColumn fx:id="locationCol" prefWidth="100.0" text="Location" />
-            <TableColumn fx:id="typeCol" prefWidth="100.0" text="Type" />
-            <TableColumn fx:id="conditionCol" prefWidth="125.0" text="Condition" />
+          <TableColumn fx:id="nameCol" editable="false" prefWidth="125.0" resizable="false" text="Name" />
+          <TableColumn fx:id="dateCol" editable="false" prefWidth="75.0" resizable="false" text="Date" />
+            <TableColumn fx:id="timeCol" editable="false" prefWidth="75.0" resizable="false" text="Time" />
+            <TableColumn fx:id="locationCol" editable="false" prefWidth="100.0" resizable="false" text="Location" />
+            <TableColumn fx:id="typeCol" editable="false" prefWidth="100.0" resizable="false" text="Type" />
+            <TableColumn fx:id="conditionCol" editable="false" prefWidth="124.0" resizable="false" text="Condition" />
         </columns>
       </TableView>
       <Button layoutX="48.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
-      <Button layoutX="435.0" layoutY="359.0" mnemonicParsing="false" text="Delete Selected Report" />
+      <Button layoutX="435.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleDeleteSelectedReport" text="Delete Selected Report" />
    </children>
 </AnchorPane>
