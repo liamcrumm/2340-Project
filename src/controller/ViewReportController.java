@@ -28,6 +28,8 @@ public class ViewReportController {
     @FXML private TableColumn<Report, String> typeCol;
     @FXML private TableColumn<Report, String> conditionCol;
 
+    ArrayList<User> userList;
+    ArrayList<Report> userReportsMaster;
     ArrayList<Report> userReports;
 
     /**
@@ -45,9 +47,17 @@ public class ViewReportController {
         AccountsManager account = LoginController.accounts;
         User user = account.getUser();
         userReports = user.getUserReports();
-        if(userReports != null) {
-            reportTable.getItems().setAll(userReports);
+        userList = account.getUserList();
+        for (User u: userList) {
+            if (u.getUserReports() != null) {
+                if (userReportsMaster == null) {
+                    userReportsMaster = u.getUserReports();
+                } else {
+                    userReportsMaster.addAll(u.getUserReports());
+                }
+            }
         }
+        refresh();
     }
 
     /**
@@ -59,21 +69,37 @@ public class ViewReportController {
     }
 
     /**
+     * Refreshes the report table
+     */
+    public void refresh() {
+        if(userReportsMaster != null) {
+            reportTable.getItems().setAll(userReportsMaster);
+        }
+    }
+
+    /**
      * Button handler for "Delete Selected Report" button
      */
     @FXML
     public void handleDeleteSelectedReport() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirm Delete Report");
-        alert.setHeaderText("Are you sure you want to delete the selected report?");
-
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                Report selectedReport = reportTable.getSelectionModel().getSelectedItem();
-                userReports.remove(selectedReport);
-                initialize();
-            }
-        });
+        Report selectedReport = reportTable.getSelectionModel().getSelectedItem();
+        if (!userReports.contains(selectedReport)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Cannot Delete Report");
+            alert.setContentText("You lack the user privileges to delete reports of other users.");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirm Delete Report");
+            alert.setHeaderText("Are you sure you want to delete the selected report?");
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    userReports.remove(selectedReport);
+                    userReportsMaster.remove(selectedReport);
+                    refresh();
+                }
+            });
+        }
     }
 
     /**
