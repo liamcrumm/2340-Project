@@ -48,15 +48,19 @@ public class ViewReportController {
         User user = account.getUser();
         userReports = user.getUserReports();
         userList = account.getUserList();
-        for (User u: userList) {
+        userList.forEach(u -> {
             if (u.getUserReports() != null) {
                 if (userReportsMaster == null) {
                     userReportsMaster = u.getUserReports();
                 } else {
-                    userReportsMaster.addAll(u.getUserReports());
+                    u.getUserReports().forEach(r -> {
+                        if (!userReportsMaster.contains(r)) {
+                            userReportsMaster.add(r);
+                        }
+                    });
                 }
             }
-        }
+        });
         refresh();
     }
 
