@@ -28,6 +28,7 @@ public class ViewReportController {
     @FXML private TableColumn<Report, String> typeCol;
     @FXML private TableColumn<Report, String> conditionCol;
 
+    /** Arraylists for users and reports*/
     ArrayList<User> userList;
     ArrayList<Report> userReportsMaster;
     ArrayList<Report> userReports;
@@ -73,7 +74,7 @@ public class ViewReportController {
     }
 
     /**
-     * Refreshes the report table
+     * Refreshes and displays the report table
      */
     public void refresh() {
         if(userReportsMaster != null) {
@@ -87,14 +88,21 @@ public class ViewReportController {
     @FXML
     public void handleDeleteSelectedReport() {
         Report selectedReport = reportTable.getSelectionModel().getSelectedItem();
-        if (!userReports.contains(selectedReport)) {
+        if (selectedReport == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Cannot Delete Report");
+            alert.setTitle("ERROR");
+            alert.setHeaderText("No Report Selected");
+            alert.setContentText("You must first a report in order to delete it.");
+            alert.showAndWait();
+        } else if (userReports == null || !userReports.contains(selectedReport)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Cannot Delete Report");
             alert.setContentText("You lack the user privileges to delete reports of other users.");
             alert.showAndWait();
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirm Delete Report");
+            alert.setTitle("CONFIRM DELETE REPORT");
             alert.setHeaderText("Are you sure you want to delete the selected report?");
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
