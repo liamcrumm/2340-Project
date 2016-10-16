@@ -14,58 +14,26 @@ import java.time.LocalDate;
  */
 public class SubmitReportScreenController {
 
-    @FXML
-    private TextField nameField;
-
-    @FXML
-    private DatePicker dateField;
-
-    @FXML
-    private TextField hourField;
-
-    @FXML
-    private RadioButton amButton;
-
-    @FXML
-    private RadioButton pmButton;
-
-    @FXML
-    private TextField locationField;
-
-    @FXML
-    private RadioButton bottledButton;
-
-    @FXML
-    private RadioButton wellButton;
-
-    @FXML
-    private RadioButton streamButton;
-
-    @FXML
-    private RadioButton lakeButton;
-
-    @FXML
-    private RadioButton springButton;
-
-    @FXML
-    private RadioButton otherButton;
-
-    @FXML
-    private RadioButton wasteButton;
-
-    @FXML
-    private RadioButton treatClearButton;
-
-    @FXML
-    private RadioButton treatMuddyButton;
-
-    @FXML
-    private RadioButton potableButton;
+    @FXML private TextField nameField;
+    @FXML private DatePicker dateField;
+    @FXML private TextField hourField;
+    @FXML private RadioButton amButton;
+    @FXML private RadioButton pmButton;
+    @FXML private TextField latitudeField;
+    @FXML private TextField longitudeField;
+    @FXML private RadioButton bottledButton;
+    @FXML private RadioButton wellButton;
+    @FXML private RadioButton streamButton;
+    @FXML private RadioButton lakeButton;
+    @FXML private RadioButton springButton;
+    @FXML private RadioButton otherButton;
+    @FXML private RadioButton wasteButton;
+    @FXML private RadioButton treatClearButton;
+    @FXML private RadioButton treatMuddyButton;
+    @FXML private RadioButton potableButton;
 
     ToggleGroup timeGroup = new ToggleGroup();
-
     ToggleGroup typeGroup = new ToggleGroup();
-
     ToggleGroup conditionGroup = new ToggleGroup();
 
     /** a link back to the main application class */
@@ -111,13 +79,15 @@ public class SubmitReportScreenController {
      */
     @FXML
     public void handleSavePressed() {
-        String name = nameField.getText();
+        AccountsManager accounts = LoginController.accounts;
+
+        String username = accounts.getCurrentUsername();
         LocalDate date = dateField.getValue();
 
         RadioButton selectedTime = (RadioButton) timeGroup.getSelectedToggle();
         String time = hourField.getText() + " " + selectedTime.getText();
 
-        String location = locationField.getText();
+        String location = latitudeField.getText() + " " + longitudeField.getText();
 
         RadioButton selectedType = (RadioButton) typeGroup.getSelectedToggle();
         String type = selectedType.getText();
@@ -125,12 +95,10 @@ public class SubmitReportScreenController {
         RadioButton selectedCondition = (RadioButton) conditionGroup.getSelectedToggle();
         String condition = selectedCondition.getText();
 
-        Report report = new Report(name, date, time, location, type, condition);
-
-        AccountsManager accounts = LoginController.accounts;
+        Report report = new Report(username, date, time, location, type, condition);
         accounts.addReport(report);
         int repNum = accounts.getReportsList().size();
-        report.setNumber(repNum);
+        report.setReportNumber(repNum);
         User current = accounts.getUser();
         current.addReport(report);
 

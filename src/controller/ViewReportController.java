@@ -21,7 +21,7 @@ public class ViewReportController {
 
     /** FXML Widgets, column entries on the table view*/
     @FXML private TableView<Report> reportTable;
-    @FXML private TableColumn<Report, String> nameCol;
+    @FXML private TableColumn<Report, String> usernameCol;
     @FXML private TableColumn<Report, LocalDate> dateCol;
     @FXML private TableColumn<Report, String> timeCol;
     @FXML private TableColumn<Report, String> locationCol;
@@ -39,7 +39,7 @@ public class ViewReportController {
      */
     @FXML
     private void initialize() {
-        nameCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Username"));
+        usernameCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Username"));
         dateCol.setCellValueFactory(new PropertyValueFactory<Report, LocalDate>("Date"));
         timeCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Time"));
         locationCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Location"));

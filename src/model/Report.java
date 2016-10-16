@@ -7,7 +7,7 @@ import java.time.LocalDate;
  */
 public class Report {
 
-    private String _name;
+    private String _username;
     private LocalDate _date;
     private String _time;
     private String _location;
@@ -17,15 +17,15 @@ public class Report {
 
     /**
      * Constructor for a this class. Instantiates a Report object.
-     * @param name      Name of report
+     * @param username  Name of user who submitted the report
      * @param date      Date of report
      * @param time      Time of report
      * @param location  Location of report
      * @param type      Type of water
      * @param condition Condition of water
      */
-    public Report(String name, LocalDate date, String time, String location, String type, String condition){
-        _name = name;
+    public Report(String username, LocalDate date, String time, String location, String type, String condition){
+        _username = username;
         _date = date;
         _time = time;
         _location = location;
@@ -34,16 +34,16 @@ public class Report {
     }
 
     /**
-     * Getter for report name
-     * @return Name of report
+     * Getter for the user who submitted the report
+     * @return Name of user who submitted the report
      */
-    public String getName() { return _name; }
+    public String getReportUsername() { return _username; }
 
     /**
-     * Setter for report name
-     * @param name New name of report
+     * Setter for ownership of report
+     * @param username New ownership of report
      */
-    public void setName(String name){ _name = name; }
+    public void setReportUsername(String username){ _username = username; }
 
     /**
      * Getter for report date
@@ -115,5 +115,5 @@ public class Report {
      * Setter for the report number
      * @param num The number of the report
      */
-    public void setNumber(int num) { _reportNumber = num; }
+    public void setReportNumber(int num) { _reportNumber = num; }
 }
