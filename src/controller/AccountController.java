@@ -69,15 +69,7 @@ public class AccountController {
      * Button handler for view water sources button
      */
     @FXML
-    public void viewWaterPressed() {
-        // Show the error message if bad data
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(mainApplication.getMainScreen());
-        alert.setTitle("Unimplemented");
-        alert.setHeaderText("Unimplemented Feature");
-        alert.setContentText("Sorry, View Water Sources is not yet implemented!");
-
-        alert.showAndWait();
+    public void viewWaterPressed() { //mainApplication.showMapScreen();
     }
 
     /**

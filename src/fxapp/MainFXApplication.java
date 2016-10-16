@@ -5,6 +5,7 @@ import controller.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.AnchorPane;
@@ -334,6 +335,33 @@ public class MainFXApplication extends Application {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Setup the map screen that shows users the location where water is available and the condition of that water.
+     *
+     */
+    public void showMapScreen() {
+        try {
+            // Load main screen.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/WaterAvailabilityMap.fxml"));
+            TabPane WaterAvailabilityMap = loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(WaterAvailabilityMap);
+
+            // Give the controller access to the main app.
+            MapController controller = loader.getController();
+            controller.setCallbacks(mainScreen, this);
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ViewReportScreen!");
+            e.printStackTrace();
+        }
+    }
+
+
 
     public static void main(String[] args) {launch(args);}
 }
