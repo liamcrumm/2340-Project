@@ -39,7 +39,7 @@ public class ViewReportController {
      */
     @FXML
     private void initialize() {
-        nameCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Name"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Username"));
         dateCol.setCellValueFactory(new PropertyValueFactory<Report, LocalDate>("Date"));
         timeCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Time"));
         locationCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Location"));

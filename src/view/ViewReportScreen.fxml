@@ -8,7 +8,7 @@
    <children>
       <TableView fx:id="reportTable" prefHeight="345.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="nameCol" editable="false" prefWidth="125.0" resizable="false" text="Name" />
+          <TableColumn fx:id="nameCol" editable="false" prefWidth="125.0" resizable="false" text="Username" />
           <TableColumn fx:id="dateCol" editable="false" prefWidth="75.0" resizable="false" text="Date" />
             <TableColumn fx:id="timeCol" editable="false" prefWidth="75.0" resizable="false" text="Time" />
             <TableColumn fx:id="locationCol" editable="false" prefWidth="100.0" resizable="false" text="Location" />

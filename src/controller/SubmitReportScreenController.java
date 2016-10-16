@@ -93,7 +93,8 @@ public class SubmitReportScreenController {
         treatMuddyButton.setToggleGroup(conditionGroup);
         potableButton.setToggleGroup(conditionGroup);
 
-
+        AccountsManager account = LoginController.accounts;
+        nameField.setText(account.getCurrentUsername());
     }
 
     /**
