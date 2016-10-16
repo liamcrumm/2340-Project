@@ -89,6 +89,8 @@ public class RegistrationController extends Application {
                 man.getUserList().add(new User(usernameField.getText(), passwordField.getText(), new Profile(nameField.getText(), null, null, null, null, null)));
                 _dialogStage.close();
                 _okClicked = true;
+                mainApplication.showAccountScreen();
+                man.setCurrentUser(usernameField.getText());
             }
         }
     }
