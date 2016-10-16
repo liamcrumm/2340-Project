@@ -42,6 +42,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="usernameField" GridPane.columnIndex="1" />
+                <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <ButtonBar prefHeight="40.0" prefWidth="594.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <buttons>
                         <Button mnemonicParsing="false" onAction="#handleLoginPressed" text="Login" />
@@ -51,7 +52,6 @@
                         <Insets right="15.0" />
                     </padding>
                 </ButtonBar>
-            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </children>
