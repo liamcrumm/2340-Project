@@ -20,7 +20,7 @@
             <RadioButton fx:id="amButton" layoutX="62.0" layoutY="193.0" mnemonicParsing="false" text="AM" />
             <RadioButton fx:id="pmButton" layoutX="124.0" layoutY="193.0" mnemonicParsing="false" text="PM" />
             <TextField fx:id="nameField" layoutX="62.0" layoutY="72.0" promptText="Username" />
-            <TextField fx:id="locationField" layoutX="62.0" layoutY="276.0" promptText="Location" />
+            <TextField fx:id="locationField" layoutX="62.0" layoutY="276.0" promptText="Latitude" />
             <Label layoutX="333.0" layoutY="76.0" text="Type of Water" />
             <Label layoutX="333.0" layoutY="216.0" text="Condition of Water" />
             <RadioButton fx:id="springButton" layoutX="333.0" layoutY="166.0" mnemonicParsing="false" text="Spring" />
@@ -35,6 +35,7 @@
             <RadioButton fx:id="potableButton" layoutX="335.0" layoutY="288.0" mnemonicParsing="false" text="Potable" />
             <Button layoutX="433.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleSavePressed" prefHeight="27.0" prefWidth="67.0" text="Save" />
             <Button layoutX="515.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel" />
+            <TextField fx:id="locationField1" layoutX="62.0" layoutY="305.0" promptText="Longitude" />
          </children></AnchorPane>
   </content>
 </TitledPane>
