@@ -114,7 +114,7 @@ public class SubmitReportScreenController {
         LocalDate date = dateField.getValue();
 
         RadioButton selectedTime = (RadioButton) timeGroup.getSelectedToggle();
-        String time = selectedTime.getText();
+        String time = hourField.getText() + " " + selectedTime.getText();
 
         String location = locationField.getText();
 
