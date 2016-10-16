@@ -36,6 +36,8 @@ public class SubmitReportScreenController {
     ToggleGroup typeGroup = new ToggleGroup();
     ToggleGroup conditionGroup = new ToggleGroup();
 
+    AccountsManager account = LoginController.accounts;
+
     /** a link back to the main application class */
     private MainFXApplication mainApplication;
 
@@ -61,7 +63,6 @@ public class SubmitReportScreenController {
         treatMuddyButton.setToggleGroup(conditionGroup);
         potableButton.setToggleGroup(conditionGroup);
 
-        AccountsManager account = LoginController.accounts;
         nameField.setText(account.getCurrentUsername());
     }
 
@@ -79,9 +80,9 @@ public class SubmitReportScreenController {
      */
     @FXML
     public void handleSavePressed() {
-        AccountsManager accounts = LoginController.accounts;
+        int repNum = account.getReportsList().size();
 
-        String username = accounts.getCurrentUsername();
+        String username = account.getCurrentUsername();
         LocalDate date = dateField.getValue();
 
         RadioButton selectedTime = (RadioButton) timeGroup.getSelectedToggle();
@@ -95,11 +96,9 @@ public class SubmitReportScreenController {
         RadioButton selectedCondition = (RadioButton) conditionGroup.getSelectedToggle();
         String condition = selectedCondition.getText();
 
-        Report report = new Report(username, date, time, location, type, condition);
-        accounts.addReport(report);
-        int repNum = accounts.getReportsList().size();
-        report.setReportNumber(repNum);
-        User current = accounts.getUser();
+        Report report = new Report(repNum, username, date, time, location, type, condition);
+        account.addReport(report);
+        User current = account.getUser();
         current.addReport(report);
 
         mainApplication.showAccountScreen();

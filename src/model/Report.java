@@ -7,24 +7,27 @@ import java.time.LocalDate;
  */
 public class Report {
 
+    private int _reportNumber;
     private String _username;
     private LocalDate _date;
     private String _time;
     private String _location;
     private String _type;
     private String _condition;
-    private int _reportNumber;
+
 
     /**
      * Constructor for a this class. Instantiates a Report object.
-     * @param username  Name of user who submitted the report
-     * @param date      Date of report
-     * @param time      Time of report
-     * @param location  Location of report
-     * @param type      Type of water
-     * @param condition Condition of water
+     * @param repNum  Number of report
+     * @param username      Name of user who submitted the report
+     * @param date          Date of report
+     * @param time          Time of report
+     * @param location      Location of report
+     * @param type          Type of water
+     * @param condition     Condition of water
      */
-    public Report(String username, LocalDate date, String time, String location, String type, String condition){
+    public Report(int repNum, String username, LocalDate date, String time, String location, String type, String condition){
+        _reportNumber = repNum;
         _username = username;
         _date = date;
         _time = time;
