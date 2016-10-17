@@ -11,7 +11,8 @@ public class Report {
     private String _username;
     private LocalDate _date;
     private String _time;
-    private String _location;
+    private double _lat;
+    private double _longitude;
     private String _type;
     private String _condition;
 
@@ -22,16 +23,18 @@ public class Report {
      * @param username      Name of user who submitted the report
      * @param date          Date of report
      * @param time          Time of report
-     * @param location      Location of report
+     * @param lat           Latitude of the location
+     * @param longitude     Longitude of the location;
      * @param type          Type of water
      * @param condition     Condition of water
      */
-    public Report(int repNum, String username, LocalDate date, String time, String location, String type, String condition){
+    public Report(int repNum, String username, LocalDate date, String time, double lat, double longitude, String type, String condition){
         _reportNumber = repNum;
         _username = username;
         _date = date;
         _time = time;
-        _location = location;
+        _lat = lat;
+        _longitude = longitude;
         _type = type;
         _condition = condition;
     }
@@ -73,16 +76,29 @@ public class Report {
     public void setTime(String time) { _time = time; }
 
     /**
-     * Getter for report location
-     * @return Location of report
+     * Getter for the latitude of the location of the water
+     * @return The latitude of the location where the water is
      */
-    public String getLocation() { return _location; }
+    public double getLat() { return _lat; }
 
     /**
-     * Setter for report location
-     * @param location New location of report
+     * Setter for the latitude of the location of the water
+     * @param lat The latitude of the location of the water
      */
-    public void setLocation(String location) { _location = location; }
+    public void setLat(double lat) { _lat = lat; }
+
+    /**
+     * Getter for the longitude of the location of the water
+     * @return The longitude of the location of the water
+     */
+    public double getLong() { return _longitude; }
+
+    /**
+     * Setter for the location of the water
+     * @param longitude The longitude of the location of the water
+     */
+    public void setLong(double longitude) { _longitude = longitude; }
+
 
     /**
      * Getter for water type
@@ -119,4 +135,5 @@ public class Report {
      * @param num The number of the report
      */
     public void setReportNumber(int num) { _reportNumber = num; }
+
 }
