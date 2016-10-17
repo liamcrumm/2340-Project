@@ -45,7 +45,7 @@
                 <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <ButtonBar prefHeight="40.0" prefWidth="594.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <buttons>
-                        <Button mnemonicParsing="false" onAction="#handleLoginPressed" text="Login" />
+                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginPressed" text="Login" />
                         <Button minWidth="10.0" mnemonicParsing="false" onAction="#handleCancelPressed" prefHeight="25.0" text="Cancel" />
                     </buttons>
                     <padding>

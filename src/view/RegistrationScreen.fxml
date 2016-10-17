@@ -5,23 +5,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="462.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="462.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationController">
   <children>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="170.0" prefWidth="330.0">
          <children>
             <TextField fx:id="nameField" layoutX="156.0" layoutY="14.0" promptText="Enter Name" />
+             <ComboBox fx:id="accountType" layoutX="156.0" layoutY="55.0" prefWidth="150.0" />
+             <Label layoutX="55.0" layoutY="18.0" text="Name:" />
+             <Label layoutX="59.0" layoutY="59.0" text="Account Type:" />
+             <Label layoutX="59.0" layoutY="99.0" text="Username:" />
+             <Label layoutX="59.0" layoutY="139.0" text="Password:" />
             <TextField fx:id="usernameField" layoutX="156.0" layoutY="95.0" promptText="Enter Username" />
             <PasswordField fx:id="passwordField" layoutX="156.0" layoutY="135.0" promptText="Enter Password" />
-            <Button layoutX="156.0" layoutY="194.0" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit" />
+            <Button fx:id="submitButton" layoutX="156.0" layoutY="194.0" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit" />
              <Button layoutX="253.0" layoutY="194.0" mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel" />
-            <ComboBox fx:id="accountType" layoutX="156.0" layoutY="55.0" prefWidth="150.0" />
-            <Label layoutX="55.0" layoutY="18.0" text="Name:" />
-            <Label layoutX="59.0" layoutY="59.0" text="Account Type:" />
-            <Label layoutX="59.0" layoutY="99.0" text="Username:" />
-            <Label layoutX="59.0" layoutY="139.0" text="Password:" />
          </children></AnchorPane>
   </children>
 </AnchorPane>

@@ -2,10 +2,12 @@ package controller;
 
 import fxapp.MainFXApplication;
 import javafx.application.Application;
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -30,6 +32,9 @@ public class RegistrationController extends Application {
     @FXML
     private ComboBox accountType;
 
+    @FXML
+    private Button submitButton;
+
     /** a link back to the main application class */
     @FXML
     private MainFXApplication mainApplication;
@@ -40,6 +45,10 @@ public class RegistrationController extends Application {
     /** flag to signal whether dialog was closed normally */
     private boolean _okClicked = false;
 
+    /**
+     * Called automatically after load; controls disable property of buttons
+     * and populates account types combo box
+     */
     @FXML
     private void initialize() {
         ObservableList<String> types = FXCollections.observableArrayList();
@@ -48,6 +57,11 @@ public class RegistrationController extends Application {
         types.add("Admin");
         types.add("Manager");
         accountType.setItems(types);
+        accountType.setValue(types.get(0));
+        BooleanBinding booleanBind = usernameField.textProperty().isEmpty()
+                .or(passwordField.textProperty().isEmpty())
+                .or(nameField.textProperty().isEmpty());
+        submitButton.disableProperty().bind(booleanBind);
     }
 
     @FXML
@@ -86,7 +100,9 @@ public class RegistrationController extends Application {
         AccountsManager man = LoginController.accounts;
         if(isInputValid()) {
             if(uniqueUsername(man,usernameField.getText())) {
-                man.getUserList().add(new User(usernameField.getText(), passwordField.getText(), new Profile(nameField.getText(), null, null, null, null, null)));
+                man.getUserList().add(new User(usernameField.getText(),
+                        passwordField.getText(), new Profile(nameField.getText(),
+                        null, null, null, null, null)));
                 _dialogStage.close();
                 _okClicked = true;
                 mainApplication.showAccountScreen();
@@ -95,7 +111,7 @@ public class RegistrationController extends Application {
         }
     }
     @FXML
-    /*
+    /**
      * If user selects cancel, go back
      */
     public void handleCancelPressed() {

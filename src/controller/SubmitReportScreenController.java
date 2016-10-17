@@ -1,6 +1,7 @@
 package controller;
 
 import fxapp.MainFXApplication;
+import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.AccountsManager;
@@ -16,11 +17,13 @@ public class SubmitReportScreenController {
 
     @FXML private TextField nameField;
     @FXML private DatePicker dateField;
-    @FXML private TextField hourField;
+    @FXML private TextField hourField; // time field
     @FXML private RadioButton amButton;
     @FXML private RadioButton pmButton;
     @FXML private TextField latitudeField;
     @FXML private TextField longitudeField;
+    @FXML private Button saveButton;
+
     @FXML private RadioButton bottledButton;
     @FXML private RadioButton wellButton;
     @FXML private RadioButton streamButton;
@@ -43,13 +46,17 @@ public class SubmitReportScreenController {
 
     /**
      * Initializes the controller class. This method is automatically called
-     * after the constructor and
-     * after the fxml file has been loaded.
+     * after the constructor and after the fxml file has been loaded.
+     * Sets default values into report.
      */
     @FXML
     private void initialize() {
+        dateField.setValue(LocalDate.now()); // set date to current date
+        nameField.setText(account.getCurrentUsername()); // set name to current user
+
         amButton.setToggleGroup(timeGroup);
         pmButton.setToggleGroup(timeGroup);
+        amButton.setSelected(true); // set default selection
 
         bottledButton.setToggleGroup(typeGroup);
         wellButton.setToggleGroup(typeGroup);
@@ -57,13 +64,19 @@ public class SubmitReportScreenController {
         lakeButton.setToggleGroup(typeGroup);
         springButton.setToggleGroup(typeGroup);
         otherButton.setToggleGroup(typeGroup);
+        bottledButton.setSelected(true); // set default selection
 
         wasteButton.setToggleGroup(conditionGroup);
         treatClearButton.setToggleGroup(conditionGroup);
         treatMuddyButton.setToggleGroup(conditionGroup);
         potableButton.setToggleGroup(conditionGroup);
+        wasteButton.setSelected(true); // set default selection
 
-        nameField.setText(account.getCurrentUsername());
+        BooleanBinding booleanBind = nameField.textProperty().isEmpty()
+                .or(hourField.textProperty().isEmpty())
+                .or(latitudeField.textProperty().isEmpty())
+                .or(longitudeField.textProperty().isEmpty());
+        saveButton.disableProperty().bind(booleanBind);
     }
 
     /**

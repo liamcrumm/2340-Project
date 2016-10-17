@@ -102,7 +102,7 @@ public class EditProfileController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Edit Profile Successful");
         alert.setHeaderText("Saving Changes");
-        alert.setContentText("You have been successfully saved the changes to your profile.");
+        alert.setContentText("You have successfully saved the changes to your profile.");
 
         alert.showAndWait();
     }
@@ -117,7 +117,7 @@ public class EditProfileController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Cancelling Edit Profile");
         alert.setHeaderText("Cancelling Profile Changes");
-        alert.setContentText("You have been successfully cancelled the changes made to your profile.");
+        alert.setContentText("You have successfully cancelled the changes made to your profile.");
 
         alert.showAndWait();
     }

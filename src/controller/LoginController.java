@@ -1,10 +1,12 @@
 package controller;
 
 import fxapp.MainFXApplication;
+import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import model.AccountsManager;
 import model.User;
@@ -28,6 +30,9 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
+    @FXML
+    private Button loginButton;
+
     /** the window for this dialog */
     private Stage _dialogStage;
 
@@ -43,10 +48,13 @@ public class LoginController {
     static AccountsManager accounts = new AccountsManager();
 
     /**
-     * called automatically after load
+     * Called automatically after load; controls disable property of buttons
      */
     @FXML
     private void initialize() {
+        BooleanBinding booleanBind = usernameField.textProperty().isEmpty()
+                .or(passwordField.textProperty().isEmpty());
+        loginButton.disableProperty().bind(booleanBind);
     }
 
     /**
@@ -56,9 +64,7 @@ public class LoginController {
      */
     @FXML
     public void setMainApp(MainFXApplication mainFXApplication) {
-
         mainApplication = mainFXApplication;
-
     }
 
     /**
