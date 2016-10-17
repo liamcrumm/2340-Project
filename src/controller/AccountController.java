@@ -69,7 +69,7 @@ public class AccountController {
      * Button handler for view water sources button
      */
     @FXML
-    public void viewWaterPressed() { //mainApplication.showMapScreen();
+    public void viewWaterPressed() { mainApplication.showMapScreen();
     }
 
     /**

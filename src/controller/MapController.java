@@ -1,16 +1,18 @@
 package controller;
 
-import com.lynden.gmapsfx.GoogleMapView;
-import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.event.UIEventType;
-import com.lynden.gmapsfx.javascript.object.*;
 
+import com.lynden.gmapsfx.MapComponentInitializedListener;
+import com.lynden.gmapsfx.javascript.object.GoogleMap;
+import com.lynden.gmapsfx.javascript.object.LatLong;
+import com.lynden.gmapsfx.javascript.object.MapOptions;
+import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
 import fxapp.MainFXApplication;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
+import com.lynden.gmapsfx.GoogleMapView;
 
 
 import netscape.javascript.JSObject;
@@ -34,6 +36,7 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     private MainFXApplication theApp;
 
+    @FXML
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         mapView.addMapInializedListener(this);
@@ -63,6 +66,8 @@ public class MapController implements Initializable, MapComponentInitializedList
                 .mapType(MapTypeIdEnum.TERRAIN);
 
         map = mapView.createMap(options);
+
+
 
 
     }
