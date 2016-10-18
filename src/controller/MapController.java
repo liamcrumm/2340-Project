@@ -66,9 +66,13 @@ public class MapController implements Initializable, MapComponentInitializedList
                 .mapType(MapTypeIdEnum.TERRAIN);
 
         map = mapView.createMap(options);
+    }
 
-
-
-
+    /**
+     * Button handler for "Back" button
+     */
+    @FXML
+    public void handleBackPressed() {
+        theApp.showAccountScreen();
     }
 }
