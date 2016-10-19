@@ -11,9 +11,8 @@ public class Report {
     private String _username;
     private LocalDate _date;
     private String _time;
-    private String _location;
     private double _lat;
-    private double _longitude;
+    private double _long;
     private String _type;
     private String _condition;
 
@@ -29,13 +28,13 @@ public class Report {
      * @param type          Type of water
      * @param condition     Condition of water
      */
-    public Report(int repNum, String username, LocalDate date, String time, String location, double lat, double longitude, String type, String condition){
+    public Report(int repNum, String username, LocalDate date, String time, double lat, double longitude, String type, String condition){
         _reportNumber = repNum;
         _username = username;
         _date = date;
         _time = time;
         _lat = lat;
-        _longitude = longitude;
+        _long = longitude;
         _type = type;
         _condition = condition;
     }
@@ -77,18 +76,6 @@ public class Report {
     public void setTime(String time) { _time = time; }
 
     /**
-     * Getter for the location as a string
-     * @return the Location in the form of a string
-     */
-    public String getLocation() { return _location; }
-
-    /**
-     * Setter for the location as a string
-     * @param location the location as a string
-     */
-    public void setLocation(String location) { _location = location; }
-
-    /**
      * Getter for the latitude of the location of the water
      * @return The latitude of the location where the water is
      */
@@ -104,13 +91,13 @@ public class Report {
      * Getter for the longitude of the location of the water
      * @return The longitude of the location of the water
      */
-    public double getLong() { return _longitude; }
+    public double getLong() { return _long; }
 
     /**
      * Setter for the location of the water
      * @param longitude The longitude of the location of the water
      */
-    public void setLong(double longitude) { _longitude = longitude; }
+    public void setLong(double longitude) { _long = longitude; }
 
 
     /**

@@ -12,7 +12,8 @@
           <TableColumn fx:id="usernameCol" editable="false" prefWidth="100.0" resizable="false" text="Username" />
           <TableColumn fx:id="dateCol" editable="false" prefWidth="75.0" resizable="false" text="Date" />
             <TableColumn fx:id="timeCol" editable="false" prefWidth="75.0" resizable="false" text="Time" />
-            <TableColumn fx:id="locationCol" editable="false" prefWidth="90.0" resizable="false" text="Location" />
+            <TableColumn fx:id="latCol" editable="false" prefWidth="45.0" resizable="false" text="Lat." />
+            <TableColumn fx:id="longCol" editable="false" prefWidth="45.0" resizable="false" text="Long." />
             <TableColumn fx:id="typeCol" editable="false" prefWidth="75.0" resizable="false" text="Type" />
             <TableColumn fx:id="conditionCol" editable="false" prefWidth="120.0" resizable="false" text="Condition" />
         </columns>

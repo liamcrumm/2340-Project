@@ -101,14 +101,8 @@ public class SubmitReportScreenController {
         RadioButton selectedTime = (RadioButton) timeGroup.getSelectedToggle();
         String time = hourField.getText() + " " + selectedTime.getText();
 
-        //String location = latitudeField.getText() + " " + longitudeField.getText();
-        String lat = latitudeField.getText();
-        String longitude = longitudeField.getText();
-
-        String location = lat + ", " + longitude;
-
-        double latitude = Double.parseDouble(lat);
-        double longitudeD = Double.parseDouble(longitude);
+        double latitude = Double.parseDouble(latitudeField.getText());
+        double longitudeD = Double.parseDouble(longitudeField.getText());
 
         RadioButton selectedType = (RadioButton) typeGroup.getSelectedToggle();
         String type = selectedType.getText();
@@ -116,7 +110,7 @@ public class SubmitReportScreenController {
         RadioButton selectedCondition = (RadioButton) conditionGroup.getSelectedToggle();
         String condition = selectedCondition.getText();
 
-        Report report = new Report(repNum, username, date, time, location, latitude, longitudeD, type, condition);
+        Report report = new Report(repNum, username, date, time, latitude, longitudeD, type, condition);
         account.addReport(report);
         User current = account.getUser();
         current.addReport(report);

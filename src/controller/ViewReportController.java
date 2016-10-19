@@ -25,14 +25,15 @@ public class ViewReportController {
     @FXML private TableColumn<Report, String> usernameCol;
     @FXML private TableColumn<Report, LocalDate> dateCol;
     @FXML private TableColumn<Report, String> timeCol;
-    @FXML private TableColumn<Report, String> locationCol;
+    @FXML private TableColumn<Report, Double> latCol;
+    @FXML private TableColumn<Report, Double> longCol;
     @FXML private TableColumn<Report, String> typeCol;
     @FXML private TableColumn<Report, String> conditionCol;
 
     /** Arraylists for users and reports*/
-    ArrayList<User> userList;
-    ArrayList<Report> userReportsMaster;
-    ArrayList<Report> userReports;
+    private ArrayList<User> userList;
+    private ArrayList<Report> userReportsMaster;
+    private ArrayList<Report> userReports;
 
     /**
      * Initializes controller class. This method is automatically called
@@ -44,7 +45,8 @@ public class ViewReportController {
         usernameCol.setCellValueFactory(new PropertyValueFactory<Report, String>("ReportUsername"));
         dateCol.setCellValueFactory(new PropertyValueFactory<Report, LocalDate>("Date"));
         timeCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Time"));
-        locationCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Location"));
+        latCol.setCellValueFactory(new PropertyValueFactory<Report, Double>("Lat"));
+        longCol.setCellValueFactory(new PropertyValueFactory<Report, Double>("Long"));
         typeCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Type"));
         conditionCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Condition"));
         AccountsManager account = LoginController.accounts;
