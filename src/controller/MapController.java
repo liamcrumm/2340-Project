@@ -4,11 +4,11 @@ package controller;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
-import com.oracle.tools.packager.Log;
 import fxapp.MainFXApplication;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import com.lynden.gmapsfx.GoogleMapView;
@@ -54,6 +54,10 @@ public class MapController implements Initializable, MapComponentInitializedList
     public void mapInitialized() {
         MapOptions options = new MapOptions();
 
+
+        /** now we communciate with the model to get all the locations for markers */
+        AccountsManager ac = LoginController.accounts;
+
         //set up the center location for the map
         LatLong center = new LatLong(34, -88);
 
@@ -69,21 +73,28 @@ public class MapController implements Initializable, MapComponentInitializedList
 
         map = mapView.createMap(options);
 
-        /** now we communciate with the model to get all the locations for markers */
-        AccountsManager ac = LoginController.accounts;
+
         ArrayList<Report> reports = ac.getReportsList();
+
+
+        //TODO: get bounds to work
+        //LatLongBounds bounds = new LatLongBounds();
 
         for (Report r: reports) {
             MarkerOptions markerOptions = new MarkerOptions();
             LatLong loc = new LatLong(r.getLat(), r.getLong());
+            center = new LatLong(r.getLat(),r.getLong());
+            //bounds.getJSObject().call("extend",center);
+            map.setCenter(center);
             String title = "Report " + r.getReportNumber();
             String description = "Water Type: " + r.getType() + "\nWater Condition: " + r.getCondition();
 
             markerOptions.position(loc)
-                    .visible(Boolean.TRUE)
                     .title(title);
 
             Marker marker = new Marker(markerOptions);
+
+            map.addMarker(marker);
 
             map.addUIEventHandler(marker,
                     UIEventType.click,
@@ -95,8 +106,8 @@ public class MapController implements Initializable, MapComponentInitializedList
                         window.open(map, marker);
                     });
 
-            map.addMarker(marker);
         }
+        //map.fitBounds(bounds);
     }
 
     /**
