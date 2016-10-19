@@ -11,6 +11,7 @@ public class Report {
     private String _username;
     private LocalDate _date;
     private String _time;
+    private String _location;
     private double _lat;
     private double _longitude;
     private String _type;
@@ -28,7 +29,7 @@ public class Report {
      * @param type          Type of water
      * @param condition     Condition of water
      */
-    public Report(int repNum, String username, LocalDate date, String time, double lat, double longitude, String type, String condition){
+    public Report(int repNum, String username, LocalDate date, String time, String location, double lat, double longitude, String type, String condition){
         _reportNumber = repNum;
         _username = username;
         _date = date;
@@ -74,6 +75,18 @@ public class Report {
      * @param time New time of report
      */
     public void setTime(String time) { _time = time; }
+
+    /**
+     * Getter for the location as a string
+     * @return the Location in the form of a string
+     */
+    public String getLocation() { return _location; }
+
+    /**
+     * Setter for the location as a string
+     * @param location the location as a string
+     */
+    public void setLocation(String location) { _location = location; }
 
     /**
      * Getter for the latitude of the location of the water
