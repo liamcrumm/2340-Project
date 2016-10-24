@@ -1,6 +1,9 @@
 package controller;
 
 import fxapp.MainFXApplication;
+import model.AccountsManager;
+import model.User;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
@@ -17,7 +20,11 @@ public class AccountController {
     @FXML
     private Button viewQualityButton;
 
+    private boolean qualityAccess;
+
     private MainFXApplication mainApplication;
+
+    private AccountsManager accountMng;
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -26,8 +33,18 @@ public class AccountController {
      */
     @FXML
     private void initialize() {
-
-    }
+        /** now we communciate with the model to get the user*/
+        accountMng = LoginController.accounts;
+        User user = accountMng.getUser();
+        String userType = user.getAccountType();
+        if (userType.compareTo("Worker") == 0 || userType.compareTo("Manager") == 0) {
+            submitQualityButton.setDisable(false);
+            viewQualityButton.setDisable(false);
+        } else {
+            submitQualityButton.setDisable(true);
+            viewQualityButton.setDisable(true);
+        }
+}
 
     /**
      * Setup the main application link so we can call methods there
@@ -106,7 +123,17 @@ public class AccountController {
      */
     @FXML
     public void submitQualityPressed() {
-        // TODO
+        if (submitQualityButton.isDisabled()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Unauthorized");
+            alert.setHeaderText("Unauthorized Access");
+            alert.setContentText("You must have Worker or Manager privileges" +
+                    " in order to access Submit Quality Report features.");
+
+            alert.showAndWait();
+        } else {
+            // TODO: Open Submit Quality Report Screen
+        }
     }
 
     /**
@@ -114,7 +141,17 @@ public class AccountController {
      */
     @FXML
     public void viewQualityPressed() {
-        // TODO
+        if (viewQualityButton.isDisabled()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Unauthorized");
+            alert.setHeaderText("Unauthorized Access");
+            alert.setContentText("You must have Worker or Manager privileges" +
+                    " in order to access View Quality Reports features.");
+
+            alert.showAndWait();
+        } else {
+            // TODO: Open View Quality Reports Screen
+        }
     }
 }
 

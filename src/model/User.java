@@ -11,6 +11,7 @@ public class User {
     private String _username;
     private String _password;
     private Profile _profile;
+    private String _accountType;
     private ArrayList<Report> userReports;
 
     /**
@@ -19,10 +20,11 @@ public class User {
      * @param password The password of the user
      * @param profile  The profile of the user
      */
-    public User(String username, String password,Profile profile) {
+    public User(String username, String password, Profile profile, String accountType) {
         _username = username;
         _password = password;
         _profile = profile;
+        _accountType = accountType;
     }
 
     /**
@@ -64,6 +66,18 @@ public class User {
     public Profile getProfile() {
         return _profile;
     }
+
+    /**
+     * Returns the account type of this user
+     * @return The account type of this uses
+     */
+    public String getAccountType() {return _accountType; }
+
+    /**
+     * sets the account type of this user
+     * @param type The account type of the user
+     */
+    public void setAccountType(String type) {_accountType = type; }
 
     /**
      * Sets the profile of this user
