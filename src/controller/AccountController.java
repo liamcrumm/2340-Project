@@ -4,11 +4,18 @@ import fxapp.MainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 /**
  * Created by Sakhi on 9/21/16.
  */
 public class AccountController {
+
+    @FXML
+    private Button submitQualityButton;
+
+    @FXML
+    private Button viewQualityButton;
 
     private MainFXApplication mainApplication;
 
@@ -73,7 +80,7 @@ public class AccountController {
     }
 
     /**
-     * Button handler for account settings button
+     * Button handler for Submit Water Report button
      */
     @FXML
     public void reportWaterPressed() {
@@ -81,7 +88,7 @@ public class AccountController {
     }
 
     /**
-     * Button handler for account settings button
+     * Button handler for View Water Reports button
      */
     @FXML
     public void submittedReportsPressed() { mainApplication.showViewReportScreen(); }
@@ -92,6 +99,22 @@ public class AccountController {
     @FXML
     public void viewProfilePressed() {
         mainApplication.showViewProfileScreen();
+    }
+
+    /**
+     * Button handler for Submit Quality Report button
+     */
+    @FXML
+    public void submitQualityPressed() {
+        // TODO
+    }
+
+    /**
+     * Button handler for View Quality Reports button
+     */
+    @FXML
+    public void viewQualityPressed() {
+        // TODO
     }
 }
 
