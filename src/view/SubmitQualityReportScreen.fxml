@@ -21,6 +21,8 @@
             <RadioButton layoutX="394.0" layoutY="140.0" mnemonicParsing="false" text="Unsafe" />
             <TextField layoutX="391.0" layoutY="212.0" promptText="Virus PPM" />
             <TextField layoutX="391.0" layoutY="253.0" promptText="Contaminant PPM" />
+            <Button layoutX="396.0" layoutY="298.0" mnemonicParsing="false" text="Save" />
+            <Button layoutX="465.0" layoutY="298.0" mnemonicParsing="false" text="Cancel" />
          </children></AnchorPane>
   </content>
 </TitledPane>
