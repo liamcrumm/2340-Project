@@ -13,11 +13,11 @@ import java.time.LocalDate;
 /**
  * Created by Sakhi on 10/10/16.
  */
-public class SubmitReportScreenController {
+public class SubmitWaterReportScreenController {
 
     @FXML private TextField nameField;
     @FXML private DatePicker dateField;
-    @FXML private TextField hourField; // time field
+    @FXML private TextField timeField; // time field
     @FXML private RadioButton amButton;
     @FXML private RadioButton pmButton;
     @FXML private TextField latitudeField;
@@ -73,7 +73,7 @@ public class SubmitReportScreenController {
         wasteButton.setSelected(true); // set default selection
 
         BooleanBinding booleanBind = nameField.textProperty().isEmpty()
-                .or(hourField.textProperty().isEmpty())
+                .or(timeField.textProperty().isEmpty())
                 .or(latitudeField.textProperty().isEmpty())
                 .or(longitudeField.textProperty().isEmpty());
         saveButton.disableProperty().bind(booleanBind);
@@ -99,7 +99,7 @@ public class SubmitReportScreenController {
         LocalDate date = dateField.getValue();
 
         RadioButton selectedTime = (RadioButton) timeGroup.getSelectedToggle();
-        String time = hourField.getText() + " " + selectedTime.getText();
+        String time = timeField.getText() + " " + selectedTime.getText();
 
         double latitude = Double.parseDouble(latitudeField.getText());
         double longitudeD = Double.parseDouble(longitudeField.getText());

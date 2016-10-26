@@ -14,9 +14,11 @@ public class QualityReport implements Report {
     private double _lat;
     private double _long;
     private String _condition;
+    private int _virus;
+    private int _contaminant;
 
     /**
-     * Constructor for a this class. Instantiates a Report object.
+     * Constructor for a this class. Instantiates a QualityReport object.
      * @param repNum  Number of report
      * @param username      Name of user who submitted the report
      * @param date          Date of report
@@ -24,8 +26,10 @@ public class QualityReport implements Report {
      * @param lat           Latitude of the location
      * @param longitude     Longitude of the location;
      * @param condition     Condition of water
+     * @param virus         Virus PPM
+     * @param contaminant   Contaminant PPM
      */
-    public QualityReport(int repNum, String username, LocalDate date, String time, double lat, double longitude, String condition){
+    public QualityReport(int repNum, String username, LocalDate date, String time, double lat, double longitude, String condition, int virus, int contaminant){
         _reportNumber = repNum;
         _username = username;
         _date = date;
@@ -33,6 +37,8 @@ public class QualityReport implements Report {
         _lat = lat;
         _long = longitude;
         _condition = condition;
+        _virus = virus;
+        _contaminant = contaminant;
     }
 
     /**
@@ -118,5 +124,28 @@ public class QualityReport implements Report {
      * @param num The number of the report
      */
     public void setReportNumber(int num) { _reportNumber = num; }
+
+    /**
+     * Getter virus PPM of water
+     * @return Virus PPM of water
+     */
+    public int getVirus(){ return _virus; }
+
+    /**
+     * Setter for virus PPM of water
+     * @param virus New virus PPM of water
+     */
+    public void setVirus(int virus) { _virus = virus; }
+
+    /**
+     * Getter for contaminant PPM of water
+     * @return Contaminant PPM of water
+    public int getContaminant() { return _contaminant; }
+
+    /**
+     * Setter for contaminant PPM of water
+     * @param contaminant New contaminant PPM of water
+     */
+    public void setContaminant(int contaminant) { _contaminant = contaminant; }
 
 }

@@ -44,6 +44,10 @@ public class ViewWaterReportController {
      */
     @FXML
     private void initialize() {
+        /*Populates the table, String inside of PropertyValueFactory argument refers to the method name of the Setter class
+          within WaterReport, e.g. "ReportNumber" must match getReportNumber in model.WaterReport. "ReportNumber" is not
+          the name of the column. That has already been defined manually in its corresponding .fxml file.
+        */
         reportNumCol.setCellValueFactory(new PropertyValueFactory<WaterReport, Integer>("ReportNumber"));
         usernameCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("ReportUsername"));
         dateCol.setCellValueFactory(new PropertyValueFactory<WaterReport, LocalDate>("Date"));

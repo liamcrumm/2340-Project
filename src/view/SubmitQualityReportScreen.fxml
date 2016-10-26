@@ -26,8 +26,8 @@
                 <RadioButton fx:id="safeButton" layoutX="394.0" layoutY="106.0" mnemonicParsing="false" text="Safe" />
                 <RadioButton fx:id="treatableButton" layoutX="394.0" layoutY="123.0" mnemonicParsing="false" text="Treatable" />
                 <RadioButton fx:id="unsafeButton" layoutX="394.0" layoutY="140.0" mnemonicParsing="false" text="Unsafe" />
-                <TextField fx:id="virumPPMTextField" layoutX="391.0" layoutY="212.0" promptText="Virus PPM" />
-                <TextField fx:id="containmentPPMTextField" layoutX="391.0" layoutY="253.0" promptText="Contaminant PPM" />
+                <TextField fx:id="virusField" layoutX="391.0" layoutY="212.0" promptText="Virus PPM" />
+                <TextField fx:id="contaminantField" layoutX="391.0" layoutY="253.0" promptText="Contaminant PPM" />
                 <Button fx:id="saveButton" layoutX="396.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleSavePressed" text="Save" />
                 <Button layoutX="465.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel" />
             </children></AnchorPane>

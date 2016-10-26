@@ -5,6 +5,8 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.AccountsManager;
+import model.User;
+import model.QualityReport;
 
 import java.time.LocalDate;
 
@@ -20,6 +22,8 @@ public class SubmitQualityReportController {
     @FXML private RadioButton pmButton;
     @FXML private TextField latitudeField;
     @FXML private TextField longitudeField;
+    @FXML private TextField virusField;
+    @FXML private TextField contaminantField;
     @FXML private Button saveButton;
 
     @FXML private RadioButton safeButton;
@@ -74,7 +78,27 @@ public class SubmitQualityReportController {
      */
     @FXML
     public void handleSavePressed() {
-        // TODO
+        int repNum = account.getWaterReportsList().size();
+
+        String username = account.getCurrentUsername();
+        LocalDate date = dateField.getValue();
+
+        RadioButton selectedTime = (RadioButton) timeGroup.getSelectedToggle();
+        String time = timeField.getText() + " " + selectedTime.getText();
+
+        double latitude = Double.parseDouble(latitudeField.getText());
+        double longitudeD = Double.parseDouble(longitudeField.getText());
+
+        RadioButton selectedCondition = (RadioButton) conditionGroup.getSelectedToggle();
+        String condition = selectedCondition.getText();
+
+        int virus = Integer.parseInt(virusField.getText());
+        int contaminant = Integer.parseInt(contaminantField.getText());
+
+        QualityReport report = new QualityReport(repNum, username, date, time, latitude, longitudeD, condition, virus, contaminant);
+        account.addQualityReport(report);
+        User current = account.getUser();
+        current.addQualityReport(report);
         mainApplication.showAccountScreen();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

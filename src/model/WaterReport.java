@@ -17,7 +17,7 @@ public class WaterReport implements Report {
     private String _condition;
 
     /**
-     * Constructor for a this class. Instantiates a Report object.
+     * Constructor for a this class. Instantiates a WaterReport object.
      * @param repNum  Number of report
      * @param username      Name of user who submitted the report
      * @param date          Date of report

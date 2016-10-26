@@ -9,7 +9,7 @@ public class AccountsManager {
     private String currentUsername;
     private User currentUser;
     private ArrayList<WaterReport> waterReports;
-    private ArrayList<Report> qualityReports;
+    private ArrayList<QualityReport> qualityReports;
 
     /**
      * Instantiates the AccountsManager class
@@ -84,13 +84,13 @@ public class AccountsManager {
      * returns the list of quality reports that are in the system.
      * @return The list of quality reports in the system
      */
-    public ArrayList<Report> getQualityReportsList() { return qualityReports; }
+    public ArrayList<QualityReport> getQualityReportsList() { return qualityReports; }
 
     /**
      * Adds a quality report to the system.
      * @param r The quality report to be added to the system.
      */
-    public void addQualityReport(Report r) {
+    public void addQualityReport(QualityReport r) {
         qualityReports.add(r);
     }
 
@@ -98,7 +98,7 @@ public class AccountsManager {
      * Removes a quality report from the system.
      * @param r The quality report that needs to be removed from the system.
      */
-    public void removeQualityReport(Report r) {
+    public void removeQualityReport(QualityReport r) {
         qualityReports.remove(r);
     }
 

@@ -8,12 +8,12 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Water Source Report" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SubmitReportScreenController">
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Water Source Report" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SubmitWaterReportScreenController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="351.0" prefWidth="557.0">
          <children><TextField fx:id="nameField" editable="false" layoutX="62.0" layoutY="72.0" promptText="Enter Name" />
             <DatePicker fx:id="dateField" layoutX="62.0" layoutY="127.0" promptText="MM/DD/YYYY" />
-            <TextField fx:id="hourField" layoutX="62.0" layoutY="162.0" promptText="HH:MM" />
+            <TextField fx:id="timeField" layoutX="62.0" layoutY="162.0" promptText="HH:MM" />
             <RadioButton fx:id="amButton" layoutX="62.0" layoutY="193.0" mnemonicParsing="false" text="AM" />
             <RadioButton fx:id="pmButton" layoutX="124.0" layoutY="193.0" mnemonicParsing="false" text="PM" />
             <TextField fx:id="latitudeField" layoutX="62.0" layoutY="276.0" promptText="Latitude" />

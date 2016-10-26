@@ -101,7 +101,7 @@ public class AccountController {
      */
     @FXML
     public void reportWaterPressed() {
-        mainApplication.showSubmitReportScreen();
+        mainApplication.showSubmitWaterReportScreen();
     }
 
     /**

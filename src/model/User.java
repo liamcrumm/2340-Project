@@ -14,7 +14,7 @@ public class User {
     private Profile _profile;
     private String _accountType;
     private ArrayList<WaterReport> userWaterReports;
-    private ArrayList<Report> userQualityReports;
+    private ArrayList<QualityReport> userQualityReports;
 
     /**
      * Instantiates an instance of User
@@ -118,7 +118,7 @@ public class User {
      * Adds a quality report created by the user to the list of reports that the user has submited.
      * @param r The quality report that the user submitted.
      */
-    public void addQualityReport(Report r) {
+    public void addQualityReport(QualityReport r) {
         if(userQualityReports == null) {
             userQualityReports = new ArrayList<>();
         }
@@ -129,13 +129,13 @@ public class User {
      * Returns the list of quality reports that the user has submitted.
      * @return The list of quality reports that the user has submitted.
      */
-    public ArrayList<Report> getUserQualityReports() { return userQualityReports; }
+    public ArrayList<QualityReport> getUserQualityReports() { return userQualityReports; }
 
     /**
      * Removes a quality report from the list of quality reports.
      * @param r The quality report to be removed.
      */
-    public void deleteQualityReport(Report r) {
+    public void deleteQualityReport(QualityReport r) {
         userQualityReports.remove(r);
     }
 }

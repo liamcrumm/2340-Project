@@ -89,5 +89,4 @@ public interface Report {
      * @param num The number of the report
      */
     public void setReportNumber(int num);
-
 }
