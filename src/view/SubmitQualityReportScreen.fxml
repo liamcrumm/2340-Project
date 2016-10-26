@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Submit Water Quality Report" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SubmitQualityReportController">
+    <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+                <TextField fx:id="nameTextField" editable="false" layoutX="95.0" layoutY="89.0" promptText="Enter Name" />
+                <DatePicker fx:id="dateField" layoutX="95.0" layoutY="142.0" />
+                <TextField fx:id="timeTextField" layoutX="95.0" layoutY="175.0" promptText="HH:MM" />
+                <RadioButton fx:id="amButton" layoutX="95.0" layoutY="207.0" mnemonicParsing="false" text="AM" />
+                <RadioButton fx:id="pmButton" layoutX="150.0" layoutY="207.0" mnemonicParsing="false" text="PM" />
+                <TextField fx:id="latTextField" layoutX="95.0" layoutY="265.0" promptText="Latitude" />
+                <TextField fx:id="longTextField" layoutX="95.0" layoutY="304.0" promptText="Longitude" />
+                <Label layoutX="391.0" layoutY="89.0" text="Water Condition:" />
+                <RadioButton fx:id="safeButton" layoutX="394.0" layoutY="106.0" mnemonicParsing="false" text="Safe" />
+                <RadioButton fx:id="treatableButton" layoutX="394.0" layoutY="123.0" mnemonicParsing="false" text="Treatable" />
+                <RadioButton fx:id="unsafeButton" layoutX="394.0" layoutY="140.0" mnemonicParsing="false" text="Unsafe" />
+                <TextField fx:id="virumPPMTextField" layoutX="391.0" layoutY="212.0" promptText="Virus PPM" />
+                <TextField fx:id="containmentPPMTextField" layoutX="391.0" layoutY="253.0" promptText="Contaminant PPM" />
+                <Button fx:id="saveButton" layoutX="396.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleSavePressed" text="Save" />
+                <Button layoutX="465.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel" />
+            </children></AnchorPane>
+    </content>
+</TitledPane>
