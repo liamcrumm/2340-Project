@@ -120,7 +120,7 @@ public class SubmitReportScreenController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Submitting Water Report");
         alert.setHeaderText("Submitting Your Water Report");
-        alert.setContentText("Your report has been suscessfully submitted.");
+        alert.setContentText("Your report has been successfully submitted.");
 
         alert.showAndWait();
 

@@ -42,7 +42,7 @@ public class SubmitQualityReportController {
     @FXML
     private void initialize() {
         dateField.setValue(LocalDate.now()); // set date to current date
-        // TODO: nameField.setText(account.getCurrentUsername());
+        nameField.setText(account.getCurrentUsername());
 
         amButton.setToggleGroup(timeGroup);
         pmButton.setToggleGroup(timeGroup);
@@ -53,12 +53,11 @@ public class SubmitQualityReportController {
         unsafeButton.setToggleGroup(conditionGroup);
         safeButton.setSelected(true); // set default selection
 
-        // TODO:
-        /*BooleanBinding booleanBind = nameField.textProperty().isEmpty()
+        BooleanBinding booleanBind = nameField.textProperty().isEmpty()
                 .or(timeField.textProperty().isEmpty())
                 .or(latitudeField.textProperty().isEmpty())
                 .or(longitudeField.textProperty().isEmpty());
-        saveButton.disableProperty().bind(booleanBind);*/
+        saveButton.disableProperty().bind(booleanBind);
     }
 
     /**
@@ -76,6 +75,14 @@ public class SubmitQualityReportController {
     @FXML
     public void handleSavePressed() {
         // TODO
+        mainApplication.showAccountScreen();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Submitting Quality Report");
+        alert.setHeaderText("Submitting Your Quality Report");
+        alert.setContentText("Your report has been successfully submitted.");
+
+        alert.showAndWait();
     }
 
     /**

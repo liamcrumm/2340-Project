@@ -35,6 +35,9 @@ public class ViewReportController {
     private ArrayList<Report> userReportsMaster;
     private ArrayList<Report> userReports;
 
+    AccountsManager account = LoginController.accounts;
+    User user = account.getUser();
+
     /**
      * Initializes controller class. This method is automatically called
      * after the constructor and fxml file have been loaded.
@@ -49,8 +52,6 @@ public class ViewReportController {
         longCol.setCellValueFactory(new PropertyValueFactory<Report, Double>("Long"));
         typeCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Type"));
         conditionCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Condition"));
-        AccountsManager account = LoginController.accounts;
-        User user = account.getUser();
         userReports = user.getUserReports();
         userList = account.getUserList();
         userList.forEach(u -> {
@@ -112,6 +113,7 @@ public class ViewReportController {
                 if (response == ButtonType.OK) {
                     userReports.remove(selectedReport);
                     userReportsMaster.remove(selectedReport);
+                    user.deleteReport(selectedReport);
                     refresh();
                 }
             });
