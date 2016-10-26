@@ -43,4 +43,19 @@ public class ViewQualityReportController {
     public void setMainApp(MainFXApplication mainFXApplication) {
         mainApplication = mainFXApplication;
     }
+
+    /**
+     * Button handler for "Back" button
+     */
+    @FXML
+    public void handleBackPressed() {
+        mainApplication.showAccountScreen();
+    }
+
+    /**
+     * Button handler for "Delete Selected Report" button
+     */
+    public void handleDeleteSelectedReport() {
+        // TODO
+    }
 }
