@@ -5,135 +5,89 @@ import java.time.LocalDate;
 /**
  * Created by Andrew on 10/11/2016.
  */
-public class Report {
-
-    private int _reportNumber;
-    private String _username;
-    private LocalDate _date;
-    private String _time;
-    private double _lat;
-    private double _long;
-    private String _type;
-    private String _condition;
-
-
-    /**
-     * Constructor for a this class. Instantiates a Report object.
-     * @param repNum  Number of report
-     * @param username      Name of user who submitted the report
-     * @param date          Date of report
-     * @param time          Time of report
-     * @param lat           Latitude of the location
-     * @param longitude     Longitude of the location;
-     * @param type          Type of water
-     * @param condition     Condition of water
-     */
-    public Report(int repNum, String username, LocalDate date, String time, double lat, double longitude, String type, String condition){
-        _reportNumber = repNum;
-        _username = username;
-        _date = date;
-        _time = time;
-        _lat = lat;
-        _long = longitude;
-        _type = type;
-        _condition = condition;
-    }
+public interface Report {
 
     /**
      * Getter for the user who submitted the report
      * @return Name of user who submitted the report
      */
-    public String getReportUsername() { return _username; }
+    public String getReportUsername();
 
     /**
      * Setter for ownership of report
      * @param username New ownership of report
      */
-    public void setReportUsername(String username){ _username = username; }
+    public void setReportUsername(String username);
 
     /**
      * Getter for report date
      * @return Date of report
      */
-    public LocalDate getDate() { return _date; }
+    public LocalDate getDate();
 
     /**
      * Setter for report date
      * @param date New date of report
      */
-    public void setDate(LocalDate date) { _date = date; }
+    public void setDate(LocalDate date);
 
     /**
      * Getter for report time
      * @return Time of report
      */
-    public String getTime() { return _time; }
-
+    public String getTime();
     /**
      * Setter for report time
      * @param time New time of report
      */
-    public void setTime(String time) { _time = time; }
+    public void setTime(String time);
 
     /**
      * Getter for the latitude of the location of the water
      * @return The latitude of the location where the water is
      */
-    public double getLat() { return _lat; }
+    public double getLat();
 
     /**
      * Setter for the latitude of the location of the water
      * @param lat The latitude of the location of the water
      */
-    public void setLat(double lat) { _lat = lat; }
+    public void setLat(double lat);
 
     /**
      * Getter for the longitude of the location of the water
      * @return The longitude of the location of the water
      */
-    public double getLong() { return _long; }
+    public double getLong();
 
     /**
      * Setter for the location of the water
      * @param longitude The longitude of the location of the water
      */
-    public void setLong(double longitude) { _long = longitude; }
-
-
-    /**
-     * Getter for water type
-     * @return Type of water
-     */
-    public String getType() { return _type; }
-
-    /**
-     * Setter for water type
-     * @param type New type of water
-     */
-    public void setType(String type) { _type = type; }
+    public void setLong(double longitude);
 
     /**
      * Getter for water condition
      * @return Condition of water
      */
-    public String getCondition(){ return _condition; }
+    public String getCondition();
 
     /**
      * Setter for water condition
      * @param condition New Condition of water
      */
-    public void setCondition(String condition) { _condition = condition; }
+    public void setCondition(String condition);
 
     /**
      * Getter for the report number
      * @return The report number
      */
-    public int getReportNumber() { return _reportNumber; }
+    public int getReportNumber();
 
     /**
      * Setter for the report number
      * @param num The number of the report
      */
-    public void setReportNumber(int num) { _reportNumber = num; }
+    public void setReportNumber(int num);
 
 }

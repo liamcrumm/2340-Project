@@ -7,33 +7,33 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.AccountsManager;
-import model.Report;
+import model.WaterReport;
 import model.User;
 
 /**
  * Created by Andrew on 10/11/2016.
  */
-public class ViewReportController {
+public class ViewWaterReportController {
 
     /** Link back to main application class */
     @FXML
     private MainFXApplication mainApplication;
 
     /** FXML Widgets, column entries on the table view*/
-    @FXML private TableView<Report> reportTable;
-    @FXML private TableColumn<Report, Integer> reportNumCol;
-    @FXML private TableColumn<Report, String> usernameCol;
-    @FXML private TableColumn<Report, LocalDate> dateCol;
-    @FXML private TableColumn<Report, String> timeCol;
-    @FXML private TableColumn<Report, Double> latCol;
-    @FXML private TableColumn<Report, Double> longCol;
-    @FXML private TableColumn<Report, String> typeCol;
-    @FXML private TableColumn<Report, String> conditionCol;
+    @FXML private TableView<WaterReport> reportTable;
+    @FXML private TableColumn<WaterReport, Integer> reportNumCol;
+    @FXML private TableColumn<WaterReport, String> usernameCol;
+    @FXML private TableColumn<WaterReport, LocalDate> dateCol;
+    @FXML private TableColumn<WaterReport, String> timeCol;
+    @FXML private TableColumn<WaterReport, Double> latCol;
+    @FXML private TableColumn<WaterReport, Double> longCol;
+    @FXML private TableColumn<WaterReport, String> typeCol;
+    @FXML private TableColumn<WaterReport, String> conditionCol;
 
     /** Arraylists for users and reports*/
     private ArrayList<User> userList;
-    private ArrayList<Report> userReportsMaster;
-    private ArrayList<Report> userReports;
+    private ArrayList<WaterReport> userReportsMaster;
+    private ArrayList<WaterReport> userReports;
 
     AccountsManager account = LoginController.accounts;
     User user = account.getUser();
@@ -44,22 +44,22 @@ public class ViewReportController {
      */
     @FXML
     private void initialize() {
-        reportNumCol.setCellValueFactory(new PropertyValueFactory<Report, Integer>("ReportNumber"));
-        usernameCol.setCellValueFactory(new PropertyValueFactory<Report, String>("ReportUsername"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<Report, LocalDate>("Date"));
-        timeCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Time"));
-        latCol.setCellValueFactory(new PropertyValueFactory<Report, Double>("Lat"));
-        longCol.setCellValueFactory(new PropertyValueFactory<Report, Double>("Long"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Type"));
-        conditionCol.setCellValueFactory(new PropertyValueFactory<Report, String>("Condition"));
-        userReports = user.getUserReports();
+        reportNumCol.setCellValueFactory(new PropertyValueFactory<WaterReport, Integer>("ReportNumber"));
+        usernameCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("ReportUsername"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<WaterReport, LocalDate>("Date"));
+        timeCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("Time"));
+        latCol.setCellValueFactory(new PropertyValueFactory<WaterReport, Double>("Lat"));
+        longCol.setCellValueFactory(new PropertyValueFactory<WaterReport, Double>("Long"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("Type"));
+        conditionCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("Condition"));
+        userReports = user.getUserWaterReports();
         userList = account.getUserList();
         userList.forEach(u -> {
-            if (u.getUserReports() != null) {
+            if (u.getUserWaterReports() != null) {
                 if (userReportsMaster == null) {
-                    userReportsMaster = u.getUserReports();
+                    userReportsMaster = u.getUserWaterReports();
                 } else {
-                    u.getUserReports().forEach(r -> {
+                    u.getUserWaterReports().forEach(r -> {
                         if (!userReportsMaster.contains(r)) {
                             userReportsMaster.add(r);
                         }
@@ -92,7 +92,7 @@ public class ViewReportController {
      */
     @FXML
     public void handleDeleteSelectedReport() {
-        Report selectedReport = reportTable.getSelectionModel().getSelectedItem();
+        WaterReport selectedReport = reportTable.getSelectionModel().getSelectedItem();
         if (selectedReport == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -113,7 +113,7 @@ public class ViewReportController {
                 if (response == ButtonType.OK) {
                     userReports.remove(selectedReport);
                     userReportsMaster.remove(selectedReport);
-                    user.deleteReport(selectedReport);
+                    user.deleteWaterReport(selectedReport);
                     refresh();
                 }
             });

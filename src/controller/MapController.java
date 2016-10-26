@@ -15,7 +15,7 @@ import com.lynden.gmapsfx.GoogleMapView;
 
 
 import model.AccountsManager;
-import model.Report;
+import model.WaterReport;
 import netscape.javascript.JSObject;
 
 import java.io.File;
@@ -74,13 +74,13 @@ public class MapController implements Initializable, MapComponentInitializedList
         map = mapView.createMap(options);
 
 
-        ArrayList<Report> reports = ac.getReportsList();
+        ArrayList<WaterReport> reports = ac.getWaterReportsList();
 
 
         //TODO: get bounds to work
         //LatLongBounds bounds = new LatLongBounds();
 
-        for (Report r: reports) {
+        for (WaterReport r: reports) {
             MarkerOptions markerOptions = new MarkerOptions();
             LatLong loc = new LatLong(r.getLat(), r.getLong());
             center = new LatLong(r.getLat(),r.getLong());

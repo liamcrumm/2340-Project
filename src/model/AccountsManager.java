@@ -8,7 +8,8 @@ public class AccountsManager {
     private ArrayList<User> users;
     private String currentUsername;
     private User currentUser;
-    private ArrayList<Report> reports;
+    private ArrayList<WaterReport> waterReports;
+    private ArrayList<Report> qualityReports;
 
     /**
      * Instantiates the AccountsManager class
@@ -16,7 +17,8 @@ public class AccountsManager {
     public AccountsManager() {
 
         users = new ArrayList<>();
-        reports = new ArrayList<>();
+        waterReports = new ArrayList<>();
+        qualityReports = new ArrayList<>();
     }
 
     /**
@@ -57,25 +59,47 @@ public class AccountsManager {
     }
 
     /**
-     * returns the list of reports that are in the system.
-     * @return The list of reprots in the system
+     * returns the list of water reports that are in the system.
+     * @return The list of water reports in the system
      */
-    public ArrayList<Report> getReportsList() { return reports; }
+    public ArrayList<WaterReport> getWaterReportsList() { return waterReports; }
 
     /**
-     * Adds a report to the system.
-     * @param r The report to be added to the system.
+     * Adds a water report to the system.
+     * @param r The water report to be added to the system.
      */
-    public void addReport(Report r) {
-        reports.add(r);
+    public void addWaterReport(WaterReport r) {
+        waterReports.add(r);
     }
 
     /**
-     * Removes a report from the system.
-     * @param r The report that needs to be removed from the system.
+     * Removes a water report from the system.
+     * @param r The water report that needs to be removed from the system.
      */
-    public void removeReport(Report r) {
-        reports.remove(r);
+    public void removeWaterReport(WaterReport r) {
+        waterReports.remove(r);
+    }
+
+    /**
+     * returns the list of quality reports that are in the system.
+     * @return The list of quality reports in the system
+     */
+    public ArrayList<Report> getQualityReportsList() { return qualityReports; }
+
+    /**
+     * Adds a quality report to the system.
+     * @param r The quality report to be added to the system.
+     */
+    public void addQualityReport(Report r) {
+        qualityReports.add(r);
+    }
+
+    /**
+     * Removes a quality report from the system.
+     * @param r The quality report that needs to be removed from the system.
+     */
+    public void removeQualityReport(Report r) {
+        qualityReports.remove(r);
     }
 
 

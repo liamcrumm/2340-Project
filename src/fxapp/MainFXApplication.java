@@ -315,7 +315,7 @@ public class MainFXApplication extends Application {
      * This can be accessed from the account menu
      *
      */
-    public void showViewReportScreen() {
+    public void showViewWaterReportScreen() {
         try {
             // Load main screen.
             FXMLLoader loader = new FXMLLoader();
@@ -326,7 +326,7 @@ public class MainFXApplication extends Application {
             rootLayout.setCenter(ViewReportScreen);
 
             // Give the controller access to the main app.
-            ViewReportController controller = loader.getController();
+            ViewWaterReportController controller = loader.getController();
             controller.setMainApp(this);
 
         } catch (IOException e) {

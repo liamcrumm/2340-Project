@@ -33,7 +33,7 @@ public class AccountController {
      */
     @FXML
     private void initialize() {
-        /** now we communciate with the model to get the user*/
+        /** now we communicate with the model to get the user*/
         accountMng = LoginController.accounts;
         User user = accountMng.getUser();
         String userType = user.getAccountType();
@@ -108,7 +108,7 @@ public class AccountController {
      * Button handler for View Water Reports button
      */
     @FXML
-    public void submittedReportsPressed() { mainApplication.showViewReportScreen(); }
+    public void submittedReportsPressed() { mainApplication.showViewWaterReportScreen(); }
 
     /**
      * Button handler for view profile button

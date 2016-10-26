@@ -5,7 +5,7 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.AccountsManager;
-import model.Report;
+import model.WaterReport;
 import model.User;
 
 import java.time.LocalDate;
@@ -93,7 +93,7 @@ public class SubmitReportScreenController {
      */
     @FXML
     public void handleSavePressed() {
-        int repNum = account.getReportsList().size();
+        int repNum = account.getWaterReportsList().size();
 
         String username = account.getCurrentUsername();
         LocalDate date = dateField.getValue();
@@ -110,10 +110,10 @@ public class SubmitReportScreenController {
         RadioButton selectedCondition = (RadioButton) conditionGroup.getSelectedToggle();
         String condition = selectedCondition.getText();
 
-        Report report = new Report(repNum, username, date, time, latitude, longitudeD, type, condition);
-        account.addReport(report);
+        WaterReport report = new WaterReport(repNum, username, date, time, latitude, longitudeD, type, condition);
+        account.addWaterReport(report);
         User current = account.getUser();
-        current.addReport(report);
+        current.addWaterReport(report);
 
         mainApplication.showAccountScreen();
 
