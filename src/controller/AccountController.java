@@ -132,7 +132,7 @@ public class AccountController {
 
             alert.showAndWait();
         } else {
-            // TODO: Open Submit Quality Report Screen
+            mainApplication.showSubmitQualityScreen();
         }
     }
 
@@ -150,7 +150,7 @@ public class AccountController {
 
             alert.showAndWait();
         } else {
-            // TODO: Open View Quality Reports Screen
+            mainApplication.showViewQualityScreen();
         }
     }
 }

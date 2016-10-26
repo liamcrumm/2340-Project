@@ -361,7 +361,59 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Setup the submit quality report screen that is shown when user selects "Submit Quality Report".
+     * This is displayed in the startup window
+     *
+     * precondition - the main stage is already initialized and showing (initRootLayout has been called)
+     * postcondition - the submit quality report view is initialized and displayed
+     */
+    public void showSubmitQualityScreen() {
+        try {
+            // Load main screen.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/SubmitQualityReportScreen.fxml"));
+            TitledPane SubmitQualityScreen = loader.load();
 
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(SubmitQualityScreen);
+
+            // Give the controller access to the main app.
+            SubmitQualityReportController controller = loader.getController();
+            controller.setMainApp(this);
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for SubmitQualityReportScreen!");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Setup the list view of quality reports screen that is shown when user selects "View Quality Reports"
+     * This can be accessed from the account menu
+     *
+     */
+    public void showViewQualityScreen() {
+        try {
+            // Load main screen.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/ViewQualityReportScreen.fxml"));
+            AnchorPane ViewQualityReportScreen = loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(ViewQualityReportScreen);
+
+            // Give the controller access to the main app.
+            ViewQualityReportController controller = loader.getController();
+            controller.setMainApp(this);
+
+        } catch (IOException e) {
+            //error on load, so log it
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ViewQualityReportScreen!");
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {launch(args);}
 }
