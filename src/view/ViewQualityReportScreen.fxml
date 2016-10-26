@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewReportController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewReportController">
    <children>
       <TableView fx:id="reportTable" prefHeight="345.0" prefWidth="600.0">
          <columnResizePolicy>
@@ -18,8 +19,8 @@
             <TableColumn fx:id="latCol" editable="false" prefWidth="49.0" resizable="false" text="Lat." />
             <TableColumn fx:id="longCol" editable="false" prefWidth="48.0" resizable="false" text="Long." />
             <TableColumn fx:id="typeCol" editable="false" prefWidth="60.0" resizable="false" text="Type" />
-            <TableColumn fx:id="conditionCol" editable="false" prefWidth="81.0" resizable="false" text="Virus PPM" />
-            <TableColumn fx:id="conditionCol1" editable="false" prefWidth="108.0" resizable="false" text="Contaminant PPM" />
+            <TableColumn fx:id="virusCol" editable="false" prefWidth="81.0" resizable="false" text="Virus PPM" />
+            <TableColumn fx:id="containmentCol" editable="false" prefWidth="108.0" resizable="false" text="Contaminant PPM" />
          </columns>
       </TableView>
       <Button layoutX="48.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
