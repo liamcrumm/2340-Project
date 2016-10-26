@@ -140,6 +140,7 @@ public class QualityReport implements Report {
     /**
      * Getter for contaminant PPM of water
      * @return Contaminant PPM of water
+     */
     public int getContaminant() { return _contaminant; }
 
     /**

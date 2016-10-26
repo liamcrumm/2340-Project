@@ -78,7 +78,7 @@ public class SubmitQualityReportController {
      */
     @FXML
     public void handleSavePressed() {
-        int repNum = account.getWaterReportsList().size();
+        int repNum = account.getQualityReportsList().size();
 
         String username = account.getCurrentUsername();
         LocalDate date = dateField.getValue();
