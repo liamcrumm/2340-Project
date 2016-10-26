@@ -118,6 +118,7 @@ public class ViewWaterReportController {
                     userReports.remove(selectedReport);
                     userReportsMaster.remove(selectedReport);
                     user.deleteWaterReport(selectedReport);
+                    account.getWaterReportsList().remove(selectedReport);
                     refresh();
                 }
             });

@@ -63,12 +63,12 @@ public class MapController implements Initializable, MapComponentInitializedList
 
         options.center(center)
                 .zoom(9)
-                .overviewMapControl(false)
-                .panControl(false)
+                .overviewMapControl(true)
+                .panControl(true)
                 .rotateControl(false)
-                .scaleControl(false)
+                .scaleControl(true)
                 .streetViewControl(false)
-                .zoomControl(false)
+                .zoomControl(true)
                 .mapType(MapTypeIdEnum.TERRAIN);
 
         map = mapView.createMap(options);
@@ -77,7 +77,6 @@ public class MapController implements Initializable, MapComponentInitializedList
         ArrayList<WaterReport> reports = ac.getWaterReportsList();
 
 
-        //TODO: get bounds to work
         //LatLongBounds bounds = new LatLongBounds();
 
         for (WaterReport r: reports) {
