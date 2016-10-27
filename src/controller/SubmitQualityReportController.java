@@ -60,7 +60,9 @@ public class SubmitQualityReportController {
         BooleanBinding booleanBind = nameField.textProperty().isEmpty()
                 .or(timeField.textProperty().isEmpty())
                 .or(latitudeField.textProperty().isEmpty())
-                .or(longitudeField.textProperty().isEmpty());
+                .or(longitudeField.textProperty().isEmpty())
+                .or(virusField.textProperty().isEmpty())
+                .or(contaminantField.textProperty().isEmpty());
         saveButton.disableProperty().bind(booleanBind);
     }
 
