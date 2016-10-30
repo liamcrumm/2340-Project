@@ -415,5 +415,44 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Opens a dialog for manager to create history graphs. If the user
+     * clicks "Return to Home Screen", will close window.
+     *
+     * @return true if the user clicked submit or cancel, false otherwise.
+     * */
+
+    public boolean showHistoryGraphScreen() {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/HistoryGraphScreen.fxml"));
+            TitledPane page = loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Historical Graphs");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(mainScreen);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            HistoryGraphController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setMainApp(this);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ShowRegistrationScreen!");
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static void main(String[] args) {launch(args);}
 }
