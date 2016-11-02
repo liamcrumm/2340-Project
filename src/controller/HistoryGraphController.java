@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import model.AccountsManager;
 import model.QualityReport;
 
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
@@ -36,7 +37,7 @@ public class HistoryGraphController {
     @FXML private Button makeButton;
     @FXML private NumberAxis numAxis;
     @FXML private CategoryAxis monthAxis;
-    @FXML private ScatterChart<CategoryAxis,NumberAxis> historyGraph;
+    @FXML private ScatterChart<String,Integer> historyGraph;
 
     ToggleGroup type = new ToggleGroup();
 
@@ -61,14 +62,31 @@ public class HistoryGraphController {
         ObservableList<String> locations = FXCollections.observableArrayList();
         ObservableList<Integer> years = FXCollections.observableArrayList();
         ArrayList<QualityReport> qreps = account.getQualityReportsList();
-        for(QualityReport r: qreps) {
-            String loc = r.getLat() + "," + r.getLong();
-            locations.add(loc);
-            int year = r.getDate().getYear();
-            years.add(year);
+        if (qreps == null || qreps.size() == 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Graph cannot be created");
+            alert.setHeaderText("There are no submitted water quality reports");
+            alert.setContentText("There are no quality reports submitted at this time.");
+            alert.showAndWait();
+        } else {
+            for(QualityReport r: qreps) {
+                String loc = r.getLat() + "," + r.getLong();
+                locations.add(loc);
+                int year = r.getDate().getYear();
+                years.add(year);
+            }
+            locationComboBox.setItems(locations);
+            yearComboBox.setItems(years);
+
+            ObservableList<String> months = FXCollections.observableArrayList();
+            months.addAll("JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER"
+                    ,"NOVEMBER","DECEMBER");
+
+            monthAxis.setCategories(months);
+
+
         }
-        locationComboBox.setItems(locations);
-        yearComboBox.setItems(years);
+
     }
 
     /**
@@ -104,75 +122,81 @@ public class HistoryGraphController {
     @FXML
     public void handleMakeGraphPressed() {
         boolean successful = false; // needed for closing dialog box correctly
-        // TODO: need a check for when location and year entry empty
-        String loc = locationComboBox.getSelectionModel().getSelectedItem().toString();
-        String year = yearComboBox.getSelectionModel().getSelectedItem().toString();
-        if((loc == null && year == null) || (loc == null) || (year == null)) {
+        if((locationComboBox.getSelectionModel().getSelectedItem() == null)
+                && (yearComboBox.getSelectionModel().getSelectedItem() == null)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Graph cannot be created");
             alert.setHeaderText("There is not enough information");
             alert.setContentText("Both a year and a location must be entered in order for the graph to be created.");
             alert.showAndWait();
+        } else if ((locationComboBox.getSelectionModel().getSelectedItem() == null)
+                && (yearComboBox.getSelectionModel().getSelectedItem() != null)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Graph cannot be created");
+            alert.setHeaderText("There is not enough information");
+            alert.setContentText("A location must be entered in order for the graph to be created.");
+            alert.showAndWait();
+        } else if ((locationComboBox.getSelectionModel().getSelectedItem() != null)
+                && (yearComboBox.getSelectionModel().getSelectedItem() == null)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Graph cannot be created");
+            alert.setHeaderText("There is not enough information");
+            alert.setContentText("A year must be entered in order for the graph to be created.");
+            alert.showAndWait();
         } else {
+            String loc = locationComboBox.getSelectionModel().getSelectedItem().toString();
+            String year = yearComboBox.getSelectionModel().getSelectedItem().toString();
             //change the selected strings to int and doubles for the year and lat,long.
             int yearSelected = Integer.parseInt(year);
             String[] parts = loc.split(",");
             double lat = Double.parseDouble(parts[0]);
             double longitude = Double.parseDouble(parts[1]);
 
-            ObservableList<String> months = FXCollections.observableArrayList();
-            months.addAll("January","February","March","April","May","June","July","August","September","October"
-                    ,"November","December");
-            monthAxis.setCategories(months);
-
             //Get the selected ppm value(virus or contaminant)
             RadioButton selectedPPM = (RadioButton) type.getSelectedToggle();
             String ppm = selectedPPM.getText();
 
             //Get the reports that match the year and location given
-            //Map<String,Integer> graphPoints = new HashMap<String,Integer>();
-            ObservableList<XYChart.Data<String,Integer>> data = FXCollections.observableArrayList();
             ArrayList<QualityReport> allReports = account.getQualityReportsList();
+            XYChart.Series<String, Integer> series = new XYChart.Series<String, Integer>();
             //Make the graph according to the ppm that is given
-            if(ppm.equals("Virus")) {
-                for(QualityReport r: allReports) {
+            if (ppm.equals("Virus")) {
+                series.setName("Virus At " + loc);
+                for (QualityReport r : allReports) {
                     double repLat = r.getLat();
                     double repLong = r.getLong();
                     int repYear = r.getDate().getYear();
-                    if(repLat == lat && repLong == longitude && repYear == yearSelected) {
-                        //graphPoints.put(r.getDate().getMonth().toString(),r.getVirus());
+                    if (repLat == lat && repLong == longitude && repYear == yearSelected) {
                         String month = r.getDate().getMonth().toString();
                         int virus = r.getVirus();
-                        XYChart.Data<String,Integer> point = new XYChart.Data<String,Integer>(month,virus);
-                        data.add(point);
+                        series.getData().add(new XYChart.Data<String, Integer>(month, virus));
 
                     }
                 }
-                XYChart.Series series = new XYChart.Series(data);
-                historyGraph.getData().addAll(series);
+
+                historyGraph.getData().add(series);
 
             } else {
-                for(QualityReport r: allReports) {
+                series.setName("Contaminant At " + loc);
+                for (QualityReport r : allReports) {
                     double repLat = r.getLat();
                     double repLong = r.getLong();
                     int repYear = r.getDate().getYear();
-                    if(repLat == lat && repLong == longitude && repYear == yearSelected) {
-                        //graphPoints.put(r.getDate().getMonth().toString(),r.getVirus());
+                    if (repLat == lat && repLong == longitude && repYear == yearSelected) {
                         String month = r.getDate().getMonth().toString();
                         int cont = r.getContaminant();
-                        XYChart.Data<String,Integer> point = new XYChart.Data<String,Integer>(month,cont);
-                        data.add(point);
+                        series.getData().add(new XYChart.Data<String, Integer>(month, cont));
 
                     }
                 }
-                XYChart.Series series = new XYChart.Series(data);
-                historyGraph.getData().addAll(series);
+                historyGraph.getData().add(series);
 
             }
-
-
-
         }
+
+
+
+
         _okClicked = true;
         if(successful) {
             _dialogStage.close();
