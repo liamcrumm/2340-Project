@@ -20,6 +20,9 @@ public class AccountController {
     @FXML
     private Button viewQualityButton;
 
+    @FXML
+    private Button viewHistoryGraphButton;
+
     private boolean qualityAccess;
 
     private MainFXApplication mainApplication;
@@ -37,6 +40,11 @@ public class AccountController {
         accountMng = LoginController.accounts;
         User user = accountMng.getUser();
         String userType = user.getAccountType();
+        if (userType.compareTo("Manager") == 0) {
+            viewHistoryGraphButton.setDisable(false);
+        } else {
+            viewHistoryGraphButton.setDisable(true);
+        }
         if (userType.compareTo("Worker") == 0 || userType.compareTo("Manager") == 0) {
             submitQualityButton.setDisable(false);
             viewQualityButton.setDisable(false);
@@ -151,6 +159,23 @@ public class AccountController {
             alert.showAndWait();
         } else {
             mainApplication.showViewQualityScreen();
+        }
+    }
+    /**
+     * Button handler for View History Graph button
+     */
+    @FXML
+    public void viewHistoryPressed() {
+        if (viewHistoryGraphButton.isDisabled()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Unauthorized");
+            alert.setHeaderText("Unauthorized Access");
+            alert.setContentText("You must have Manager privileges" +
+                    " in order to access View History Graph.");
+
+            alert.showAndWait();
+        } else {
+            mainApplication.showHistoryGraphScreen();
         }
     }
 }
