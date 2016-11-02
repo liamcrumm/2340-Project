@@ -100,7 +100,7 @@ public class RegistrationController extends Application {
         AccountsManager man = LoginController.accounts;
         if(isInputValid()) {
             if(uniqueUsername(man,usernameField.getText())) {
-                man.getUserList().add(new User(usernameField.getText(),
+                man.addUser(new User(usernameField.getText(),
                         passwordField.getText(), new Profile(nameField.getText(),
                         null, null, null, null, null), accountType.getValue().toString()));
                 _dialogStage.close();

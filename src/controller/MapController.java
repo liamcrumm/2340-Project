@@ -100,7 +100,6 @@ public class MapController implements Initializable, MapComponentInitializedList
                     (JSObject obj) -> {
                         InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
                         infoWindowOptions.content(description);
-
                         InfoWindow window = new InfoWindow(infoWindowOptions);
                         window.open(map, marker);
                     });

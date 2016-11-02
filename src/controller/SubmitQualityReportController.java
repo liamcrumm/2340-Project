@@ -9,6 +9,8 @@ import model.User;
 import model.QualityReport;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 /**
  * Created by Kimberly Burke on 10/25/2016.
@@ -81,7 +83,7 @@ public class SubmitQualityReportController {
         int repNum = account.getQualityReportsList().size();
 
         String username = account.getCurrentUsername();
-        LocalDate date = dateField.getValue();
+        Date date = Date.from(dateField.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 
         RadioButton selectedTime = (RadioButton) timeGroup.getSelectedToggle();
         String time = timeField.getText() + " " + selectedTime.getText();

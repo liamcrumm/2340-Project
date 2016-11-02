@@ -1,5 +1,7 @@
 package model;
 
+import org.bson.Document;
+
 /**
  * Created by Sakhi on 9/29/16.
  */
@@ -125,5 +127,15 @@ public class Profile {
      */
     public void setBio(String bio) {
         _bio = bio;
+    }
+    public Document toDocument() {
+        Document toReturn = new Document();
+        toReturn.put("name",_name);
+        toReturn.put("title",_title);
+        toReturn.put("email",_email);
+        toReturn.put("phone",_phone);
+        toReturn.put("address",_address);
+        toReturn.put("bio",_bio);
+        return toReturn;
     }
 }

@@ -1,6 +1,8 @@
 package model;
 
-import java.time.LocalDate;
+import org.bson.Document;
+
+import java.util.Date;
 
 /**
  * Created by Andrew on 10/11/2016.
@@ -9,7 +11,7 @@ public class WaterReport implements Report {
 
     private int _reportNumber;
     private String _username;
-    private LocalDate _date;
+    private Date _date;
     private String _time;
     private double _lat;
     private double _long;
@@ -27,7 +29,7 @@ public class WaterReport implements Report {
      * @param type          Type of water
      * @param condition     Condition of water
      */
-    public WaterReport(int repNum, String username, LocalDate date, String time, double lat, double longitude, String type, String condition){
+    public WaterReport(int repNum, String username, Date date, String time, double lat, double longitude, String type, String condition){
         _reportNumber = repNum;
         _username = username;
         _date = date;
@@ -54,13 +56,13 @@ public class WaterReport implements Report {
      * Getter for report date
      * @return Date of report
      */
-    public LocalDate getDate() { return _date; }
+    public Date getDate() { return _date; }
 
     /**
      * Setter for report date
      * @param date New date of report
      */
-    public void setDate(LocalDate date) { _date = date; }
+    public void setDate(Date date) { _date = date; }
 
     /**
      * Getter for report time
@@ -133,5 +135,21 @@ public class WaterReport implements Report {
      * @param num The number of the report
      */
     public void setReportNumber(int num) { _reportNumber = num; }
+    /**
+     * Method to store persistent data for a waterreport
+     * @return  Document with relevant data for Water report
+     */
+    public Document toDoc() {
+        Document quality = new Document();
+        quality.put("username",_username);
+        quality.put("repNum",_reportNumber);
+        quality.put("date",_date);
+        quality.put("time",_time);
+        quality.put("lat",_lat);
+        quality.put("long",_long);
+        quality.put("condition",_condition);
+        quality.put("type",_type);
+        return quality;
+    }
 
 }

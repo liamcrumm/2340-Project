@@ -9,6 +9,8 @@ import model.WaterReport;
 import model.User;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 /**
  * Created by Sakhi on 10/10/16.
@@ -96,7 +98,7 @@ public class SubmitWaterReportScreenController {
         int repNum = account.getWaterReportsList().size();
 
         String username = account.getCurrentUsername();
-        LocalDate date = dateField.getValue();
+        Date date = Date.from(dateField.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 
         RadioButton selectedTime = (RadioButton) timeGroup.getSelectedToggle();
         String time = timeField.getText() + " " + selectedTime.getText();

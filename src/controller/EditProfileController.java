@@ -98,6 +98,7 @@ public class EditProfileController {
 
         Profile profile = new Profile(name, title, email, phone, address, bio);
         user.setProfile(profile);
+        accounts.updateUser(user);
         mainApplication.showViewProfileScreen();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Edit Profile Successful");

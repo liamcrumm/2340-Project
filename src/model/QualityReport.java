@@ -1,6 +1,9 @@
 package model;
 
+import org.bson.Document;
+
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * Created by Andrew on 10/26/2016.
@@ -9,7 +12,7 @@ public class QualityReport implements Report {
 
     private int _reportNumber;
     private String _username;
-    private LocalDate _date;
+    private Date _date;
     private String _time;
     private double _lat;
     private double _long;
@@ -29,7 +32,7 @@ public class QualityReport implements Report {
      * @param virus         Virus PPM
      * @param contaminant   Contaminant PPM
      */
-    public QualityReport(int repNum, String username, LocalDate date, String time, double lat, double longitude, String condition, int virus, int contaminant){
+    public QualityReport(int repNum, String username, Date date, String time, double lat, double longitude, String condition, int virus, int contaminant){
         _reportNumber = repNum;
         _username = username;
         _date = date;
@@ -57,13 +60,13 @@ public class QualityReport implements Report {
      * Getter for report date
      * @return Date of report
      */
-    public LocalDate getDate() { return _date; }
+    public Date getDate() { return _date; }
 
     /**
      * Setter for report date
      * @param date New date of report
      */
-    public void setDate(LocalDate date) { _date = date; }
+    public void setDate(Date date) { _date = date; }
 
     /**
      * Getter for report time
@@ -148,5 +151,24 @@ public class QualityReport implements Report {
      * @param contaminant New contaminant PPM of water
      */
     public void setContaminant(int contaminant) { _contaminant = contaminant; }
+
+    /**
+     * Method to store persistent data for a qualityreport
+     * @return  Document with relevant data for Quality report
+     */
+    public Document toDoc() {
+        Document quality = new Document();
+        quality.put("username",_username);
+        quality.put("repNum",_reportNumber);
+        quality.put("date",_date);
+        quality.put("time",_time);
+        quality.put("lat",_lat);
+        quality.put("long",_long);
+        quality.put("condition",_condition);
+        quality.put("virus",_virus);
+        quality.put("contaminent",_contaminant);
+        return quality;
+    }
+
 
 }

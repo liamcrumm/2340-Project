@@ -2,6 +2,7 @@
   <library name="GMapsFX-2.0.9">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/GMapsFX-2.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mongo-java-driver-3.0.4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

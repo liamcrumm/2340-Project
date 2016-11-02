@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * Created by Andrew on 10/11/2016.
@@ -23,13 +23,13 @@ public interface Report {
      * Getter for report date
      * @return Date of report
      */
-    public LocalDate getDate();
+    public Date getDate();
 
     /**
      * Setter for report date
      * @param date New date of report
      */
-    public void setDate(LocalDate date);
+    public void setDate(Date date);
 
     /**
      * Getter for report time

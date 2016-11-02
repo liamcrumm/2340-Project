@@ -1,6 +1,9 @@
 package model;
 
 
+
+import org.bson.Document;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -137,6 +140,20 @@ public class User {
      */
     public void deleteQualityReport(QualityReport r) {
         userQualityReports.remove(r);
+    }
+
+    public Document toDoc() {
+        Document user = new Document();
+        user.put("username",_username);
+        user.put("password",_password);
+        user.put("profile",_profile.toDocument());
+        user.put("accountType",_accountType);
+        /*Document WaterReports = new Document();
+        int i = 0;
+        while(i++ < userWaterReports.size()) {
+            WaterReports.put();
+        }*/
+        return user;
     }
 }
 
