@@ -58,6 +58,7 @@ public class HistoryGraphController {
         contaminantButton.setToggleGroup(type);
         virusButton.setSelected(true); // set default selection
 
+
         //add the locations and years as dropdown options in the corresponding combo boxes
         ObservableList<String> locations = FXCollections.observableArrayList();
         ObservableList<Integer> years = FXCollections.observableArrayList();
@@ -81,8 +82,8 @@ public class HistoryGraphController {
             yearComboBox.setItems(years);
 
             ObservableList<String> months = FXCollections.observableArrayList();
-            months.addAll("JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER"
-                    ,"NOVEMBER","DECEMBER");
+            months.addAll("January", "February", "March", "April", "May", "June", "July",
+                    "August", "September", "October", "November", "December");
 
             monthAxis.setCategories(months);
 
