@@ -32,16 +32,8 @@ public class ViewQualityReportController {
     @FXML private TableColumn<QualityReport, Integer> virusCol;
     @FXML private TableColumn<QualityReport, Integer> contaminantCol;
 
-    /**List of all reports, and users*/
-    private ArrayList<User> userList;
-    private ArrayList<QualityReport> qualityReportsMaster;
-    private ArrayList<QualityReport> qualityReports;
-    private ArrayList<QualityReport> userQualityReports;
-
     AccountsManager account = LoginController.accounts;
     User user = account.getUser();
-
-
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -59,22 +51,6 @@ public class ViewQualityReportController {
         conditionCol.setCellValueFactory(new PropertyValueFactory<QualityReport, String>("Condition"));
         virusCol.setCellValueFactory(new PropertyValueFactory<QualityReport, Integer>("Virus"));
         contaminantCol.setCellValueFactory(new PropertyValueFactory<QualityReport, Integer>("Contaminant"));
-        userQualityReports = user.getUserQualityReports();
-        userList = account.getUserList();
-        qualityReports = account.getQualityReportsList();
-        userList.forEach(u -> {
-            if (account.getQualityReportsList() != null) {
-                if (qualityReportsMaster == null) {
-                    qualityReportsMaster = u.getUserQualityReports();
-                } else {
-                    account.getQualityReportsList().forEach(r -> {
-                        if (!qualityReportsMaster.contains(r)) {
-                            qualityReportsMaster.add(r);
-                        }
-                    });
-                }
-            }
-        });
         refresh();
     }
 
@@ -91,9 +67,13 @@ public class ViewQualityReportController {
      * Refreshes and displays the report table
      */
     public void refresh() {
-        if(qualityReportsMaster != null) {
-            qualityReportTable.getItems().setAll(qualityReportsMaster);
-        }
+        account.getQualityReportsList().forEach(r -> {
+            if (r.getReportUsername().equals(account.getCurrentUsername())) {
+                if (!qualityReportTable.getItems().contains(r)) {
+                    qualityReportTable.getItems().add(r);
+                }
+            }
+        });
     }
 
     /**
@@ -115,21 +95,12 @@ public class ViewQualityReportController {
             alert.setHeaderText("No Report Selected");
             alert.setContentText("You must first a report in order to delete it.");
             alert.showAndWait();
-        } else if (userQualityReports == null || !userQualityReports.contains(selectedReport)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Cannot Delete Report");
-            alert.setContentText("You lack the user privileges to delete reports of other users.");
-            alert.showAndWait();
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("CONFIRM DELETE REPORT");
             alert.setHeaderText("Are you sure you want to delete the selected report?");
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
-                    userQualityReports.remove(selectedReport);
-                    qualityReportsMaster.remove(selectedReport);
-                    user.deleteQualityReport(selectedReport);
                     account.removeQualityReport(selectedReport);
                     refresh();
                 }

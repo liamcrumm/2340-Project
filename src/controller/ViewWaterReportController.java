@@ -30,11 +30,6 @@ public class ViewWaterReportController {
     @FXML private TableColumn<WaterReport, String> typeCol;
     @FXML private TableColumn<WaterReport, String> conditionCol;
 
-    /** Arraylists for users and reports*/
-    private ArrayList<User> userList;
-    private ArrayList<WaterReport> userReportsMaster;
-    private ArrayList<WaterReport> userReports;
-
     AccountsManager account = LoginController.accounts;
     User user = account.getUser();
 
@@ -56,21 +51,6 @@ public class ViewWaterReportController {
         longCol.setCellValueFactory(new PropertyValueFactory<WaterReport, Double>("Long"));
         typeCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("Type"));
         conditionCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("Condition"));
-        userReports = user.getUserWaterReports();
-        userList = account.getUserList();
-        userList.forEach(u -> {
-            if (u.getUserWaterReports() != null) {
-                if (userReportsMaster == null) {
-                    userReportsMaster = u.getUserWaterReports();
-                } else {
-                    u.getUserWaterReports().forEach(r -> {
-                        if (!userReportsMaster.contains(r)) {
-                            userReportsMaster.add(r);
-                        }
-                    });
-                }
-            }
-        });
         refresh();
     }
 
@@ -86,9 +66,13 @@ public class ViewWaterReportController {
      * Refreshes and displays the report table
      */
     public void refresh() {
-        if(userReportsMaster != null) {
-            reportTable.getItems().setAll(userReportsMaster);
-        }
+        account.getWaterReportsList().forEach(r -> {
+            if (r.getReportUsername().equals(account.getCurrentUsername())) {
+                if (!reportTable.getItems().contains(r)) {
+                    reportTable.getItems().add(r);
+                }
+            }
+        });
     }
 
     /**
@@ -103,23 +87,13 @@ public class ViewWaterReportController {
             alert.setHeaderText("No Report Selected");
             alert.setContentText("You must first a report in order to delete it.");
             alert.showAndWait();
-        } else if (userReports == null || !userReports.contains(selectedReport)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Cannot Delete Report");
-            alert.setContentText("You lack the user privileges to delete reports of other users.");
-            alert.showAndWait();
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("CONFIRM DELETE REPORT");
             alert.setHeaderText("Are you sure you want to delete the selected report?");
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
-                    userReports.remove(selectedReport);
-                    userReportsMaster.remove(selectedReport);
-                    user.deleteWaterReport(selectedReport);
-                    account.getWaterReportsList().remove(selectedReport);
-                    refresh();
+                    account.removeWaterReport(selectedReport);
                 }
             });
         }

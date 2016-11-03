@@ -166,7 +166,7 @@ public class QualityReport implements Report {
         quality.put("long",_long);
         quality.put("condition",_condition);
         quality.put("virus",_virus);
-        quality.put("contaminent",_contaminant);
+        quality.put("contaminant",_contaminant);
         return quality;
     }
 

@@ -147,8 +147,8 @@ public class WaterReport implements Report {
         quality.put("time",_time);
         quality.put("lat",_lat);
         quality.put("long",_long);
-        quality.put("condition",_condition);
         quality.put("type",_type);
+        quality.put("condition",_condition);
         return quality;
     }
 
