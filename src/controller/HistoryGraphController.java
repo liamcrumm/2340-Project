@@ -14,10 +14,7 @@ import model.AccountsManager;
 import model.QualityReport;
 
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Kimberly Burke on 10/29/2016.
@@ -72,7 +69,9 @@ public class HistoryGraphController {
             for(QualityReport r: qreps) {
                 String loc = r.getLat() + "," + r.getLong();
                 locations.add(loc);
-                int year = r.getDate().getYear();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(r.getDate());
+                int year = cal.get(Calendar.YEAR);
                 years.add(year);
             }
             locationComboBox.setItems(locations);
@@ -165,9 +164,11 @@ public class HistoryGraphController {
                 for (QualityReport r : allReports) {
                     double repLat = r.getLat();
                     double repLong = r.getLong();
-                    int repYear = r.getDate().getYear();
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(r.getDate());
+                    int repYear = cal.get(Calendar.YEAR);
                     if (repLat == lat && repLong == longitude && repYear == yearSelected) {
-                        String month = r.getDate().getMonth().toString();
+                        String month = Integer.toString(cal.get(Calendar.MONTH));
                         int virus = r.getVirus();
                         series.getData().add(new XYChart.Data<String, Integer>(month, virus));
 
@@ -181,9 +182,11 @@ public class HistoryGraphController {
                 for (QualityReport r : allReports) {
                     double repLat = r.getLat();
                     double repLong = r.getLong();
-                    int repYear = r.getDate().getYear();
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(r.getDate());
+                    int repYear = cal.get(Calendar.YEAR);
                     if (repLat == lat && repLong == longitude && repYear == yearSelected) {
-                        String month = r.getDate().getMonth().toString();
+                        String month = Integer.toString((cal.get(Calendar.MONTH)));
                         int cont = r.getContaminant();
                         series.getData().add(new XYChart.Data<String, Integer>(month, cont));
 
