@@ -94,6 +94,7 @@ public class ViewWaterReportController {
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     account.removeWaterReport(selectedReport);
+                    refresh();
                 }
             });
         }
