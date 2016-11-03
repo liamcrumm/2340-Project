@@ -114,8 +114,6 @@ public class SubmitWaterReportScreenController {
 
         WaterReport report = new WaterReport(repNum, username, date, time, latitude, longitudeD, type, condition);
         account.addWaterReport(report);
-        User current = account.getUser();
-        current.addWaterReport(report);
 
         mainApplication.showAccountScreen();
 

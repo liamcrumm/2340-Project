@@ -3,6 +3,9 @@ package controller;
 import fxapp.MainFXApplication;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -66,13 +69,15 @@ public class ViewWaterReportController {
      * Refreshes and displays the report table
      */
     public void refresh() {
+        reportTable.setItems(FXCollections.observableArrayList());
         account.getWaterReportsList().forEach(r -> {
             if (r.getReportUsername().equals(account.getCurrentUsername())) {
-                if (!reportTable.getItems().contains(r)) {
+                if(!reportTable.getItems().contains(r)) {
                     reportTable.getItems().add(r);
                 }
             }
         });
+        reportTable.refresh();
     }
 
     /**
@@ -94,6 +99,7 @@ public class ViewWaterReportController {
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     account.removeWaterReport(selectedReport);
+                    refresh();
                 }
             });
         }

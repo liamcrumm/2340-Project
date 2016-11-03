@@ -1,6 +1,7 @@
 package controller;
 
 import fxapp.MainFXApplication;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -67,6 +68,7 @@ public class ViewQualityReportController {
      * Refreshes and displays the report table
      */
     public void refresh() {
+        qualityReportTable.setItems(FXCollections.observableArrayList());
         account.getQualityReportsList().forEach(r -> {
             if (r.getReportUsername().equals(account.getCurrentUsername())) {
                 if (!qualityReportTable.getItems().contains(r)) {
@@ -74,6 +76,7 @@ public class ViewQualityReportController {
                 }
             }
         });
+        qualityReportTable.refresh();
     }
 
     /**

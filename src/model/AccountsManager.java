@@ -123,6 +123,7 @@ public class AccountsManager {
      * @return The list of water reports in the system
      */
     public ArrayList<WaterReport> getWaterReportsList() {
+        waterReports = new ArrayList<>();
         MongoCollection waterDB = accountsDB.getCollection("water_reports");
         FindIterable<Document> finder = waterDB.find();
         long entries = waterDB.count();
@@ -130,7 +131,7 @@ public class AccountsManager {
             Document report = finder.skip((int)i).first();
             WaterReport w = new WaterReport((int)report.get("repNum"),(String)report.get("username"),
                     (Date)report.get("date"),(String)report.get("time"),(double)report.get("lat"),
-                    (double)report.get("long"),(String)report.get("condition"),(String)report.get("type"));
+                    (double)report.get("long"),(String)report.get("type"),(String)report.get("condition"));
             waterReports.add(w);
         }
         return waterReports;
@@ -160,6 +161,7 @@ public class AccountsManager {
      * @return The list of quality reports in the system
      */
     public ArrayList<QualityReport> getQualityReportsList() {
+        qualityReports = new ArrayList<>();
         MongoCollection qualityDB = accountsDB.getCollection("quality_reports");
         FindIterable<Document> finder = qualityDB.find();
         long entries = qualityDB.count();
@@ -168,7 +170,7 @@ public class AccountsManager {
             QualityReport q = new QualityReport((int)report.get("repNum"),(String)report.get("username"),
                     (Date)report.get("date"),(String)report.get("time"),(double)report.get("lat"),
                     (double)report.get("long"),(String)report.get("condition"),(int)report.get("virus"),
-                    (int)report.get("contaminent"));
+                    (int)report.get("contaminant"));
             qualityReports.add(q);
         }
         return qualityReports;
