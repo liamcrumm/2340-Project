@@ -44,6 +44,9 @@ public class HistoryGraphController {
     /** flag to signal whether dialog was closed normally */
     private boolean _okClicked = false;
 
+    String[] Months = {"January", "February", "March", "April", "May", "June", "July",
+            "August", "September", "October", "November", "December"};
+
     /**
      * Initializes the controller class. This method is automatically called
      * after the constructor and after the fxml file has been loaded.
@@ -168,7 +171,7 @@ public class HistoryGraphController {
                     cal.setTime(r.getDate());
                     int repYear = cal.get(Calendar.YEAR);
                     if (repLat == lat && repLong == longitude && repYear == yearSelected) {
-                        String month = Integer.toString(cal.get(Calendar.MONTH));
+                        String month = Months[cal.get(Calendar.MONTH)];
                         int virus = r.getVirus();
                         series.getData().add(new XYChart.Data<String, Integer>(month, virus));
 
@@ -186,7 +189,7 @@ public class HistoryGraphController {
                     cal.setTime(r.getDate());
                     int repYear = cal.get(Calendar.YEAR);
                     if (repLat == lat && repLong == longitude && repYear == yearSelected) {
-                        String month = Integer.toString((cal.get(Calendar.MONTH)));
+                        String month = Months[(cal.get(Calendar.MONTH))];
                         int cont = r.getContaminant();
                         series.getData().add(new XYChart.Data<String, Integer>(month, cont));
 

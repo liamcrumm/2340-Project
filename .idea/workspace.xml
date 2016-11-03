@@ -77,8 +77,8 @@
       <file leaf-file-name="HistoryGraphController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/HistoryGraphController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="185" column="41" selection-start-line="185" selection-start-column="34" selection-end-line="185" selection-end-column="41" />
+            <state relative-caret-position="17">
+              <caret line="157" column="57" selection-start-line="157" selection-start-column="57" selection-end-line="157" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -884,7 +884,14 @@
       <option name="project" value="LOCAL" />
       <updated>1478131109657</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fixed issue with wrong date class">
+      <created>1478131609174</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1478131609174</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -972,7 +979,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Laid down FX Application Foundations including: MainScreenController and .fxml file, LoginController and .fxml file, and WelcomeController. - Kim&#10;&#10;Bug with loading the other .fxml files outside of MainScreen.fxml." />
     <MESSAGE value="Laid down FX Application Foundations including: MainScreenController and .fxml file, LoginController and .fxml file, and WelcomeController. - Kim&#10;                                                                  &#10;                                                                  Bug with loading the other .fxml files outside of MainScreen.fxml." />
     <MESSAGE value="Implemented Login checking, including adding a showMainScreen() method to the MainFXApplication so that I could make the main application appear." />
     <MESSAGE value="Added some of the edit profile functionality and created the Profile class in the model folder." />
@@ -997,7 +1003,8 @@
     <MESSAGE value="Fixed bug where deleting water report didn't delete the marker on the map." />
     <MESSAGE value="Made database for persistance which is now online" />
     <MESSAGE value="added mongo driver to git" />
-    <option name="LAST_COMMIT_MESSAGE" value="added mongo driver to git" />
+    <MESSAGE value="fixed issue with wrong date class" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed issue with wrong date class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1448,8 +1455,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/HistoryGraphController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="185" column="41" selection-start-line="185" selection-start-column="34" selection-end-line="185" selection-end-column="41" />
+        <state relative-caret-position="17">
+          <caret line="157" column="57" selection-start-line="157" selection-start-column="57" selection-end-line="157" selection-end-column="57" />
           <folding />
         </state>
       </provider>
