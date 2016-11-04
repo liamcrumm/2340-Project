@@ -69,11 +69,9 @@ public class ViewQualityReportController {
     public void refresh() {
         qualityReportTable.getItems().clear();
         account.getQualityReportsList().forEach(r -> {
-            if (r.getReportUsername().equals(account.getCurrentUsername())) {
                 if (!qualityReportTable.getItems().contains(r)) {
                     qualityReportTable.getItems().add(r);
                 }
-            }
         });
     }
 
@@ -96,7 +94,14 @@ public class ViewQualityReportController {
             alert.setHeaderText("No Report Selected");
             alert.setContentText("You must first a report in order to delete it.");
             alert.showAndWait();
-        } else {
+        } else if(selectedReport.getReportUsername() != account.getCurrentUsername()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("You can't delete this");
+            alert.setContentText("You do not have permission to delete this.");
+            alert.showAndWait();
+        }
+        else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("CONFIRM DELETE REPORT");
             alert.setHeaderText("Are you sure you want to delete the selected report?");

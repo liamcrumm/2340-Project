@@ -68,11 +68,10 @@ public class ViewWaterReportController {
     public void refresh() {
         reportTable.getItems().clear();
         account.getWaterReportsList().forEach(r -> {
-            if (r.getReportUsername().equals(account.getCurrentUsername())) {
                 if (!reportTable.getItems().contains(r)) {
                     reportTable.getItems().add(r);
                 }
-            }
+
         });
     }
 
