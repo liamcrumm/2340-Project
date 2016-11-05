@@ -123,7 +123,7 @@ public class AccountsManager {
      * @return The list of water reports in the system
      */
     public ArrayList<WaterReport> getWaterReportsList() {
-        waterReports = new ArrayList<>();
+        waterReports = new ArrayList<WaterReport>();
         MongoCollection waterDB = accountsDB.getCollection("water_reports");
         FindIterable<Document> finder = waterDB.find();
         long entries = waterDB.count();
@@ -161,7 +161,7 @@ public class AccountsManager {
      * @return The list of quality reports in the system
      */
     public ArrayList<QualityReport> getQualityReportsList() {
-        qualityReports = new ArrayList<>();
+        qualityReports = new ArrayList<QualityReport>();
         MongoCollection qualityDB = accountsDB.getCollection("quality_reports");
         FindIterable<Document> finder = qualityDB.find();
         long entries = qualityDB.count();
