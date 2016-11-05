@@ -87,6 +87,13 @@ public class ViewWaterReportController {
             alert.setHeaderText("No Report Selected");
             alert.setContentText("You must first a report in order to delete it.");
             alert.showAndWait();
+        } else if (!account.getCurrentUsername().equals(selectedReport.getReportUsername())
+                &&!account.getUser().getAccountType().equals("Manager")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("You do not have permission to modify that report");
+            alert.setContentText("You can only delete your own reports.");
+            alert.showAndWait();
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("CONFIRM DELETE REPORT");
