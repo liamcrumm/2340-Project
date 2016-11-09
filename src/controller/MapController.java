@@ -55,7 +55,7 @@ public class MapController implements Initializable, MapComponentInitializedList
         MapOptions options = new MapOptions();
 
 
-        /** now we communciate with the model to get all the locations for markers */
+        /** now we communicate with the model to get all the locations for markers */
         AccountsManager ac = LoginController.accounts;
 
         //set up the center location for the map

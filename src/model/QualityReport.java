@@ -153,7 +153,7 @@ public class QualityReport implements Report {
     public void setContaminant(int contaminant) { _contaminant = contaminant; }
 
     /**
-     * Method to store persistent data for a qualityreport
+     * Method to store persistent data for a quality report
      * @return  Document with relevant data for Quality report
      */
     public Document toDoc() {

@@ -96,7 +96,7 @@ public class AccountsManager {
 
     /**
      * Returns a list of users that are registered in the application.
-     * @param u  a user to add to userlist
+     * @param u  a user to add to user list
      */
     public void addUser(User u) {
         MongoCollection userDB = accountsDB.getCollection("user");
@@ -106,7 +106,7 @@ public class AccountsManager {
 
     /**
      * updates User information
-     * @param u  a user to add to userlist
+     * @param u  a user to add to user list
      */
     public void updateUser(User u) {
         MongoCollection userDB = accountsDB.getCollection("user");
@@ -117,7 +117,7 @@ public class AccountsManager {
 
     /**
      * deletes user account
-     * @param u  a user to add to userlist
+     * @param u  a user to add to user list
      */
     public void deleteUser(User u) {
         MongoCollection userDB = accountsDB.getCollection("user");

@@ -136,7 +136,7 @@ public class WaterReport implements Report {
      */
     public void setReportNumber(int num) { _reportNumber = num; }
     /**
-     * Method to store persistent data for a waterreport
+     * Method to store persistent data for a water report
      * @return  Document with relevant data for Water report
      */
     public Document toDoc() {
