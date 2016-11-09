@@ -14,12 +14,11 @@
    <top>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-            <Label prefHeight="17.0" text="Welcome!">
+            <Label prefHeight="30.0" prefWidth="249.0" text="Welcome!">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#accountSettingsPressed" text="Account Settings" />
             <Button mnemonicParsing="false" onAction="#viewProfilePressed" text="View Profile" />
             <Button mnemonicParsing="false" onAction="#logoutPressed" text="Log Out" />
         </buttons>

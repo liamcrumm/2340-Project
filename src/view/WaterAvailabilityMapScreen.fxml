@@ -13,17 +13,9 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
             <GoogleMapView fx:id="mapView" prefHeight="750.0" prefWidth="761.0" AnchorPane.bottomAnchor="-185.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-441.0" AnchorPane.topAnchor="0.0" />
-                  <Button layoutX="452.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleBackPressed" prefHeight="25.0" prefWidth="134.0" text="Back to Home Screen" />
+              <Button layoutX="20.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleBackPressed" prefHeight="25.0" prefWidth="134.0" text="Back to Home Screen" />
           </children>
         </AnchorPane>
-      </content>
-    </Tab>
-    <Tab text="Availability Log">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <Button layoutX="452.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleBackPressed" prefHeight="25.0" prefWidth="134.0" text="Back to Home Screen" />
-               </children></AnchorPane>
       </content>
     </Tab>
   </tabs>

@@ -41,16 +41,16 @@ public class AccountController {
         User user = accounts.getUser();
         String userType = user.getAccountType();
         if (userType.compareTo("Manager") == 0) {
-            viewHistoryGraphButton.setDisable(false);
+            viewHistoryGraphButton.setVisible(true);
         } else {
-            viewHistoryGraphButton.setDisable(true);
+            viewHistoryGraphButton.setVisible(false);
         }
         if (userType.compareTo("Worker") == 0 || userType.compareTo("Manager") == 0) {
-            submitQualityButton.setDisable(false);
-            viewQualityButton.setDisable(false);
+            submitQualityButton.setVisible(true);
+            viewQualityButton.setVisible(true);
         } else {
-            submitQualityButton.setDisable(true);
-            viewQualityButton.setDisable(true);
+            submitQualityButton.setVisible(false);
+            viewQualityButton.setVisible(false);
         }
 }
 
@@ -80,21 +80,6 @@ public class AccountController {
 
 
 
-    }
-
-    /**
-     * Button handler for account settings button
-     */
-    @FXML
-    public void accountSettingsPressed() {
-        // Show the error message if bad data
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(mainApplication.getMainScreen());
-        alert.setTitle("Unimplemented");
-        alert.setHeaderText("Unimplemented Feature");
-        alert.setContentText("Sorry, Account Settings is not yet implemented!");
-
-        alert.showAndWait();
     }
 
     /**
