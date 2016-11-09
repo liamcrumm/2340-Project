@@ -25,7 +25,7 @@ public class HistoryGraphController {
     @FXML
     private MainFXApplication mainApplication;
 
-    AccountsManager account = LoginController.accounts;
+    AccountsManager accounts = LoginController.accounts;
 
     @FXML private RadioButton virusButton;
     @FXML private RadioButton contaminantButton;
@@ -62,7 +62,7 @@ public class HistoryGraphController {
         //add the locations and years as dropdown options in the corresponding combo boxes
         ObservableList<String> locations = FXCollections.observableArrayList();
         ObservableList<Integer> years = FXCollections.observableArrayList();
-        ArrayList<QualityReport> qreps = account.getQualityReportsList();
+        ArrayList<QualityReport> qreps = accounts.getQualityReportsList();
         if (qreps == null || qreps.size() == 0) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Graph cannot be created");
@@ -160,7 +160,7 @@ public class HistoryGraphController {
             String ppm = selectedPPM.getText();
 
             //Get the reports that match the year and location given
-            ArrayList<QualityReport> allReports = account.getQualityReportsList();
+            ArrayList<QualityReport> allReports = accounts.getQualityReportsList();
             XYChart.Series<String, Integer> series = new XYChart.Series<String, Integer>();
             //Make the graph according to the ppm that is given
             if (ppm.equals("Virus")) {

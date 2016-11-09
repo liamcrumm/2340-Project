@@ -27,7 +27,7 @@ public class AccountController {
 
     private MainFXApplication mainApplication;
 
-    private AccountsManager accountMng;
+    private AccountsManager accounts;
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -37,8 +37,8 @@ public class AccountController {
     @FXML
     private void initialize() {
         /** now we communicate with the model to get the user*/
-        accountMng = LoginController.accounts;
-        User user = accountMng.getUser();
+        accounts = LoginController.accounts;
+        User user = accounts.getUser();
         String userType = user.getAccountType();
         if (userType.compareTo("Manager") == 0) {
             viewHistoryGraphButton.setDisable(false);

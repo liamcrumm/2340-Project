@@ -31,8 +31,8 @@ public class ViewProfileController {
      */
     @FXML
     private void initialize() {
-        AccountsManager account = LoginController.accounts;
-        User user = account.getUser();
+        AccountsManager accounts = LoginController.accounts;
+        User user = accounts.getUser();
         if(user.getProfile() != null) {
             Profile prof = user.getProfile();
             nameField.setText(prof.getName());

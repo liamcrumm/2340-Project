@@ -30,8 +30,8 @@ public class ViewWaterReportController {
     @FXML private TableColumn<WaterReport, String> typeCol;
     @FXML private TableColumn<WaterReport, String> conditionCol;
 
-    AccountsManager account = LoginController.accounts;
-    User user = account.getUser();
+    AccountsManager accounts = LoginController.accounts;
+    User user = accounts.getUser();
 
     /**
      * Initializes controller class. This method is automatically called
@@ -67,7 +67,7 @@ public class ViewWaterReportController {
      */
     public void refresh() {
         reportTable.getItems().clear();
-        account.getWaterReportsList().forEach(r -> {
+        accounts.getWaterReportsList().forEach(r -> {
                 if (!reportTable.getItems().contains(r)) {
                     reportTable.getItems().add(r);
                 }
@@ -85,10 +85,10 @@ public class ViewWaterReportController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("No Report Selected");
-            alert.setContentText("You must first a report in order to delete it.");
+            alert.setContentText("You must first select a report in order to delete it.");
             alert.showAndWait();
-        } else if (!account.getCurrentUsername().equals(selectedReport.getReportUsername())
-                &&!account.getUser().getAccountType().equals("Manager")) {
+        } else if (!accounts.getCurrentUsername().equals(selectedReport.getReportUsername())
+                &&!accounts.getUser().getAccountType().equals("Manager")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("You do not have permission to modify that report");
@@ -100,7 +100,7 @@ public class ViewWaterReportController {
             alert.setHeaderText("Are you sure you want to delete the selected report?");
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
-                    account.removeWaterReport(selectedReport);
+                    accounts.removeWaterReport(selectedReport);
                     refresh();
                 }
             });

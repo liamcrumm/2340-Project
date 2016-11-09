@@ -32,8 +32,8 @@ public class ViewQualityReportController {
     @FXML private TableColumn<QualityReport, Integer> virusCol;
     @FXML private TableColumn<QualityReport, Integer> contaminantCol;
 
-    AccountsManager account = LoginController.accounts;
-    User user = account.getUser();
+    AccountsManager accounts = LoginController.accounts;
+    User user = accounts.getUser();
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -68,7 +68,7 @@ public class ViewQualityReportController {
      */
     public void refresh() {
         qualityReportTable.getItems().clear();
-        account.getQualityReportsList().forEach(r -> {
+        accounts.getQualityReportsList().forEach(r -> {
                 if (!qualityReportTable.getItems().contains(r)) {
                     qualityReportTable.getItems().add(r);
                 }
@@ -92,10 +92,10 @@ public class ViewQualityReportController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("No Report Selected");
-            alert.setContentText("You must first a report in order to delete it.");
+            alert.setContentText("You must first select a report in order to delete it.");
             alert.showAndWait();
-        } else if (!account.getCurrentUsername().equals(selectedReport.getReportUsername())
-                &&!account.getUser().getAccountType().equals("Manager")) {
+        } else if (!accounts.getCurrentUsername().equals(selectedReport.getReportUsername())
+                &&!accounts.getUser().getAccountType().equals("Manager")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("You do not have permission to modify that report");
@@ -107,7 +107,7 @@ public class ViewQualityReportController {
             alert.setHeaderText("Are you sure you want to delete the selected report?");
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
-                    account.removeQualityReport(selectedReport);
+                    accounts.removeQualityReport(selectedReport);
                     refresh();
                 }
             });

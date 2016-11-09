@@ -15,7 +15,7 @@ import java.util.Date;
 /**
  * Created by Sakhi on 10/10/16.
  */
-public class SubmitWaterReportScreenController {
+public class SubmitWaterReportController {
 
     @FXML private TextField nameField;
     @FXML private DatePicker dateField;
@@ -41,7 +41,7 @@ public class SubmitWaterReportScreenController {
     ToggleGroup typeGroup = new ToggleGroup();
     ToggleGroup conditionGroup = new ToggleGroup();
 
-    AccountsManager account = LoginController.accounts;
+    AccountsManager accounts = LoginController.accounts;
 
     /** a link back to the main application class */
     private MainFXApplication mainApplication;
@@ -54,7 +54,7 @@ public class SubmitWaterReportScreenController {
     @FXML
     private void initialize() {
         dateField.setValue(LocalDate.now()); // set date to current date
-        nameField.setText(account.getCurrentUsername()); // set name to current user
+        nameField.setText(accounts.getCurrentUsername()); // set name to current user
 
         amButton.setToggleGroup(timeGroup);
         pmButton.setToggleGroup(timeGroup);
@@ -95,9 +95,9 @@ public class SubmitWaterReportScreenController {
      */
     @FXML
     public void handleSavePressed() {
-        int repNum = account.getWaterReportsList().size();
+        int repNum = accounts.getWaterReportsList().size();
 
-        String username = account.getCurrentUsername();
+        String username = accounts.getCurrentUsername();
         Date date = Date.from(dateField.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 
         RadioButton selectedTime = (RadioButton) timeGroup.getSelectedToggle();
@@ -113,7 +113,7 @@ public class SubmitWaterReportScreenController {
         String condition = selectedCondition.getText();
 
         WaterReport report = new WaterReport(repNum, username, date, time, latitude, longitudeD, type, condition);
-        account.addWaterReport(report);
+        accounts.addWaterReport(report);
 
         mainApplication.showAccountScreen();
 

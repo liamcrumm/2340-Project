@@ -97,16 +97,16 @@ public class RegistrationController extends Application {
      * Handles registration after verification
      */
     public void handleSubmitPressed() {
-        AccountsManager man = LoginController.accounts;
+        AccountsManager accounts = LoginController.accounts;
         if(isInputValid()) {
-            if(uniqueUsername(man,usernameField.getText())) {
-                man.addUser(new User(usernameField.getText(),
+            if(uniqueUsername(accounts,usernameField.getText())) {
+                accounts.addUser(new User(usernameField.getText(),
                         passwordField.getText(), new Profile(nameField.getText(),
                         null, null, null, null, null), accountType.getValue().toString()));
                 _dialogStage.close();
                 _okClicked = true;
                 mainApplication.showAccountScreen();
-                man.setCurrentUser(usernameField.getText());
+                accounts.setCurrentUser(usernameField.getText());
             }
         }
     }

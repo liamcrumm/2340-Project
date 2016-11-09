@@ -35,7 +35,7 @@ public class SubmitQualityReportController {
     ToggleGroup timeGroup = new ToggleGroup();
     ToggleGroup conditionGroup = new ToggleGroup();
 
-    AccountsManager account = LoginController.accounts;
+    AccountsManager accounts = LoginController.accounts;
 
     /** a link back to the main application class */
     private MainFXApplication mainApplication;
@@ -48,7 +48,7 @@ public class SubmitQualityReportController {
     @FXML
     private void initialize() {
         dateField.setValue(LocalDate.now()); // set date to current date
-        nameField.setText(account.getCurrentUsername());
+        nameField.setText(accounts.getCurrentUsername());
 
         amButton.setToggleGroup(timeGroup);
         pmButton.setToggleGroup(timeGroup);
@@ -82,16 +82,16 @@ public class SubmitQualityReportController {
      */
     @FXML
     public void handleSavePressed() {
-        int repNum = account.getQualityReportsList().size();
+        int repNum = accounts.getQualityReportsList().size();
 
-        String username = account.getCurrentUsername();
+        String username = accounts.getCurrentUsername();
         Date date = Date.from(dateField.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 
         RadioButton selectedTime = (RadioButton) timeGroup.getSelectedToggle();
         String time = timeField.getText() + " " + selectedTime.getText();
 
         double latitude = Double.parseDouble(latitudeField.getText());
-        double longitudeD = Double.parseDouble(longitudeField.getText());
+        double longitude = Double.parseDouble(longitudeField.getText());
 
         RadioButton selectedCondition = (RadioButton) conditionGroup.getSelectedToggle();
         String condition = selectedCondition.getText();
@@ -99,9 +99,9 @@ public class SubmitQualityReportController {
         int virus = Integer.parseInt(virusField.getText());
         int contaminant = Integer.parseInt(contaminantField.getText());
 
-        QualityReport report = new QualityReport(repNum, username, date, time, latitude, longitudeD, condition, virus, contaminant);
-        account.addQualityReport(report);
-        User current = account.getUser();
+        QualityReport report = new QualityReport(repNum, username, date, time, latitude, longitude, condition, virus, contaminant);
+        accounts.addQualityReport(report);
+        User current = accounts.getUser();
         current.addQualityReport(report);
         mainApplication.showAccountScreen();
 

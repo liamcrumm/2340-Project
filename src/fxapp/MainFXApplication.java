@@ -117,8 +117,8 @@ public class MainFXApplication extends Application {
     }
 
     /**
-     * Opens a dialog for user to enter credentials. If the user
-     * clicks OK, will check if credentials are valid.
+     * Opens a dialog for user to enter credentials to login. If the user
+     * clicks OK, will check if credentials are valid and login user in.
      *
      * @return true if the user clicked OK, false otherwise.
      * */
@@ -157,8 +157,9 @@ public class MainFXApplication extends Application {
     }
 
     /**
-     * Opens a dialog for user to enter credentials. If the user
-     * clicks OK, will check if credentials are valid.
+     * Opens a dialog for user to enter credentials to register a new account.
+     * If the user clicks OK, will create a new User and store into the
+     * Accounts Manager.
      *
      * @return true if the user clicked submit or cancel, false otherwise.
      * */
@@ -249,7 +250,7 @@ public class MainFXApplication extends Application {
 
         } catch (IOException e) {
             //error on load, so log it
-            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for Profile!");
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ViewProfileScreen!");
             e.printStackTrace();
         }
     }
@@ -283,7 +284,7 @@ public class MainFXApplication extends Application {
     }
 
     /**
-     * Setup the submit water reprot screen that is shown when user selects "Submit Report".
+     * Setup the submit water report screen that is shown when user selects "Submit Report".
      * This is displayed in the startup window
      *
      * precondition - the main stage is already initialized and showing (initRootLayout has been called)
@@ -300,7 +301,7 @@ public class MainFXApplication extends Application {
             rootLayout.setCenter(SubmitWaterReportScreen);
 
             // Give the controller access to the main app.
-            SubmitWaterReportScreenController controller = loader.getController();
+            SubmitWaterReportController controller = loader.getController();
             controller.setMainApp(this);
 
         } catch (IOException e) {
@@ -344,11 +345,11 @@ public class MainFXApplication extends Application {
         try {
             // Load main screen.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../view/WaterAvailabilityMap.fxml"));
-            TabPane WaterAvailabilityMap = loader.load();
+            loader.setLocation(MainFXApplication.class.getResource("../view/WaterAvailabilityMapScreen.fxml"));
+            TabPane WaterAvailabilityMapScreen = loader.load();
 
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(WaterAvailabilityMap);
+            rootLayout.setCenter(WaterAvailabilityMapScreen);
 
             // Give the controller access to the main app.
             MapController controller = loader.getController();
@@ -356,7 +357,7 @@ public class MainFXApplication extends Application {
 
         } catch (IOException e) {
             //error on load, so log it
-            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ViewReportScreen!");
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for WaterAvailabilityMapScreen!");
             e.printStackTrace();
         }
     }
@@ -448,7 +449,7 @@ public class MainFXApplication extends Application {
             return controller.isOkClicked();
 
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ShowRegistrationScreen!");
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for HistoryGraphScreen!");
             e.printStackTrace();
             return false;
         }
