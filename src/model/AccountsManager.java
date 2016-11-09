@@ -68,6 +68,7 @@ public class AccountsManager {
      * @return a array list of all the users registered for this application
      */
     public ArrayList<User> getUserList() {
+        users = new ArrayList<>();
         MongoCollection userDB = accountsDB.getCollection("user");
         FindIterable<Document> finder = userDB.find();
         long entries = userDB.count();
@@ -103,11 +104,25 @@ public class AccountsManager {
         userDB.insertOne(d);
     }
 
+    /**
+     * updates User information
+     * @param u  a user to add to userlist
+     */
     public void updateUser(User u) {
         MongoCollection userDB = accountsDB.getCollection("user");
         Document d = u.toDoc();
         userDB.findOneAndUpdate(new Document("username",currentUsername),new BasicDBObject("$set",
                 new BasicDBObject("profile", u.getProfile().toDocument())));
+    }
+
+    /**
+     * deletes user account
+     * @param u  a user to add to userlist
+     */
+    public void deleteUser(User u) {
+        MongoCollection userDB = accountsDB.getCollection("user");
+        Document d = u.toDoc();
+        userDB.findOneAndDelete(d);
     }
 
     /**

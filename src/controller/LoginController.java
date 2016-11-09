@@ -138,7 +138,6 @@ public class LoginController {
      *
      * @return true if the input is valid
      */
-
     private boolean isInputValid() {
         String errorMessage = "";
 

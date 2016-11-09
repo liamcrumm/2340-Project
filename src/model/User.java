@@ -146,7 +146,11 @@ public class User {
         Document user = new Document();
         user.put("username",_username);
         user.put("password",_password);
-        user.put("profile",_profile.toDocument());
+        if (_profile != null) {
+            user.put("profile",_profile.toDocument());
+        } else {
+            user.put("profile",null);
+        }
         user.put("accountType",_accountType);
         /*Document WaterReports = new Document();
         int i = 0;
