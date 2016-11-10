@@ -16,7 +16,7 @@ public class AccountsManager {
     private User currentUser;
     private ArrayList<WaterReport> waterReports;
     private ArrayList<QualityReport> qualityReports;
-    MongoDatabase accountsDB;
+    private MongoDatabase accountsDB;
 
     /**
      * Instantiates the AccountsManager class
