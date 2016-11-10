@@ -100,8 +100,6 @@ public class SubmitQualityReportController {
 
         QualityReport report = new QualityReport(repNum, username, date, time, latitude, longitude, condition, virus, contaminant);
         accounts.addQualityReport(report);
-        User current = accounts.getUser();
-        current.addQualityReport(report);
         mainApplication.showAccountScreen();
 
         alert.setTitle("Submitting Quality Report");

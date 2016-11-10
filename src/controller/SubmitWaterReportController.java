@@ -113,7 +113,6 @@ public class SubmitWaterReportController {
 
         WaterReport report = new WaterReport(repNum, username, date, time, latitude, longitudeD, type, condition);
         accounts.addWaterReport(report);
-
         mainApplication.showAccountScreen();
 
         alert.setTitle("Submitting Water Report");

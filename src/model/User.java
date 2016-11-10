@@ -16,8 +16,6 @@ public class User {
     private String _password;
     private Profile _profile;
     private String _accountType;
-    private ArrayList<WaterReport> userWaterReports;
-    private ArrayList<QualityReport> userQualityReports;
 
     /**
      * Instantiates an instance of User
@@ -90,56 +88,6 @@ public class User {
      */
     public void setProfile(Profile prof) {
         _profile = prof;
-    }
-
-    /**
-     * Adds a water report created by the user to the list of water reports that the user has submitted.
-     * @param r The water report that the user submitted.
-     */
-    public void addWaterReport(WaterReport r) {
-        if(userWaterReports == null) {
-            userWaterReports = new ArrayList<>();
-        }
-        userWaterReports.add(r);
-    }
-
-    /**
-     * Returns the list of water reports that the user has submitted.
-     * @return The list of water reports that the user has submitted.
-     */
-    public ArrayList<WaterReport> getUserWaterReports() { return userWaterReports; }
-
-    /**
-     * Removes a water report from the list of water reports.
-     * @param r The water report to be removed.
-     */
-    public void deleteWaterReport(WaterReport r) {
-        userWaterReports.remove(r);
-    }
-
-    /**
-     * Adds a quality report created by the user to the list of reports that the user has submitted.
-     * @param r The quality report that the user submitted.
-     */
-    public void addQualityReport(QualityReport r) {
-        if(userQualityReports == null) {
-            userQualityReports = new ArrayList<>();
-        }
-        userQualityReports.add(r);
-    }
-
-    /**
-     * Returns the list of quality reports that the user has submitted.
-     * @return The list of quality reports that the user has submitted.
-     */
-    public ArrayList<QualityReport> getUserQualityReports() { return userQualityReports; }
-
-    /**
-     * Removes a quality report from the list of quality reports.
-     * @param r The quality report to be removed.
-     */
-    public void deleteQualityReport(QualityReport r) {
-        userQualityReports.remove(r);
     }
 
     /**
