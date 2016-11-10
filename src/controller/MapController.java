@@ -38,6 +38,10 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     private MainFXApplication theApp;
 
+    private int zoomLevel = 9;
+
+    boolean centerSet = false;
+
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -62,7 +66,7 @@ public class MapController implements Initializable, MapComponentInitializedList
         LatLong center = new LatLong(34, -88);
 
         options.center(center)
-                .zoom(9)
+                .zoom(zoomLevel)
                 .overviewMapControl(true)
                 .panControl(true)
                 .rotateControl(false)
@@ -115,4 +119,25 @@ public class MapController implements Initializable, MapComponentInitializedList
     public void handleBackPressed() {
         theApp.showAccountScreen();
     }
+
+    /**
+     * Button handler for zoom in button
+     */
+    @FXML
+    public void zoomIn() {
+        if(map != null) {
+            map.setZoom(++zoomLevel);
+        }
+    }
+
+    /**
+     * Button handler for zoom out button
+     */
+    @FXML
+    public void zoomOut() {
+        if(map != null) {
+            map.setZoom(--zoomLevel);
+        }
+    }
 }
+
