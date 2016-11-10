@@ -24,14 +24,9 @@ public class LoginController {
     /*  **********************
        References to the FXML widgets in the .fxml file
     */
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
-    private Button loginButton;
+    @FXML private TextField usernameField;
+    @FXML private PasswordField passwordField;
+    @FXML private Button loginButton;
 
     /** the window for this dialog */
     private Stage _dialogStage;
@@ -47,11 +42,12 @@ public class LoginController {
     /*since it's necessary to keep 1 instance of accounts*/
     static AccountsManager accounts = new AccountsManager();
 
+    private Alert alert = new Alert(Alert.AlertType.ERROR);
+
     /**
      * Called automatically after load; controls disable property of buttons
      */
-    @FXML
-    private void initialize() {
+    @FXML private void initialize() {
         BooleanBinding booleanBind = usernameField.textProperty().isEmpty()
                 .or(passwordField.textProperty().isEmpty());
         loginButton.disableProperty().bind(booleanBind);
@@ -62,8 +58,7 @@ public class LoginController {
      *
      * @param mainFXApplication  a reference (link) to our main class
      */
-    @FXML
-    public void setMainApp(MainFXApplication mainFXApplication) {
+    @FXML public void setMainApp(MainFXApplication mainFXApplication) {
         mainApplication = mainFXApplication;
     }
 
@@ -88,14 +83,12 @@ public class LoginController {
     /**
      * Called when the user clicks "login".
      */
-    @FXML
-    private void handleLoginPressed() {
+    @FXML private void handleLoginPressed() {
         //First validate the data to insure it is at least reasonable
         if (isInputValid()) {
             //checks to make sure username and password are valid
             String username = usernameField.getCharacters().toString();
             String password = passwordField.getCharacters().toString();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(_dialogStage);
             alert.setTitle("Login Failed!");
             alert.setHeaderText("Incorrect Login Credentials");
@@ -127,8 +120,7 @@ public class LoginController {
     /**
      * Called when the user clicks cancel.
      */
-    @FXML
-    private void handleCancelPressed() {
+    @FXML private void handleCancelPressed() {
         _okClicked = true;
         _dialogStage.close();
     }
@@ -154,8 +146,7 @@ public class LoginController {
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            // Show the error message if bad data
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            // Show the error message if bad dataW
             alert.initOwner(_dialogStage);
             alert.setTitle("Invalid Fields");
             alert.setHeaderText("Please correct invalid fields");

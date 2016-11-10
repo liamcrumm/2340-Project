@@ -29,22 +29,15 @@ import java.util.ResourceBundle;
  */
 public class MapController implements Initializable, MapComponentInitializedListener {
 
-    @FXML
-    private GoogleMapView mapView;
-
+    @FXML private GoogleMapView mapView;
     private GoogleMap map;
-
     private Window mainStage;
-
     private MainFXApplication theApp;
-
     private int zoomLevel = 9;
-
     boolean centerSet = false;
 
-    @FXML
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    @FXML public void initialize(URL url, ResourceBundle rb) {
         mapView.addMapInializedListener(this);
     }
 
@@ -53,11 +46,9 @@ public class MapController implements Initializable, MapComponentInitializedList
         theApp = app;
     }
 
-
     @Override
     public void mapInitialized() {
         MapOptions options = new MapOptions();
-
 
         /** now we communicate with the model to get all the locations for markers */
         AccountsManager ac = LoginController.accounts;
@@ -77,9 +68,7 @@ public class MapController implements Initializable, MapComponentInitializedList
 
         map = mapView.createMap(options);
 
-
         ArrayList<WaterReport> reports = ac.getWaterReportsList();
-
 
         //LatLongBounds bounds = new LatLongBounds();
 
@@ -115,16 +104,14 @@ public class MapController implements Initializable, MapComponentInitializedList
     /**
      * Button handler for "Back" button
      */
-    @FXML
-    public void handleBackPressed() {
+    @FXML public void handleBackPressed() {
         theApp.showAccountScreen();
     }
 
     /**
      * Button handler for zoom in button
      */
-    @FXML
-    public void zoomIn() {
+    @FXML public void zoomIn() {
         if(map != null) {
             map.setZoom(++zoomLevel);
         }
@@ -133,8 +120,7 @@ public class MapController implements Initializable, MapComponentInitializedList
     /**
      * Button handler for zoom out button
      */
-    @FXML
-    public void zoomOut() {
+    @FXML public void zoomOut() {
         if(map != null) {
             map.setZoom(--zoomLevel);
         }

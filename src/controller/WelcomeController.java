@@ -14,14 +14,14 @@ public class WelcomeController {
     /** a link back to the main application class */
     private MainFXApplication mainApplication;
 
+    private Alert alert = new Alert(Alert.AlertType.ERROR);
+
     /**
      * Initializes the controller class. This method is automatically called
      * after the constructor and
      * after the fxml file has been loaded.
      */
-    @FXML
-    private void initialize() {
-
+    @FXML private void initialize() {
     }
 
     /**
@@ -30,21 +30,17 @@ public class WelcomeController {
      * @param mainFXApplication  a reference (link) to our main class
      */
     public void setMainApp(MainFXApplication mainFXApplication) {
-
         mainApplication = mainFXApplication;
-
     }
 
     /**
      * Button handler for register
      * Currently not implemented
-     */
-    @FXML
+     */@FXML
     public void registerPressed() {
         boolean submitClicked = mainApplication.showRegistrationScreen();
         // Show the error message if bad data
         if (!submitClicked) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(mainApplication.getMainScreen());
             alert.setTitle("Registration Failed!");
             alert.setHeaderText("Registration was unsuccessful");
@@ -58,12 +54,10 @@ public class WelcomeController {
     /**
      * Button handler for add student
      */
-    @FXML
-    public void loginPressed() {
+    @FXML public void loginPressed() {
 
         boolean okClicked = mainApplication.showLoginScreen();
         if (!okClicked) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(mainApplication.getMainScreen());
             alert.setTitle("Login Failed!");
             alert.setHeaderText("Login was unsuccessful");

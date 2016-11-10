@@ -25,8 +25,6 @@ public class HistoryGraphController {
     @FXML
     private MainFXApplication mainApplication;
 
-    AccountsManager accounts = LoginController.accounts;
-
     @FXML private RadioButton virusButton;
     @FXML private RadioButton contaminantButton;
     @FXML private ComboBox locationComboBox;
@@ -37,6 +35,9 @@ public class HistoryGraphController {
     @FXML private ScatterChart<String,Integer> historyGraph;
 
     ToggleGroup type = new ToggleGroup();
+
+    private AccountsManager accounts = LoginController.accounts;
+    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     /** the window for this dialog */
     private Stage _dialogStage;
@@ -52,8 +53,7 @@ public class HistoryGraphController {
      * after the constructor and after the fxml file has been loaded.
      * Sets default values into report.
      */
-    @FXML
-    private void initialize() {
+    @FXML private void initialize() {
         virusButton.setToggleGroup(type);
         contaminantButton.setToggleGroup(type);
         virusButton.setSelected(true); // set default selection
@@ -64,7 +64,6 @@ public class HistoryGraphController {
         ObservableList<Integer> years = FXCollections.observableArrayList();
         ArrayList<QualityReport> qReps = accounts.getQualityReportsList();
         if (qReps == null || qReps.size() == 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Graph cannot be created");
             alert.setHeaderText("There are no submitted water quality reports");
             alert.setContentText("There are no quality reports submitted at this time.");
@@ -122,26 +121,22 @@ public class HistoryGraphController {
     /**
      * Button handler for "Make Graph" button
      */
-    @FXML
-    public void handleMakeGraphPressed() {
+    @FXML public void handleMakeGraphPressed() {
         boolean successful = false; // needed for closing dialog box correctly
         if((locationComboBox.getSelectionModel().getSelectedItem() == null)
                 && (yearComboBox.getSelectionModel().getSelectedItem() == null)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Graph cannot be created");
             alert.setHeaderText("There is not enough information");
             alert.setContentText("Both a year and a location must be entered in order for the graph to be created.");
             alert.showAndWait();
         } else if ((locationComboBox.getSelectionModel().getSelectedItem() == null)
                 && (yearComboBox.getSelectionModel().getSelectedItem() != null)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Graph cannot be created");
             alert.setHeaderText("There is not enough information");
             alert.setContentText("A location must be entered in order for the graph to be created.");
             alert.showAndWait();
         } else if ((locationComboBox.getSelectionModel().getSelectedItem() != null)
                 && (yearComboBox.getSelectionModel().getSelectedItem() == null)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Graph cannot be created");
             alert.setHeaderText("There is not enough information");
             alert.setContentText("A year must be entered in order for the graph to be created.");
@@ -213,8 +208,7 @@ public class HistoryGraphController {
     /**
      * Button handler for "Return to Home Screen" button
      */
-    @FXML
-    public void handleHomeButtonPressed() {
+    @FXML public void handleHomeButtonPressed() {
         _okClicked = true;
         _dialogStage.close();
     }

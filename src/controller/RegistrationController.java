@@ -20,20 +20,11 @@ import java.util.Collections;
 
 public class RegistrationController extends Application {
 
-    @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private TextField passwordField;
-
-    @FXML
-    private ComboBox accountType;
-
-    @FXML
-    private Button submitButton;
+    @FXML private TextField nameField;
+    @FXML private TextField usernameField;
+    @FXML private TextField passwordField;
+    @FXML private ComboBox accountType;
+    @FXML private Button submitButton;
 
     /** a link back to the main application class */
     @FXML
@@ -45,12 +36,13 @@ public class RegistrationController extends Application {
     /** flag to signal whether dialog was closed normally */
     private boolean _okClicked = false;
 
+    private Alert alert = new Alert(Alert.AlertType.ERROR);
+
     /**
      * Called automatically after load; controls disable property of buttons
      * and populates account types combo box
      */
-    @FXML
-    private void initialize() {
+    @FXML private void initialize() {
         ObservableList<String> types = FXCollections.observableArrayList();
         types.add("User");
         types.add("Worker");
@@ -64,16 +56,12 @@ public class RegistrationController extends Application {
         submitButton.disableProperty().bind(booleanBind);
     }
 
-    @FXML
-    public void setMainApp(MainFXApplication mainFXApplication) {
-
+    @FXML public void setMainApp(MainFXApplication mainFXApplication) {
         mainApplication = mainFXApplication;
-
     }
 
     /**
      * Sets the stage of this dialog.
-     *
      * @param dialogStage the stage for this dialog
      */
     public void setDialogStage(Stage dialogStage) {
@@ -82,7 +70,6 @@ public class RegistrationController extends Application {
 
     /**
      * Returns true if the user clicked a button, false otherwise.
-     *
      * @return  true if the user clicks a button
      */
     public boolean isOkClicked() {
@@ -92,11 +79,10 @@ public class RegistrationController extends Application {
     @Override
     public void start(Stage primaryStage) {}
 
-    @FXML
     /**
      * Handles registration after verification
      */
-    public void handleSubmitPressed() {
+    @FXML public void handleSubmitPressed() {
         AccountsManager accounts = LoginController.accounts;
         if(isInputValid()) {
             if(uniqueUsername(accounts,usernameField.getText())) {
@@ -110,11 +96,11 @@ public class RegistrationController extends Application {
             }
         }
     }
-    @FXML
+
     /**
      * If user selects cancel, go back
      */
-    public void handleCancelPressed() {
+    @FXML public void handleCancelPressed() {
         _dialogStage.close();
         _okClicked = true;
     }
@@ -141,7 +127,6 @@ public class RegistrationController extends Application {
             return true;
         } else {
             // Show the error message if bad data
-            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(_dialogStage);
             alert.setTitle("Invalid Fields");
             alert.setHeaderText("Please correct invalid fields");
@@ -165,7 +150,6 @@ public class RegistrationController extends Application {
             return true;
         } else {
             //show error message so that user can choose different username
-            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(_dialogStage);
             alert.setTitle("Invalid Username");
             alert.setHeaderText("Username already taken");

@@ -41,7 +41,8 @@ public class SubmitWaterReportController {
     ToggleGroup typeGroup = new ToggleGroup();
     ToggleGroup conditionGroup = new ToggleGroup();
 
-    AccountsManager accounts = LoginController.accounts;
+    private AccountsManager accounts = LoginController.accounts;
+    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     /** a link back to the main application class */
     private MainFXApplication mainApplication;
@@ -51,8 +52,7 @@ public class SubmitWaterReportController {
      * after the constructor and after the fxml file has been loaded.
      * Sets default values into report.
      */
-    @FXML
-    private void initialize() {
+    @FXML private void initialize() {
         dateField.setValue(LocalDate.now()); // set date to current date
         nameField.setText(accounts.getCurrentUsername()); // set name to current user
 
@@ -93,8 +93,7 @@ public class SubmitWaterReportController {
     /**
      * Button handler for "Save" button
      */
-    @FXML
-    public void handleSavePressed() {
+    @FXML public void handleSavePressed() {
         int repNum = accounts.getWaterReportsList().size();
 
         String username = accounts.getCurrentUsername();
@@ -117,7 +116,6 @@ public class SubmitWaterReportController {
 
         mainApplication.showAccountScreen();
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Submitting Water Report");
         alert.setHeaderText("Submitting Your Water Report");
         alert.setContentText("Your report has been successfully submitted.");
@@ -129,11 +127,9 @@ public class SubmitWaterReportController {
     /**
      * Button handler for "Cancel" button
      */
-    @FXML
-    public void handleCancelPressed() {
+    @FXML public void handleCancelPressed() {
         mainApplication.showAccountScreen();
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Cancelling Water Report");
         alert.setHeaderText("Cancelling Water Report Submission");
         alert.setContentText("You have been successfully cancelled the water report submission.");

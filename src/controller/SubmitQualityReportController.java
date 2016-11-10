@@ -35,7 +35,8 @@ public class SubmitQualityReportController {
     ToggleGroup timeGroup = new ToggleGroup();
     ToggleGroup conditionGroup = new ToggleGroup();
 
-    AccountsManager accounts = LoginController.accounts;
+    private AccountsManager accounts = LoginController.accounts;
+    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     /** a link back to the main application class */
     private MainFXApplication mainApplication;
@@ -45,8 +46,7 @@ public class SubmitQualityReportController {
      * after the constructor and after the fxml file has been loaded.
      * Sets default values into report.
      */
-    @FXML
-    private void initialize() {
+    @FXML private void initialize() {
         dateField.setValue(LocalDate.now()); // set date to current date
         nameField.setText(accounts.getCurrentUsername());
 
@@ -80,8 +80,7 @@ public class SubmitQualityReportController {
     /**
      * Button handler for "Save" button
      */
-    @FXML
-    public void handleSavePressed() {
+    @FXML public void handleSavePressed() {
         int repNum = accounts.getQualityReportsList().size();
 
         String username = accounts.getCurrentUsername();
@@ -105,7 +104,6 @@ public class SubmitQualityReportController {
         current.addQualityReport(report);
         mainApplication.showAccountScreen();
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Submitting Quality Report");
         alert.setHeaderText("Submitting Your Quality Report");
         alert.setContentText("Your report has been successfully submitted.");
@@ -116,11 +114,9 @@ public class SubmitQualityReportController {
     /**
      * Button handler for "Cancel" button
      */
-    @FXML
-    public void handleCancelPressed() {
+    @FXML public void handleCancelPressed() {
         mainApplication.showAccountScreen();
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Cancelling Quality Report");
         alert.setHeaderText("Cancelling Quality Report Submission");
         alert.setContentText("You have been successfully cancelled the quality report submission.");

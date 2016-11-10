@@ -29,8 +29,7 @@ public class ViewProfileController {
      * Initializes controller class. This method is automatically called
      * after the constructor and fxml file have been loaded.
      */
-    @FXML
-    private void initialize() {
+    @FXML private void initialize() {
         AccountsManager accounts = LoginController.accounts;
         User user = accounts.getUser();
         if(user.getProfile() != null) {
@@ -55,16 +54,14 @@ public class ViewProfileController {
     /**
      * Button handler for "Edit Profile" button
      */
-    @FXML
-    public void handleEditProfilePressed() {
+    @FXML public void handleEditProfilePressed() {
         mainApplication.showEditProfileScreen();
     }
 
     /**
      * Button handler for "Back" button
      */
-    @FXML
-    public void handleBackPressed() {
+    @FXML public void handleBackPressed() {
         mainApplication.showAccountScreen();
     }
 }

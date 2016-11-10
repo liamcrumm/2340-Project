@@ -19,6 +19,8 @@ public class MainScreenController {
     /** reference back to mainApplication if needed */
     private MainFXApplication mainApplication;
 
+    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
     /**
      * allow for calling back to the main application code if necessary
      * @param main   the reference to the FX Application instance
@@ -41,7 +43,6 @@ public class MainScreenController {
      */
     @FXML
     private void handleAboutMenu() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Clean Water Crowdsourcing");
         alert.setHeaderText("About");
         alert.setContentText("CS 2340 Fall 2016 project build by Team 0xF.");

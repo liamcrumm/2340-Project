@@ -17,37 +17,26 @@ public class EditProfileController {
     /*  **********************
        References to the FXML widgets in the .fxml file
     */
-    @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField titleField;
-
-    @FXML
-    private TextField emailField;
-
-    @FXML
-    private TextField phoneField;
-
-    @FXML
-    private TextField addressField;
-
-    @FXML
-    private TextArea bioField;
+    @FXML private TextField nameField;
+    @FXML private TextField titleField;
+    @FXML private TextField emailField;
+    @FXML private TextField phoneField;
+    @FXML private TextField addressField;
+    @FXML private TextArea bioField;
 
     /** a link back to the main application class */
     private MainFXApplication mainApplication;
 
-    AccountsManager accounts = LoginController.accounts;
-    User user = accounts.getUser();
+    private AccountsManager accounts = LoginController.accounts;
+    private User user = accounts.getUser();
+    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     /**
      * Initializes the controller class. This method is automatically called
      * after the constructor and
      * after the fxml file has been loaded.
      */
-    @FXML
-    private void initialize() {
+    @FXML private void initialize() {
         Profile prof = user.getProfile();
         if(prof != null) {
             if(prof.getName() != null) {
@@ -85,8 +74,7 @@ public class EditProfileController {
     /**
      * Button handler for "Save" button
      */
-    @FXML
-    public void handleSavePressed() {
+    @FXML public void handleSavePressed() {
 
         String name = nameField.getText();
         String title  = titleField.getText();
@@ -100,7 +88,6 @@ public class EditProfileController {
         user.setProfile(profile);
         accounts.updateUser(user);
         mainApplication.showViewProfileScreen();
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Edit Profile Successful");
         alert.setHeaderText("Saving Changes");
         alert.setContentText("You have successfully saved the changes to your profile.");
@@ -111,11 +98,9 @@ public class EditProfileController {
     /**
      * Button handler for "Cancel" button
      */
-    @FXML
-    public void handleCancelPressed() {
+    @FXML public void handleCancelPressed() {
         mainApplication.showViewProfileScreen();
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Cancelling Edit Profile");
         alert.setHeaderText("Cancelling Profile Changes");
         alert.setContentText("You have successfully cancelled the changes made to your profile.");

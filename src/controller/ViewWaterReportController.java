@@ -30,15 +30,14 @@ public class ViewWaterReportController {
     @FXML private TableColumn<WaterReport, String> typeCol;
     @FXML private TableColumn<WaterReport, String> conditionCol;
 
-    AccountsManager accounts = LoginController.accounts;
-    User user = accounts.getUser();
+    private AccountsManager accounts = LoginController.accounts;
+    private Alert alert;
 
     /**
      * Initializes controller class. This method is automatically called
      * after the constructor and fxml file have been loaded.
      */
-    @FXML
-    private void initialize() {
+    @FXML private void initialize() {
         /*Populates the table, String inside of PropertyValueFactory argument refers to the method name of the Setter class
           within WaterReport, e.g. "ReportNumber" must match getReportNumber in model.WaterReport. "ReportNumber" is not
           the name of the column. That has already been defined manually in its corresponding .fxml file.
@@ -78,24 +77,23 @@ public class ViewWaterReportController {
     /**
      * Button handler for "Delete Selected Report" button
      */
-    @FXML
-    public void handleDeleteSelectedReport() {
+    @FXML public void handleDeleteSelectedReport() {
         WaterReport selectedReport = reportTable.getSelectionModel().getSelectedItem();
         if (selectedReport == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("No Report Selected");
             alert.setContentText("You must first select a report in order to delete it.");
             alert.showAndWait();
         } else if (!accounts.getCurrentUsername().equals(selectedReport.getReportUsername())
                 &&!accounts.getUser().getAccountType().equals("Manager")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("You do not have permission to modify that report");
             alert.setContentText("You can only delete your own reports.");
             alert.showAndWait();
         } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("CONFIRM DELETE REPORT");
             alert.setHeaderText("Are you sure you want to delete the selected report?");
             alert.showAndWait().ifPresent(response -> {

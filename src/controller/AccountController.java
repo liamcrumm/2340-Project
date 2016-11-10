@@ -14,28 +14,21 @@ import javafx.scene.control.Button;
  */
 public class AccountController {
 
-    @FXML
-    private Button submitQualityButton;
-
-    @FXML
-    private Button viewQualityButton;
-
-    @FXML
-    private Button viewHistoryGraphButton;
-
-    private boolean qualityAccess;
+    @FXML private Button submitQualityButton;
+    @FXML private Button viewQualityButton;
+    @FXML private Button viewHistoryGraphButton;
 
     private MainFXApplication mainApplication;
 
     private AccountsManager accounts;
+    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     /**
      * Initializes the controller class. This method is automatically called
      * after the constructor and
      * after the fxml file has been loaded.
      */
-    @FXML
-    private void initialize() {
+    @FXML private void initialize() {
         /** now we communicate with the model to get the user*/
         accounts = LoginController.accounts;
         User user = accounts.getUser();
@@ -67,11 +60,9 @@ public class AccountController {
     /**
      * Button handler for log out button
      */
-    @FXML
-    public void logoutPressed() {
+    @FXML public void logoutPressed() {
         Stage main = mainApplication.getMainScreen();
         mainApplication.showWelcome(main);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Logout Successful");
         alert.setHeaderText("Logout Successful");
         alert.setContentText("You have been successfully logged out");
@@ -85,39 +76,33 @@ public class AccountController {
     /**
      * Button handler for view water sources button
      */
-    @FXML
-    public void viewWaterPressed() { mainApplication.showMapScreen();
+    @FXML public void viewWaterPressed() { mainApplication.showMapScreen();
     }
 
     /**
      * Button handler for Submit Water Report button
      */
-    @FXML
-    public void reportWaterPressed() {
+    @FXML public void reportWaterPressed() {
         mainApplication.showSubmitWaterReportScreen();
     }
 
     /**
      * Button handler for View Water Reports button
      */
-    @FXML
-    public void submittedReportsPressed() { mainApplication.showViewWaterReportScreen(); }
+    @FXML public void submittedReportsPressed() { mainApplication.showViewWaterReportScreen(); }
 
     /**
      * Button handler for view profile button
      */
-    @FXML
-    public void viewProfilePressed() {
+    @FXML public void viewProfilePressed() {
         mainApplication.showViewProfileScreen();
     }
 
     /**
      * Button handler for Submit Quality Report button
      */
-    @FXML
-    public void submitQualityPressed() {
+    @FXML public void submitQualityPressed() {
         if (submitQualityButton.isDisabled()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Unauthorized");
             alert.setHeaderText("Unauthorized Access");
             alert.setContentText("You must have Worker or Manager privileges" +
@@ -132,10 +117,8 @@ public class AccountController {
     /**
      * Button handler for View Quality Reports button
      */
-    @FXML
-    public void viewQualityPressed() {
+    @FXML public void viewQualityPressed() {
         if (viewQualityButton.isDisabled()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Unauthorized");
             alert.setHeaderText("Unauthorized Access");
             alert.setContentText("You must have Worker or Manager privileges" +
@@ -149,10 +132,8 @@ public class AccountController {
     /**
      * Button handler for View History Graph button
      */
-    @FXML
-    public void viewHistoryPressed() {
+    @FXML public void viewHistoryPressed() {
         if (viewHistoryGraphButton.isDisabled()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Unauthorized");
             alert.setHeaderText("Unauthorized Access");
             alert.setContentText("You must have Manager privileges" +
