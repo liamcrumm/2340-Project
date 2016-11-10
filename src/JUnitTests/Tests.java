@@ -2,10 +2,12 @@ package JUnitTests;
 
 import model.AccountsManager;
 import model.Profile;
+import model.QualityReport;
 import model.User;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import static org.junit.Assert.*;
 
@@ -66,6 +68,77 @@ public class Tests {
         //restore the data stored before test
         while (!storeTest.isEmpty()) {
             accounts.addUser(storeTest.get(0));
+            storeTest.remove(0);
+        }
+    }
+
+    //Andrew
+    @Test
+    public void getQualityReportsList() throws Exception {
+        AccountsManager accounts = new AccountsManager();
+        ArrayList<QualityReport> j = accounts.getQualityReportsList();
+        ArrayList<QualityReport> storeTest = new ArrayList<>();
+        //store data from before test
+        while (!j.isEmpty()) {
+            storeTest.add(j.get(0));
+            accounts.removeQualityReport(j.get(0));
+            j.remove(0);
+        }
+        j = accounts.getQualityReportsList();
+        //make sure data was properly cleared, and set has size 0
+        assertEquals(j.size(), 0);
+        accounts.addQualityReport(new QualityReport(1303, "sml71dfn", new Date(12316L), "11:11", 10.5, 15.5, "muddy", 150, 150));
+        j = accounts.getQualityReportsList();
+        //test with random values
+        assertEquals(j.get(0).getReportNumber(), 1303);
+        assertEquals(j.get(0).getReportUsername(), "sml71dfn");
+        assertEquals(j.get(0).getDate(), new Date(12316L));
+        assertEquals(j.get(0).getTime(), "11:11");
+        assertEquals(j.get(0).getLat(), 10.5, 0.0);
+        assertEquals(j.get(0).getLong(), 15.5, 0.0);
+        assertEquals(j.get(0).getCondition(), "muddy");
+        assertEquals(j.get(0).getVirus(), 150);
+        assertEquals(j.get(0).getContaminant(), 150);
+        assertEquals(j.size(), 1);
+        accounts.addQualityReport(new QualityReport(3842, "j3pi0", new Date(57022L), "10:55", 30.5, 18.5, "clean", 50, 15));
+        j = accounts.getQualityReportsList();
+        //test with 2 reports
+        assertEquals(j.get(1).getReportNumber(), 3842);
+        assertEquals(j.get(1).getReportUsername(), "j3pi0");
+        assertEquals(j.get(1).getDate(), new Date(57022L));
+        assertEquals(j.get(1).getTime(), "10:55");
+        assertEquals(j.get(1).getLat(), 30.5, 0.0);
+        assertEquals(j.get(1).getLong(), 18.5, 0.0);
+        assertEquals(j.get(1).getCondition(), "clean");
+        assertEquals(j.get(1).getVirus(), 50);
+        assertEquals(j.get(1).getContaminant(), 15);
+        assertEquals(j.size(), 2);
+        //make sure the original 0 hasn't been written over
+        assertEquals(j.get(0).getReportNumber(), 1303);
+        assertEquals(j.get(0).getReportUsername(), "sml71dfn");
+        assertEquals(j.get(0).getDate(), new Date(12316L));
+        assertEquals(j.get(0).getTime(), "11:11");
+        assertEquals(j.get(0).getLat(), 10.5, 0.0);
+        assertEquals(j.get(0).getLong(), 15.5, 0.0);
+        assertEquals(j.get(0).getCondition(), "muddy");
+        assertEquals(j.get(0).getVirus(), 150);
+        assertEquals(j.get(0).getContaminant(), 150);
+        //delete the first report
+        accounts.removeQualityReport(new QualityReport(1303, "sml71dfn", new Date(12316L), "11:11", 10.5, 15.5, "muddy", 150, 150));
+        j = accounts.getQualityReportsList();
+        assertEquals(j.get(0).getReportNumber(), 3842);
+        assertEquals(j.get(0).getReportUsername(), "j3pi0");
+        assertEquals(j.get(0).getDate(), new Date(57022L));
+        assertEquals(j.get(0).getTime(), "10:55");
+        assertEquals(j.get(0).getLat(), 30.5, 0.0);
+        assertEquals(j.get(0).getLong(), 18.5, 0.0);
+        assertEquals(j.get(0).getCondition(), "clean");
+        assertEquals(j.get(0).getVirus(), 50);
+        assertEquals(j.get(0).getContaminant(), 15);
+        assertEquals(j.size(), 1);
+        //restore the data stored before test
+        while (!storeTest.isEmpty()) {
+            accounts.addQualityReport(storeTest.get(0));
             storeTest.remove(0);
         }
     }
