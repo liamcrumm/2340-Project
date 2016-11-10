@@ -62,15 +62,15 @@ public class HistoryGraphController {
         //add the locations and years as dropdown options in the corresponding combo boxes
         ObservableList<String> locations = FXCollections.observableArrayList();
         ObservableList<Integer> years = FXCollections.observableArrayList();
-        ArrayList<QualityReport> qreps = accounts.getQualityReportsList();
-        if (qreps == null || qreps.size() == 0) {
+        ArrayList<QualityReport> qReps = accounts.getQualityReportsList();
+        if (qReps == null || qReps.size() == 0) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Graph cannot be created");
             alert.setHeaderText("There are no submitted water quality reports");
             alert.setContentText("There are no quality reports submitted at this time.");
             alert.showAndWait();
         } else {
-            for(QualityReport r: qreps) {
+            for(QualityReport r: qReps) {
                 String loc = r.getLat() + "," + r.getLong();
                 locations.add(loc);
                 Calendar cal = Calendar.getInstance();

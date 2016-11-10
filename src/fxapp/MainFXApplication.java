@@ -90,7 +90,7 @@ public class MainFXApplication extends Application {
      * This is displayed in the startup window
      *
      * precondition - the main stage is already initialized and showing (initRootLayout has been called)
-     * postcondition - the view is initialized and displayed
+     * post-condition - the view is initialized and displayed
      *
      * @param mainScreen  the main stage to show this view in
      */
@@ -204,7 +204,7 @@ public class MainFXApplication extends Application {
      * This is displayed in the startup window
      *
      * precondition - the main stage is already initialized and showing (initRootLayout has been called)
-     * postcondition - the account view is initialized and displayed
+     * post-condition - the account view is initialized and displayed
      */
     public void showAccountScreen() {
         try {
@@ -232,7 +232,7 @@ public class MainFXApplication extends Application {
      * This is displayed in the startup window
      *
      * precondition - the main stage is already initialized and showing (initRootLayout has been called)
-     * postcondition - the account view is initialized and displayed
+     * post-condition - the account view is initialized and displayed
      */
     public void showViewProfileScreen() {
         try {
@@ -260,7 +260,7 @@ public class MainFXApplication extends Application {
      * This is displayed in the startup window
      *
      * precondition - the main stage is already initialized and showing (initRootLayout has been called)
-     * postcondition - the edit profile view is initialized and displayed
+     * post-condition - the edit profile view is initialized and displayed
      */
     public void showEditProfileScreen() {
         try {
@@ -288,7 +288,7 @@ public class MainFXApplication extends Application {
      * This is displayed in the startup window
      *
      * precondition - the main stage is already initialized and showing (initRootLayout has been called)
-     * postcondition - the submit report view is initialized and displayed
+     * post-condition - the submit report view is initialized and displayed
      */
     public void showSubmitWaterReportScreen() {
         try {
@@ -367,7 +367,7 @@ public class MainFXApplication extends Application {
      * This is displayed in the startup window
      *
      * precondition - the main stage is already initialized and showing (initRootLayout has been called)
-     * postcondition - the submit quality report view is initialized and displayed
+     * post-condition - the submit quality report view is initialized and displayed
      */
     public void showSubmitQualityScreen() {
         try {

@@ -118,7 +118,7 @@ public class User {
     }
 
     /**
-     * Adds a quality report created by the user to the list of reports that the user has submited.
+     * Adds a quality report created by the user to the list of reports that the user has submitted.
      * @param r The quality report that the user submitted.
      */
     public void addQualityReport(QualityReport r) {
