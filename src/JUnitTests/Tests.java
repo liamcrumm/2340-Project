@@ -1,9 +1,6 @@
 package JUnitTests;
 
-import model.AccountsManager;
-import model.Profile;
-import model.QualityReport;
-import model.User;
+import model.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -139,6 +136,73 @@ public class Tests {
         //restore the data stored before test
         while (!storeTest.isEmpty()) {
             accounts.addQualityReport(storeTest.get(0));
+            storeTest.remove(0);
+        }
+    }
+
+    //Sahithi
+    @Test
+    public void getWaterReportsList() {
+        AccountsManager accounts = new AccountsManager();
+        ArrayList<WaterReport> j = accounts.getWaterReportsList();
+        ArrayList<WaterReport> storeTest = new ArrayList<>();
+        //store data from before test
+        while (!j.isEmpty()) {
+            storeTest.add(j.get(0));
+            accounts.removeWaterReport(j.get(0));
+            j.remove(0);
+        }
+        j = accounts.getWaterReportsList();
+        //make sure data was properly cleared, and set has size 0
+        assertEquals(j.size(), 0);
+        accounts.addWaterReport(new WaterReport(100, "m123", new Date(12316L), "8:30", 25.5, 30.0,"Lake","Clean"));
+        j = accounts.getWaterReportsList();
+        //test with random values
+        assertEquals(j.get(0).getReportNumber(), 100);
+        assertEquals(j.get(0).getReportUsername(), "m123");
+        assertEquals(j.get(0).getDate(), new Date(12316L));
+        assertEquals(j.get(0).getTime(), "8:30");
+        assertEquals(j.get(0).getLat(), 25.5, 0.0);
+        assertEquals(j.get(0).getLong(), 30.0, 0.0);
+        assertEquals(j.get(0).getType(), "Lake");
+        assertEquals(j.get(0).getCondition(), "Clean");
+        assertEquals(j.size(), 1);
+        accounts.addWaterReport(new WaterReport(98, "cd451", new Date(57022L), "10:55", 20.5, 10.5, "Stream","Muddy"));
+        j = accounts.getWaterReportsList();
+        //test with 2 reports
+        assertEquals(j.get(1).getReportNumber(), 98);
+        assertEquals(j.get(1).getReportUsername(), "cd451");
+        assertEquals(j.get(1).getDate(), new Date(57022L));
+        assertEquals(j.get(1).getTime(), "10:55");
+        assertEquals(j.get(1).getLat(), 20.5, 0.0);
+        assertEquals(j.get(1).getLong(), 10.5, 0.0);
+        assertEquals(j.get(1).getType(), "Stream");
+        assertEquals(j.get(1).getCondition(), "Muddy");
+        assertEquals(j.size(), 2);
+        //make sure the original 0 hasn't been written over
+        assertEquals(j.get(0).getReportNumber(), 100);
+        assertEquals(j.get(0).getReportUsername(), "m123");
+        assertEquals(j.get(0).getDate(), new Date(12316L));
+        assertEquals(j.get(0).getTime(), "8:30");
+        assertEquals(j.get(0).getLat(), 25.5, 0.0);
+        assertEquals(j.get(0).getLong(), 30.0, 0.0);
+        assertEquals(j.get(0).getType(), "Lake");
+        assertEquals(j.get(0).getCondition(), "Clean");
+        //delete the first report
+        accounts.removeWaterReport(new WaterReport(100, "m123", new Date(12316L), "8:30", 25.5, 30.0, "Lake", "Clean"));
+        j = accounts.getWaterReportsList();
+        assertEquals(j.get(0).getReportNumber(), 98);
+        assertEquals(j.get(0).getReportUsername(), "cd451");
+        assertEquals(j.get(0).getDate(), new Date(57022L));
+        assertEquals(j.get(0).getTime(), "10:55");
+        assertEquals(j.get(0).getLat(), 20.5, 0.0);
+        assertEquals(j.get(0).getLong(), 10.5, 0.0);
+        assertEquals(j.get(0).getType(), "Stream");
+        assertEquals(j.get(0).getCondition(), "Muddy");
+        assertEquals(j.size(), 1);
+        //restore the data stored before test
+        while (!storeTest.isEmpty()) {
+            accounts.addWaterReport(storeTest.get(0));
             storeTest.remove(0);
         }
     }
