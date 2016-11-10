@@ -206,4 +206,43 @@ public class Tests {
             storeTest.remove(0);
         }
     }
+    //Cat's Test
+    @Test
+    public void getUser() throws Exception {
+        AccountsManager accounts = new AccountsManager();
+        ArrayList<User> j = accounts.getUserList();
+        ArrayList<User> storeTest = new ArrayList<>();
+        //store data from before test
+        while (!j.isEmpty()) {
+            storeTest.add(j.get(0));
+            accounts.deleteUser(j.get(0));
+            j.remove(0);
+        }
+        j = accounts.getUserList();
+        //make sure data was properly cleared, and set has size 0
+        assertEquals(j.size(), 0);
+       //adds user to userlist and sets as current user logged in, asserts equality
+        accounts.addUser(new User("11oij3eo", "342oi3j4", null, "2o3848hoisdf"));
+        accounts.setCurrentUser("11oij3eo");
+        String userString = accounts.getCurrentUsername();
+        assertEquals(userString, "11oij3eo");
+
+        //adds new user with null username to assert equality with null entry
+        accounts.addUser(new User(null, "asud98fu", null, "89uujiosdf"));
+        accounts.setCurrentUser(null);
+        userString = accounts.getCurrentUsername();
+        assertEquals("tests to see if username is null", userString, null);
+
+        accounts.addUser(new User("9812u3iujn", "892uadsd", new Profile("908hua", "ncjsi8", "oij3wenaksd", "aosijdffposijm", "oiuhjoejdsn", "oiajxckasd"), "oasidjak"));
+        accounts.setCurrentUser("9812u3iujn");
+        userString = accounts.getCurrentUsername();
+        assertEquals(userString, "9812u3iujn");
+
+        //restore the data stored before test
+        while (!storeTest.isEmpty()) {
+            accounts.addUser(storeTest.get(0));
+            storeTest.remove(0);
+        }
+    }
+
 }
