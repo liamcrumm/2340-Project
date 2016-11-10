@@ -1,7 +1,5 @@
 package model;
 
-
-
 import com.mongodb.*;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -100,7 +98,7 @@ public class AccountsManager {
      */
     public void addUser(User u) {
         MongoCollection userDB = accountsDB.getCollection("user");
-        Document d = u.toDoc();
+        Document d = u.toDocUser();
         userDB.insertOne(d);
     }
 
@@ -110,7 +108,7 @@ public class AccountsManager {
      */
     public void updateUser(User u) {
         MongoCollection userDB = accountsDB.getCollection("user");
-        Document d = u.toDoc();
+        Document d = u.toDocUser();
         userDB.findOneAndUpdate(new Document("username",currentUsername),new BasicDBObject("$set",
                 new BasicDBObject("profile", u.getProfile().toDocument())));
     }
@@ -121,7 +119,7 @@ public class AccountsManager {
      */
     public void deleteUser(User u) {
         MongoCollection userDB = accountsDB.getCollection("user");
-        Document d = u.toDoc();
+        Document d = u.toDocUser();
         userDB.findOneAndDelete(d);
     }
 

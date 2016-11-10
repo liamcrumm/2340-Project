@@ -1,6 +1,7 @@
 package JUnitTests;
 
 import model.*;
+import org.bson.Document;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -243,6 +244,35 @@ public class Tests {
             accounts.addUser(storeTest.get(0));
             storeTest.remove(0);
         }
+    }
+
+    // Kim's test
+    @Test
+    public void testToDocUser() {
+        User testUser = new User("testName", "testPass", null, "testType");
+        // test that a Document was created
+        Document d1 = testUser.toDocUser();
+        assertNotNull(d1);
+        // test that document for User with no profile created
+        assertEquals("testName", d1.get("username"));
+        assertEquals("testPass", d1.get("password"));
+        assertNull(d1.get("profile"));
+        assertEquals("testType", d1.get("accountType"));
+        // test that document for User with profile created
+        User testUser2 = new User("testName2", "testPass2",
+                new Profile("testName2", "testTitle2", "testEmail2",
+                "testPhone2", "testAddress2", "testBio2"), "testType2");
+        Document d2 = testUser2.toDocUser();
+        assertEquals("testName2", d2.get("username"));
+        assertEquals("testPass2", d2.get("password"));
+        Document profDoc = (Document) d2.get("profile");
+        assertEquals("testName2", profDoc.get("name"));
+        assertEquals("testTitle2", profDoc.get("title"));
+        assertEquals("testEmail2", profDoc.get("email"));
+        assertEquals("testPhone2", profDoc.get("phone"));
+        assertEquals("testAddress2", profDoc.get("address"));
+        assertEquals("testBio2", profDoc.get("bio"));
+        assertEquals("testType2", d2.get("accountType"));
     }
 
 }

@@ -38,7 +38,7 @@ public class MainFXApplication extends Application {
 
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         mainScreen = primaryStage;
         initRootLayout(mainScreen);
         primaryStage.setTitle("Clean Water Crowdsourcing System");

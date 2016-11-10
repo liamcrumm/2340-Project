@@ -142,7 +142,11 @@ public class User {
         userQualityReports.remove(r);
     }
 
-    public Document toDoc() {
+    /**
+     * Writes user credentials to a Document to store in the database.
+     * @return The Document created from the User information
+     */
+    public Document toDocUser() {
         Document user = new Document();
         user.put("username",_username);
         user.put("password",_password);

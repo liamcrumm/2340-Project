@@ -128,6 +128,11 @@ public class Profile {
     public void setBio(String bio) {
         _bio = bio;
     }
+
+    /**
+     * Writes profile credentials to a Document to store in the database.
+     * @return The Document created from the Profile information
+     */
     public Document toDocument() {
         Document toReturn = new Document();
         toReturn.put("name",_name);
