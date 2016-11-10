@@ -12,16 +12,19 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
          <columns>
-            <TableColumn fx:id="reportNumCol" editable="false" prefWidth="55.0" resizable="false" text="Report #" />
-            <TableColumn fx:id="usernameCol" editable="false" prefWidth="64.0" resizable="false" text="Username" />
-            <TableColumn fx:id="dateCol" editable="false" prefWidth="67.0" resizable="false" text="Date" />
-            <TableColumn fx:id="timeCol" editable="false" prefWidth="67.0" resizable="false" text="Time" />
-            <TableColumn fx:id="latCol" editable="false" prefWidth="49.0" resizable="false" text="Lat." />
-            <TableColumn fx:id="longCol" editable="false" prefWidth="48.0" resizable="false" text="Long." />
-            <TableColumn fx:id="conditionCol" editable="false" prefWidth="60.0" resizable="false" text="Type" />
-            <TableColumn fx:id="virusCol" editable="false" prefWidth="81.0" resizable="false" text="Virus PPM" />
-            <TableColumn fx:id="contaminantCol" editable="false" prefWidth="108.0" resizable="false" text="Contaminant PPM" />
+            <TableColumn fx:id="reportNumCol" editable="false" prefWidth="55.0" resizable="true" text="Report #" />
+            <TableColumn fx:id="usernameCol" editable="false" prefWidth="64.0" resizable="true" text="Username" />
+            <TableColumn fx:id="dateCol" editable="false" prefWidth="67.0" resizable="true" text="Date" />
+            <TableColumn fx:id="timeCol" editable="false" prefWidth="67.0" resizable="true" text="Time" />
+            <TableColumn fx:id="latCol" editable="false" prefWidth="49.0" resizable="true" text="Lat." />
+            <TableColumn fx:id="longCol" editable="false" prefWidth="48.0" resizable="true" text="Long." />
+            <TableColumn fx:id="conditionCol" editable="false" prefWidth="60.0" resizable="true" text="Type" />
+            <TableColumn fx:id="virusCol" editable="false" prefWidth="81.0" resizable="true" text="Virus PPM" />
+            <TableColumn fx:id="contaminantCol" editable="false" prefWidth="108.0" resizable="true" text="Contaminant PPM" />
          </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
       <Button layoutX="48.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
       <Button layoutX="435.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleDeleteSelectedReport" text="Delete Selected Report" />
