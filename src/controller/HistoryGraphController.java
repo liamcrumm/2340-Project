@@ -62,6 +62,11 @@ public class HistoryGraphController {
         //add the locations and years as dropdown options in the corresponding combo boxes
         ObservableList<String> locations = FXCollections.observableArrayList();
         ObservableList<Integer> years = FXCollections.observableArrayList();
+
+        //sets for the location and year so that it is not repeated in the dropdown menu.
+        Set<String> locationSet = new HashSet<>();
+        Set<Integer> yearSet = new HashSet<>();
+
         ArrayList<QualityReport> qReps = accounts.getQualityReportsList();
         if (qReps == null || qReps.size() == 0) {
             alert.setTitle("Graph cannot be created");
@@ -71,11 +76,18 @@ public class HistoryGraphController {
         } else {
             for(QualityReport r: qReps) {
                 String loc = r.getLat() + "," + r.getLong();
-                locations.add(loc);
+                locationSet.add(loc);
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(r.getDate());
                 int year = cal.get(Calendar.YEAR);
-                years.add(year);
+                yearSet.add(year);
+            }
+
+            for(String s: locationSet) {
+                locations.add(s);
+            }
+            for(Integer i: yearSet) {
+                years.add(i);
             }
             locationComboBox.setItems(locations);
             yearComboBox.setItems(years);
