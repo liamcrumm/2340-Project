@@ -2,13 +2,11 @@ package controller;
 
 import fxapp.MainFXApplication;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.AccountsManager;
 import model.WaterReport;
-import model.User;
 
 /**
  * Created by Andrew on 10/11/2016.
@@ -42,14 +40,14 @@ public class ViewWaterReportController {
           within WaterReport, e.g. "ReportNumber" must match getReportNumber in model.WaterReport. "ReportNumber" is not
           the name of the column. That has already been defined manually in its corresponding .fxml file.
         */
-        reportNumCol.setCellValueFactory(new PropertyValueFactory<WaterReport, Integer>("ReportNumber"));
-        usernameCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("ReportUsername"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<WaterReport, LocalDate>("Date"));
-        timeCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("Time"));
-        latCol.setCellValueFactory(new PropertyValueFactory<WaterReport, Double>("Lat"));
-        longCol.setCellValueFactory(new PropertyValueFactory<WaterReport, Double>("Long"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("Type"));
-        conditionCol.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("Condition"));
+        reportNumCol.setCellValueFactory(new PropertyValueFactory<>("ReportNumber"));
+        usernameCol.setCellValueFactory(new PropertyValueFactory<>("ReportUsername"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        timeCol.setCellValueFactory(new PropertyValueFactory<>("Time"));
+        latCol.setCellValueFactory(new PropertyValueFactory<>("Lat"));
+        longCol.setCellValueFactory(new PropertyValueFactory<>("Long"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("Type"));
+        conditionCol.setCellValueFactory(new PropertyValueFactory<>("Condition"));
         refresh();
     }
 

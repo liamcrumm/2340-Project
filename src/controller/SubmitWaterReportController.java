@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.AccountsManager;
 import model.WaterReport;
-import model.User;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -37,9 +36,9 @@ public class SubmitWaterReportController {
     @FXML private RadioButton treatMuddyButton;
     @FXML private RadioButton potableButton;
 
-    ToggleGroup timeGroup = new ToggleGroup();
-    ToggleGroup typeGroup = new ToggleGroup();
-    ToggleGroup conditionGroup = new ToggleGroup();
+    private ToggleGroup timeGroup = new ToggleGroup();
+    private ToggleGroup typeGroup = new ToggleGroup();
+    private ToggleGroup conditionGroup = new ToggleGroup();
 
     private AccountsManager accounts = LoginController.accounts;
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);

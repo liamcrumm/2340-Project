@@ -29,7 +29,7 @@ public class AccountController {
      * after the fxml file has been loaded.
      */
     @FXML private void initialize() {
-        /** now we communicate with the model to get the user*/
+        // now we communicate with the model to get the user
         accounts = LoginController.accounts;
         User user = accounts.getUser();
         String userType = user.getAccountType();

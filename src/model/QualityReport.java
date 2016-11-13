@@ -2,7 +2,6 @@ package model;
 
 import org.bson.Document;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 /**

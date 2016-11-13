@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 import model.AccountsManager;
 import model.User;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Kimberly Burke on 9/19/2016.

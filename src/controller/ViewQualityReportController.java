@@ -6,11 +6,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.AccountsManager;
 import model.QualityReport;
-import model.Report;
-import model.User;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 /**
  * Created by Kimberly Burke on 10/25/2016.
@@ -41,15 +38,15 @@ public class ViewQualityReportController {
      * Sets default values into report.
      */
     @FXML private void initialize() {
-        reportNumCol.setCellValueFactory(new PropertyValueFactory<QualityReport, Integer>("ReportNumber"));
-        usernameCol.setCellValueFactory(new PropertyValueFactory<QualityReport, String>("ReportUsername"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<QualityReport, LocalDate>("Date"));
-        timeCol.setCellValueFactory(new PropertyValueFactory<QualityReport, String>("Time"));
-        latCol.setCellValueFactory(new PropertyValueFactory<QualityReport, Double>("Lat"));
-        longCol.setCellValueFactory(new PropertyValueFactory<QualityReport, Double>("Long"));
-        conditionCol.setCellValueFactory(new PropertyValueFactory<QualityReport, String>("Condition"));
-        virusCol.setCellValueFactory(new PropertyValueFactory<QualityReport, Integer>("Virus"));
-        contaminantCol.setCellValueFactory(new PropertyValueFactory<QualityReport, Integer>("Contaminant"));
+        reportNumCol.setCellValueFactory(new PropertyValueFactory<>("ReportNumber"));
+        usernameCol.setCellValueFactory(new PropertyValueFactory<>("ReportUsername"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        timeCol.setCellValueFactory(new PropertyValueFactory<>("Time"));
+        latCol.setCellValueFactory(new PropertyValueFactory<>("Lat"));
+        longCol.setCellValueFactory(new PropertyValueFactory<>("Long"));
+        conditionCol.setCellValueFactory(new PropertyValueFactory<>("Condition"));
+        virusCol.setCellValueFactory(new PropertyValueFactory<>("Virus"));
+        contaminantCol.setCellValueFactory(new PropertyValueFactory<>("Contaminant"));
         refresh();
     }
 

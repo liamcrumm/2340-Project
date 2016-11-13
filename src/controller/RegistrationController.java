@@ -15,9 +15,6 @@ import model.AccountsManager;
 import model.Profile;
 import model.User;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class RegistrationController extends Application {
 
     @FXML private TextField nameField;

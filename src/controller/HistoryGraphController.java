@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import model.AccountsManager;
 import model.QualityReport;
 
-import java.time.Month;
 import java.util.*;
 
 /**
@@ -34,7 +33,7 @@ public class HistoryGraphController {
     @FXML private CategoryAxis monthAxis;
     @FXML private ScatterChart<String,Integer> historyGraph;
 
-    ToggleGroup type = new ToggleGroup();
+    private ToggleGroup type = new ToggleGroup();
 
     private AccountsManager accounts = LoginController.accounts;
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -45,7 +44,7 @@ public class HistoryGraphController {
     /** flag to signal whether dialog was closed normally */
     private boolean _okClicked = false;
 
-    String[] Months = {"January", "February", "March", "April", "May", "June", "July",
+    private String[] Months = {"January", "February", "March", "April", "May", "June", "July",
             "August", "September", "October", "November", "December"};
 
     /**
@@ -83,12 +82,9 @@ public class HistoryGraphController {
                 yearSet.add(year);
             }
 
-            for(String s: locationSet) {
-                locations.add(s);
-            }
-            for(Integer i: yearSet) {
-                years.add(i);
-            }
+            locations.addAll(locationSet);
+            years.addAll(yearSet);
+
             locationComboBox.setItems(locations);
             yearComboBox.setItems(years);
 
@@ -168,7 +164,7 @@ public class HistoryGraphController {
 
             //Get the reports that match the year and location given
             ArrayList<QualityReport> allReports = accounts.getQualityReportsList();
-            XYChart.Series<String, Integer> series = new XYChart.Series<String, Integer>();
+            XYChart.Series<String, Integer> series = new XYChart.Series<>();
             //Make the graph according to the ppm that is given
             if (ppm.equals("Virus")) {
                 series.setName("Virus At " + loc);
@@ -181,7 +177,7 @@ public class HistoryGraphController {
                     if (repLat == lat && repLong == longitude && repYear == yearSelected) {
                         String month = Months[cal.get(Calendar.MONTH)];
                         int virus = r.getVirus();
-                        series.getData().add(new XYChart.Data<String, Integer>(month, virus));
+                        series.getData().add(new XYChart.Data<>(month, virus));
 
                     }
                 }
@@ -199,7 +195,7 @@ public class HistoryGraphController {
                     if (repLat == lat && repLong == longitude && repYear == yearSelected) {
                         String month = Months[(cal.get(Calendar.MONTH))];
                         int cont = r.getContaminant();
-                        series.getData().add(new XYChart.Data<String, Integer>(month, cont));
+                        series.getData().add(new XYChart.Data<>(month, cont));
 
                     }
                 }

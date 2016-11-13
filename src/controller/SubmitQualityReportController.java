@@ -5,7 +5,6 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.AccountsManager;
-import model.User;
 import model.QualityReport;
 
 import java.time.LocalDate;
@@ -32,8 +31,8 @@ public class SubmitQualityReportController {
     @FXML private RadioButton treatableButton;
     @FXML private RadioButton unsafeButton;
 
-    ToggleGroup timeGroup = new ToggleGroup();
-    ToggleGroup conditionGroup = new ToggleGroup();
+    private ToggleGroup timeGroup = new ToggleGroup();
+    private ToggleGroup conditionGroup = new ToggleGroup();
 
     private AccountsManager accounts = LoginController.accounts;
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);

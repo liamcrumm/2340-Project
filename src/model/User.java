@@ -4,9 +4,6 @@ package model;
 
 import org.bson.Document;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 /**
  * Created by Sakhi on 10/3/16.
  */

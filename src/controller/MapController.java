@@ -8,8 +8,6 @@ import fxapp.MainFXApplication;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Bounds;
-import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import com.lynden.gmapsfx.GoogleMapView;
 
@@ -18,10 +16,8 @@ import model.AccountsManager;
 import model.WaterReport;
 import netscape.javascript.JSObject;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -50,7 +46,7 @@ public class MapController implements Initializable, MapComponentInitializedList
     public void mapInitialized() {
         MapOptions options = new MapOptions();
 
-        /** now we communicate with the model to get all the locations for markers */
+        // now we communicate with the model to get all the locations for markers
         AccountsManager ac = LoginController.accounts;
 
         //set up the center location for the map
