@@ -6,6 +6,7 @@ import java.util.Date;
 
 /**
  * Created by Andrew on 10/26/2016.
+ * Holds all the information of a quality report. Class the represents a quality report.
  */
 public class QualityReport implements Report {
 

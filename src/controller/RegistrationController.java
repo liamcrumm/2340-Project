@@ -15,6 +15,9 @@ import model.AccountsManager;
 import model.Profile;
 import model.User;
 
+/**
+ * Controller for the registration screen. This class handles the registration process.
+ */
 public class RegistrationController extends Application {
 
     @FXML private TextField nameField;

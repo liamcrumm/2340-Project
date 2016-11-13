@@ -4,6 +4,7 @@ import java.util.Date;
 
 /**
  * Created by Andrew on 10/11/2016.
+ *Interface for the quality and water reports.
  */
 public interface Report {
 

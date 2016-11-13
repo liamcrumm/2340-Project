@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 
 /**
  * Created by Sakhi on 11/7/16.
+ * JUnit test class for testing our application.
  */
 public class Tests {
     //Liam's method

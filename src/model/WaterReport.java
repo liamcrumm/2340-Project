@@ -6,6 +6,7 @@ import java.util.Date;
 
 /**
  * Created by Andrew on 10/11/2016.
+ * This class represents a water report and holds all the information for a water report.
  */
 public class WaterReport implements Report {
 

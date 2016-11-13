@@ -13,6 +13,8 @@ import java.util.Date;
 
 /**
  * Created by Sakhi on 10/10/16.
+ * Controller for submitting a water report. This class pulls the users answers from the UI and then stores the water
+ * report information in the database.
  */
 public class SubmitWaterReportController {
 

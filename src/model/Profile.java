@@ -4,6 +4,7 @@ import org.bson.Document;
 
 /**
  * Created by Sakhi on 9/29/16.
+ * Holds all the information of a profile. Class that represents a profile.
  */
 public class Profile {
 

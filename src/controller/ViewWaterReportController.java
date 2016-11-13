@@ -10,6 +10,8 @@ import model.WaterReport;
 
 /**
  * Created by Andrew on 10/11/2016.
+ * Controller for the view water reports screen. This class pulls the data from water reports and displays it
+ * on the screen. This class also handles the process of deleting a report.
  */
 public class ViewWaterReportController {
 

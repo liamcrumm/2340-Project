@@ -10,6 +10,7 @@ import model.User;
 
 /**
  * Created by Andrew Hu on 10/2/2016.
+ * Controller for the view profile screen. This class pulls the users current profile data and displays it.
  */
 public class ViewProfileController {
 

@@ -15,6 +15,9 @@ import model.User;
 /**
  * Created by Kimberly Burke on 9/19/2016.
  *
+ * This controller handles the login screen. When a user tries to login, the controller verifies and the user and logs
+ * them in to the app.
+ *
  * Some code reused from M3 assignment.
  */
 public class LoginController {

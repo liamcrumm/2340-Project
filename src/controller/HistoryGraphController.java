@@ -17,6 +17,7 @@ import java.util.*;
 
 /**
  * Created by Kimberly Burke on 10/29/2016.
+ * This controller deals with the history graph and makes sure that the right graph is displayed.
  */
 public class HistoryGraphController {
 
