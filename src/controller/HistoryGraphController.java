@@ -56,8 +56,7 @@ public class HistoryGraphController {
         virusButton.setToggleGroup(type);
         contaminantButton.setToggleGroup(type);
         virusButton.setSelected(true); // set default selection
-
-
+        
         //add the locations and years as dropdown options in the corresponding combo boxes
         ObservableList<String> locations = FXCollections.observableArrayList();
         ObservableList<Integer> years = FXCollections.observableArrayList();
@@ -94,9 +93,7 @@ public class HistoryGraphController {
 
             monthAxis.setCategories(months);
 
-
         }
-
     }
 
     /**
@@ -110,7 +107,6 @@ public class HistoryGraphController {
 
     /**
      * Sets the stage of this dialog.
-     *
      * @param dialogStage the stage for this dialog
      */
     public void setDialogStage(Stage dialogStage) {
@@ -119,7 +115,6 @@ public class HistoryGraphController {
 
     /**
      * Returns true if the user clicked OK, false otherwise.
-     *
      * @return  true if the user clicked the OK button
      */
     public boolean isOkClicked() {
@@ -203,9 +198,6 @@ public class HistoryGraphController {
 
             }
         }
-
-
-
 
         _okClicked = true;
         if(successful) {

@@ -29,7 +29,6 @@ public class ViewWaterReportController {
     @FXML private TableColumn<WaterReport, String> conditionCol;
 
     private AccountsManager accounts = LoginController.accounts;
-    private Alert alert;
 
     /**
      * Initializes controller class. This method is automatically called
@@ -77,6 +76,7 @@ public class ViewWaterReportController {
      */
     @FXML public void handleDeleteSelectedReport() {
         WaterReport selectedReport = reportTable.getSelectionModel().getSelectedItem();
+        Alert alert;
         if (selectedReport == null) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");

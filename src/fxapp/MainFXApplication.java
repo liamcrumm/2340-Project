@@ -41,7 +41,7 @@ public class MainFXApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         mainScreen = primaryStage;
         initRootLayout(mainScreen);
-        primaryStage.setTitle("Clean Water Crowdsourcing System");
+        primaryStage.setTitle("Clean Water Crowd-sourcing System");
         showWelcome(mainScreen);
     }
 
