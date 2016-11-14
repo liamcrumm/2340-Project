@@ -1,6 +1,8 @@
 package controller;
 
 import fxapp.MainFXApplication;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import model.AccountsManager;
 import model.Profile;
 import javafx.fxml.FXML;
@@ -60,6 +62,15 @@ public class EditProfileController {
 
         }
 
+        // force the field to be numeric (and dash) only
+        phoneField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d-")) {
+                    phoneField.setText(newValue.replaceAll("[^\\d-]", ""));
+                }
+            }
+        });
     }
 
     /**
@@ -82,7 +93,6 @@ public class EditProfileController {
         String phone = phoneField.getText();
         String address = addressField.getText();
         String bio = bioField.getText();
-
 
         Profile profile = new Profile(name, title, email, phone, address, bio);
         user.setProfile(profile);

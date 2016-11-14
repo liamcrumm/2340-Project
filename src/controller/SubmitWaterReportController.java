@@ -2,6 +2,8 @@ package controller;
 
 import fxapp.MainFXApplication;
 import javafx.beans.binding.BooleanBinding;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.AccountsManager;
@@ -78,6 +80,36 @@ public class SubmitWaterReportController {
                 .or(latitudeField.textProperty().isEmpty())
                 .or(longitudeField.textProperty().isEmpty());
         saveButton.disableProperty().bind(booleanBind);
+
+        // force the field to be numeric (and colon) only
+        timeField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d:")) {
+                    timeField.setText(newValue.replaceAll("[^\\d:]", ""));
+                }
+            }
+        });
+
+        // force the field to be numeric (and dot and dash) only
+        latitudeField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d.-")) {
+                    latitudeField.setText(newValue.replaceAll("[^\\d.-]", ""));
+                }
+            }
+        });
+
+        // force the field to be numeric (and dot) only
+        longitudeField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d.-")) {
+                    longitudeField.setText(newValue.replaceAll("[^\\d.-]", ""));
+                }
+            }
+        });
     }
 
     /**
@@ -93,34 +125,96 @@ public class SubmitWaterReportController {
      * Button handler for "Save" button
      */
     @FXML public void handleSavePressed() {
-        int repNum = accounts.getWaterReportsList().size();
+        //First validate the data to insure it is at least reasonable
+        if (isInputValid()) {
+            int repNum = accounts.getWaterReportsList().size();
 
-        String username = accounts.getCurrentUsername();
-        Date date = Date.from(dateField.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+            String username = accounts.getCurrentUsername();
+            Date date = Date.from(dateField.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 
-        RadioButton selectedTime = (RadioButton) timeGroup.getSelectedToggle();
-        String time = timeField.getText() + " " + selectedTime.getText();
+            RadioButton selectedTime = (RadioButton) timeGroup.getSelectedToggle();
+            String time = timeField.getText() + " " + selectedTime.getText();
 
-        double latitude = Double.parseDouble(latitudeField.getText());
-        double longitudeD = Double.parseDouble(longitudeField.getText());
+            double latitude = Double.parseDouble(latitudeField.getText());
+            double longitude = Double.parseDouble(longitudeField.getText());
 
-        RadioButton selectedType = (RadioButton) typeGroup.getSelectedToggle();
-        String type = selectedType.getText();
+            RadioButton selectedType = (RadioButton) typeGroup.getSelectedToggle();
+            String type = selectedType.getText();
 
-        RadioButton selectedCondition = (RadioButton) conditionGroup.getSelectedToggle();
-        String condition = selectedCondition.getText();
+            RadioButton selectedCondition = (RadioButton) conditionGroup.getSelectedToggle();
+            String condition = selectedCondition.getText();
 
-        WaterReport report = new WaterReport(repNum, username, date, time, latitude, longitudeD, type, condition);
-        accounts.addWaterReport(report);
-        mainApplication.showAccountScreen();
+            WaterReport report = new WaterReport(repNum, username, date, time, latitude, longitude, type, condition);
+            accounts.addWaterReport(report);
+            mainApplication.showAccountScreen();
 
-        alert.setTitle("Submitting Water Report");
-        alert.setHeaderText("Submitting Your Water Report");
-        alert.setContentText("Your report has been successfully submitted.");
+            alert.setTitle("Submitting Water Report");
+            alert.setHeaderText("Submitting Your Water Report");
+            alert.setContentText("Your report has been successfully submitted.");
 
-        alert.showAndWait();
-
+            alert.showAndWait();
+        }
     }
+
+    /**
+     * Validates the user input in the text fields.
+     *
+     * @return true if the input is valid
+     */
+    private boolean isInputValid() {
+        String errorMessage = "";
+
+        if (!timeField.getText().matches("^(1[012]|[1-9]):[0-5][0-9](\\\\s)?")) {
+            errorMessage += "No valid time entered!\n";
+        }
+        if (isDouble(latitudeField.getText())) {
+            double latitude = Double.parseDouble(latitudeField.getText());
+            if (latitude > 90 || latitude < -90) {
+                errorMessage += "No valid latitude entered!\n";
+            }
+        } else {
+            errorMessage += "No valid latitude entered!\n";
+        }
+        if (isDouble(longitudeField.getText())) {
+            double longitude = Double.parseDouble(longitudeField.getText());
+            if (longitude > 180 || longitude < -180) {
+                errorMessage += "No valid longitude entered!\n";
+            }
+        } else {
+            errorMessage += "No valid longitude entered!\n";
+        }
+
+        //no error message means success / good input
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            // Show the error message if bad dataW
+            alert.setTitle("Invalid Fields");
+            alert.setHeaderText("Please correct invalid fields");
+            alert.setContentText(errorMessage);
+
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+    /**
+     * Determines whether the latitude/longitude values are doubles that can
+     * be parsed
+     *
+     * @param str - the string the contains either the lat or longitude
+     * @return whether the string is in the format of a double or not
+     */
+    private boolean isDouble(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e){
+            return false;
+        }
+    }
+
 
     /**
      * Button handler for "Cancel" button
