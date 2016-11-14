@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created by Sakhi on 10/15/16.
+ * This controller works with the map screen to initialize the map and put the pins on the map.
  */
 public class MapController implements Initializable, MapComponentInitializedListener {
 

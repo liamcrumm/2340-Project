@@ -13,6 +13,8 @@ import model.User;
 
 /**
  * Created by Kimberly Burke on 9/29/2016.
+ * This controller handles the functionality of the edit profile screen. When a user edits their profile, the controller
+ * makes sure that the data is saved properly.
  */
 public class EditProfileController {
 

@@ -9,6 +9,11 @@ import org.bson.Document;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Manages all the account activities of the users by keeping track of the current user and the reports that have been
+ * submitted so far.
+ */
+
 public class AccountsManager {
 
     private ArrayList<User> users;

@@ -11,6 +11,8 @@ import java.time.LocalDate;
 
 /**
  * Created by Kimberly Burke on 10/25/2016.
+ * Controller for the view quality report screen. This class pulls the data from water quality reports and displays it
+ * on the screen. This class also handles the process of deleting a report.
  */
 public class ViewQualityReportController {
 

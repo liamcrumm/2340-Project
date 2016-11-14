@@ -6,6 +6,7 @@ import org.bson.Document;
 
 /**
  * Created by Sakhi on 10/3/16.
+ * This class represents a users and holds all the information of a user.
  */
 public class User {
 

@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 
 /**
  * Created by Sakhi on 9/21/16.
+ * This controller contains the functionality of the account screen functions in regards to the button click responses.
  */
 public class AccountController {
 

@@ -7,6 +7,8 @@ import javafx.scene.control.*;
 /**
  * Created by Kimberly Burke on 9/19/2016.
  *
+ * Controller for the welcome screen. Handles the button clicks for registration and login.
+ *
  * Some code reused from M3 assignment.
  */
 public class WelcomeController {

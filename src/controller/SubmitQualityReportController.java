@@ -15,6 +15,8 @@ import java.util.Date;
 
 /**
  * Created by Kimberly Burke on 10/25/2016.
+ * Controller for the submit quality report screen. This class pulls the users input form the UI and stores it in the
+ * database.
  */
 public class SubmitQualityReportController {
 
