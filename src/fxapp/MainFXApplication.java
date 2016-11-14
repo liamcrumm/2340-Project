@@ -419,11 +419,9 @@ public class MainFXApplication extends Application {
     /**
      * Opens a dialog for manager to create history graphs. If the user
      * clicks "Return to Home Screen", will close window.
-     *
-     * @return true if the user clicked submit or cancel, false otherwise.
      * */
 
-    public boolean showHistoryGraphScreen() {
+    public void showHistoryGraphScreen() {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
@@ -446,12 +444,9 @@ public class MainFXApplication extends Application {
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
 
-            return controller.isOkClicked();
-
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Failed to find the fxml file for HistoryGraphScreen!");
             e.printStackTrace();
-            return false;
         }
     }
 

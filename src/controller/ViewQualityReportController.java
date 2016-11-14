@@ -64,7 +64,7 @@ public class ViewQualityReportController {
     /**
      * Refreshes and displays the report table
      */
-    public void refresh() {
+    private void refresh() {
         qualityReportTable.getItems().clear();
         accounts.getQualityReportsList().forEach(r -> {
                 if (!qualityReportTable.getItems().contains(r)) {

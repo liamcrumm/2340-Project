@@ -63,7 +63,7 @@ public class ViewWaterReportController {
     /**
      * Refreshes and displays the report table
      */
-    public void refresh() {
+    private void refresh() {
         reportTable.getItems().clear();
         accounts.getWaterReportsList().forEach(r -> {
                 if (!reportTable.getItems().contains(r)) {

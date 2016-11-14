@@ -19,14 +19,6 @@ public class WelcomeController {
     private Alert alert = new Alert(Alert.AlertType.ERROR);
 
     /**
-     * Initializes the controller class. This method is automatically called
-     * after the constructor and
-     * after the fxml file has been loaded.
-     */
-    @FXML private void initialize() {
-    }
-
-    /**
      * Setup the main application link so we can call methods there
      *
      * @param mainFXApplication  a reference (link) to our main class
